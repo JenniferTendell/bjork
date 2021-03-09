@@ -1,8 +1,11 @@
 
+import Layout from "./layout";
+
+
 function App() {
   return (
     <div>
-      <h1>Test</h1>
+      <Layout />
     </div>
   );
 }
