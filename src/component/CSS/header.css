@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 4.5rem;
+    background-color: #708C7E;
+}
+
+.logo {
+    font-family: 'Libre Barcode 128 Text';
+    font-weight: 200;
+    font-size: 2.8rem;
+    color: white;  
+}
