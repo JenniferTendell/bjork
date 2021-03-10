@@ -1,12 +1,13 @@
-
 import Layout from "./layout";
+import React from "react";
+import { Grommet } from "grommet";
 
 
 function App() {
   return (
-    <div>
+    <Grommet plain>
       <Layout />
-    </div>
+    </Grommet>
   );
 }
 
