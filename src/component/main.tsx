@@ -1,5 +1,5 @@
 import CheckOut from "./checkOut"
-import MasterView from "./masterView"
+import MasterView from "./masterView";
 
 function Main() {
     return(
