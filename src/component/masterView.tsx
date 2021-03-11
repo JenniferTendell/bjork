@@ -12,7 +12,6 @@ class MasterView extends Component {
                     pad='medium'
                     height='20rem'
                 />
-
                     <Grid
                         rows={
                             ["small", "..."]

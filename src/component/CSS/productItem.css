@@ -3,3 +3,14 @@
     height: 100%;
     object-fit: cover;
 }
+
+.text-box {
+    background-color: #B5BCB0;
+    color: #37513B;
+}
+
+a {
+    color: #37513B;
+    text-decoration: none;
+}
+
