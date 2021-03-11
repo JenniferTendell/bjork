@@ -1,13 +1,15 @@
 import Layout from "./layout";
-import React from "react";
 import { Grommet } from "grommet";
+import { BrowserRouter } from "react-router-dom";
 
 
 function App() {
   return (
-    <Grommet plain>
-      <Layout />
-    </Grommet>
+    <BrowserRouter>
+      <Grommet plain>
+        <Layout />
+      </Grommet>
+    </BrowserRouter>
   );
 }
 
