@@ -10,5 +10,6 @@
     font-family: 'Libre Barcode 128 Text';
     font-weight: 200;
     font-size: 2.8rem;
-    color: white;  
+    color: white;
+    text-decoration: none;
 }
