@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom"
 import CheckOut from "./checkOut"
 import MasterView from "./MasterView-Components/masterView";
 
-
 function Main() {
     return (
         <Suspense fallback={<div>Loading...</div>}>
@@ -12,7 +11,7 @@ function Main() {
                 <Route exact path="/">
                     <MasterView />
                 </Route>
-                <Route path="/checkout">
+                <Route path="/checkOut/">
                     <CheckOut />
                 </Route>
             </Switch>
@@ -20,4 +19,4 @@ function Main() {
     )
 }
 
-export default Main
+export default Main;
