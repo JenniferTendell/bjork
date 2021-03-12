@@ -1,8 +1,9 @@
+
 function ShoppingCart() {
-    return(
+    return (
         <div>
-            
-        </div>
+
+        </div >
     )
 }
 
