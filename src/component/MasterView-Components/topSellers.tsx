@@ -8,6 +8,8 @@ const rootImagesSize: CSSProperties = {
     objectFit: 'cover'
 }
 
+
+
 class TopSellers extends Component {
     static parameters: { chromatic: { disable: boolean; }; };
     render() {
