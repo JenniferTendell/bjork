@@ -24,7 +24,7 @@ export const products: Product[] = [
         title: 'Ansiktskruka - Vit',
         price: 249,
         info: 'Trevlig kruka av stengods. Höjd 25cm. Diameter 18cm.',
-        image: 'https://images.unsplash.com/photo-1578913685467-e5bd9fe17fb1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+        image: 'https://images.unsplash.com/photo-1578934691229-08987b226b47?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
     },{
         id: '3',
         title: 'Pyramid vaser - Trä',
@@ -33,7 +33,7 @@ export const products: Product[] = [
         image: 'https://images.unsplash.com/photo-1582643381669-4ad3e9cdac73?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
     },{
         id: '4',
-        title: 'Pyramid vaser - Trä',
+        title: 'Rundade vaser - Trä',
         price: 249,
         info: 'Två vaser av naturfärgat trä i rundad form. Liten vas: Höjd 15cm. Diameter 4cm. Stor vas: Höjd 22cm. Diameter 4cm.',
         image: 'https://images.unsplash.com/photo-1584589167171-541ce45f1eea?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
@@ -75,7 +75,7 @@ export const products: Product[] = [
         image: 'https://images.unsplash.com/photo-1485364103940-e8aff191ed1e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80',
     },{
         id: '11',
-        title: 'Ljusstake - Guld',
+        title: 'Ljuslykta - Guld',
         price: 199,
         info: 'Mysig ljuslykta i guld av mässing. Höjd 22cm. Diameter som störst 17cm.',
         image: 'https://images.unsplash.com/photo-1497556140430-9ac2d3056f3f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=751&q=80',
@@ -111,7 +111,7 @@ export const products: Product[] = [
         image: 'https://images.unsplash.com/photo-1579019154498-df5c364cc469?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
     },{
         id: '17',
-        title: 'Taklampa med metallstänger - Kopparfärgad',
+        title: 'Rundade taklampor - Kopparfärgad',
         price: 1499,
         info: 'Ett set med fem kopparfärgade taklampor av metall. Setet består av tre mindre och två större taklampor. Liten: Höjd 22cm. Diameter 20cm. Stor: Höjd 37cm. Diameter 35cm',
         image: 'https://images.unsplash.com/photo-1540932239986-30128078f3c5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
@@ -126,6 +126,6 @@ export const products: Product[] = [
         title: 'Taklampa - Matt grå',
         price: 349,
         info: 'Minimalistisk matt grå taklampa av stål. Höjd 30cm. Diameter 42cm',
-        image: 'https://images.unsplash.com/photo-1610735306613-2bf5c6b082ee?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+        image: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
     }
 ]
