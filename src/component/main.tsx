@@ -1,7 +1,7 @@
-import { Suspense } from "react"
-import { Route, Switch } from "react-router-dom"
-import CheckOut from "./checkOut"
-import MasterView from "./masterView"
+import { Suspense } from "react";
+import { Route, Switch } from "react-router-dom";
+import CheckOut from "./checkOut";
+import MasterView from "./masterView";
 
 function Main() {
     return (
