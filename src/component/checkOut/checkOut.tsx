@@ -1,8 +1,8 @@
-import { Accordion, Box } from 'grommet';
+import ErrorBoundary from '../errorBoundary'; 
+import DetailsForm from './detailsForm'
 import DeliveryOptions from './deliveryOptions'
 import Payment from './payment'
-import DetailsForm from './detailsForm'
-import ErrorBoundary from '../errorBoundary';
+import { Accordion, Box } from 'grommet';
 
 // const [value, setValue] = React.useState('');
 // const [reveal, setReveal] = React.useState(false);

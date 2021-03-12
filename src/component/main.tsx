@@ -10,7 +10,7 @@ function Main() {
                 <Route exact path="/">
                     <MasterView />
                 </Route>
-                <Route path="/checkOut/checkOut">
+                <Route path="/checkOut/">
                     <CheckOut />
                 </Route>
             </Switch>

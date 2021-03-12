@@ -1,15 +1,18 @@
-import { AccordionPanel, Box,  RadioButtonGroup } from "grommet";
+import { AccordionPanel, Box, Text, RadioButton } from "grommet";
+import { useState } from "react";
 import { CSSProperties } from "react";
-// import { useState } from 'react';
 
-// const [deliveryRadioButton, setDeliveryRadioButton] = useState('false');
-
+// export const Simple = () => {
+    const [checked, setChecked] = useState(false);
+    
 function deliveryOptions() {
+
+    
     return (
         <AccordionPanel label="Leverans">
-            <Box background="light-2" overflow="auto" height="medium">
+            <Box background="light-2" overflow="auto" height="large">
                 <Box height="large" flex={false}>
-                    <RadioButtonGroup
+                    {/* <RadioButtonGroup
                         name="radio"
                         options={[
                             { label: 'Postnord', value: 'Postnord', id: "one", },
@@ -17,36 +20,31 @@ function deliveryOptions() {
                             { label: 'Budbee', value: 'Budbee' },
                         ]}
                         // value={deliveryRadioButton}
-                    // onChange={event => setValue(event.target.value)}
-                    // {...props}
-                    />
-
-                    {/* <RadioButton
-                        name="name"
-                        value="option 1"
-                        checked={selected === 'option 1'}
-                        onChange={event => setSelected(event.target.value)}
-                    >
-                        {({ checked }) => (
-                            <Ascend color={checked ? 'brand' : 'status-unknown'} />
-                        )}
-                    </RadioButton> */}
+                        // onChange={event => setValue(event.target.value)}
+                        // {...props}
+                    /> */}
 
                     <Box style={{ ...deliveryOptionBox }} id="one">
-                        <h3>Postnord</h3>
-                        <p>Leveransdag 3-5 dagar</p>
-                        <p>29kr</p>
-
+                        <Text>Postnord</Text>
+                        <Text>Leveransdag 3-5 dagar</Text>
+                        <Text>29kr</Text>
+                        <RadioButton
+                            label="deliveryRadioButton"
+                            name="name"
+                            value= 'deliveryRadioButton'
+                            checked={checked}
+                            onChange={(event) => setChecked(event.target.checked)}
+                        />
                     </Box>
                     <Box style={{ ...deliveryOptionBox }}>
-                        <h3>DHL</h3>
-                        <p>Leveransdag 3-5 dagar</p>
-                        <p>29kr</p>
+                        <Text>DHL</Text>
+                        <Text>Leveransdag 3-5 dagar</Text>
+                        <Text>29kr</Text>
                     </Box>
                     <Box style={{ ...deliveryOptionBox }}>
-                        <h3>Budbee</h3>
-                        <p>Leveransdag 3-5 dagar</p>
-                        <p>29kr</p>
+                        <Text>Budbee</Text>
+                        <Text>Leveransdag 3-5 dagar</Text>
+                        <Text>29kr</Text>
 
                     </Box>
                 </Box>
@@ -54,7 +52,7 @@ function deliveryOptions() {
         </AccordionPanel>
     )
 }
-export default deliveryOptions;
+export default deliveryOptions 
 
 const deliveryOptionBox: CSSProperties = {
     background: '#B5BCB0',
@@ -65,3 +63,6 @@ const deliveryOptionBox: CSSProperties = {
     display: 'flex',
     flexWrap: 'wrap',
 }
+
+// textstolek https://storybook.grommet.io/?path=/story/type-text-all--all
+// radiobutton simple https://storybook.grommet.io/?path=/story/input-radiobutton-simple--simple
