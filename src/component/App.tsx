@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <ErrorBoundary>
-        <Grommet plain>
+        <Grommet>
           <Layout />
         </Grommet>
       </ErrorBoundary>
