@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <Grommet plain>
+      <Grommet>
         <Layout />
       </Grommet>
     </BrowserRouter>
