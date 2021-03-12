@@ -1,17 +1,14 @@
-import { Box, Grid, Grommet } from 'grommet';
+import {  Grid, Grommet } from 'grommet';
 import { Component } from 'react';
-import { products } from './interfaceProducts';
-import ProductItem from './productItem';
+import { products } from '../interfaceProducts';
+import ProductItem from '../productItem';
+import TopSellers from './topSellers';
 
 class MasterView extends Component {
     render() {
         return (
             <Grommet>
-                <Box // Bildspelet
-                    background='#C4C4C4'
-                    pad='medium'
-                    height='20rem'
-                />
+                <TopSellers />
                     <Grid
                         rows={
                             ["small", "..."]
