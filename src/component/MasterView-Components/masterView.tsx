@@ -1,7 +1,7 @@
 import { Box, Grid, Grommet } from 'grommet';
 import { Component } from 'react';
-import { products } from './interfaceProducts';
-import ProductItem from './productItem';
+import { products } from '../interfaceProducts';
+import ProductItem from '../productItem';
 
 class MasterView extends Component {
     render() {
