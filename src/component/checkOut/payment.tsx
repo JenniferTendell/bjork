@@ -108,9 +108,6 @@ function payment() {
                     </Box>
 
 
-
-
-
                     <Box>
                         <Text>Klarna</Text>
                         <RadioButtonGroup
