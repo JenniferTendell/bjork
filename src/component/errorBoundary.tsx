@@ -28,8 +28,8 @@ class ErrorBoundary extends Component<Props, State> {
     render() {
         if (this.state.hasError) {
             return (
-                <div className="background-image">
-                    <div className="error-boundary-container">
+                <div >
+                    <div>
                         <h2>Oops something went wrong</h2>
                         <button onClick={this.reloadPage}  className="button">
                         Go back

@@ -1,6 +1,7 @@
-import { AccordionPanel, Box, Text, RadioButton } from "grommet";
-// import React from "react";
-import { useState } from "react";
+import { AccordionPanel, Box, Text, RadioButton, grommet, Grommet } from "grommet";
+import { deepMerge } from "grommet/utils";
+import React from "react";
+// import { useState } from "react";
 import { CSSProperties } from "react";
 
 
@@ -8,20 +9,25 @@ import { CSSProperties } from "react";
 function DeliveryOptions() {
     
     // kan skrivas som båda dessa vet inte vilken som är mest rätt
-    const [selected, setSelected] = useState();
-    // const [selected, setSelected] = React.useState();
+    // const [selected, setSelected] = useState();
+    const [selected, setSelected] = React.useState();
+
+    const theme = deepMerge(grommet, {
+        radioButton: {
+            color: '#85A588',
+            check: {
+                background: '#85A588',
+                color: '#85A588',
+            },
+        }
+    });
 
     return (
-        <AccordionPanel label="Leverans">
-            <Box background="light-2" overflow="auto" height="large">
+        <Grommet theme={theme} color="#85A588">
+        <AccordionPanel label="Leverans" color="#85A588">
+            <Box background="light-2" overflow="auto" height="large" >
                 <Box height="large" flex={false}>
-
-                    <Box 
-                        background="#B5BCB0" 
-                        round="1rem" 
-                        direction= 'row' 
-                        pad="1rem"
-                    >
+                    <Box style={{ ...deliveryOptionBox }} >
                         <Text>Postnord</Text>
                         <Text>29kr</Text>
                         <Text>Leveransdag 3-5 dagar</Text>
@@ -34,8 +40,8 @@ function DeliveryOptions() {
                     </Box>
                     <Box style={{ ...deliveryOptionBox }}>
                         <Text>DHL</Text>
-                        <Text>Leveransdag 3-5 dagar</Text>
                         <Text>29kr</Text>
+                        <Text>Leveransdag 3-5 dagar</Text>
                         <RadioButton
                             name="name"
                             value= "deliveryRadioButton2"
@@ -45,8 +51,8 @@ function DeliveryOptions() {
                     </Box>
                     <Box style={{ ...deliveryOptionBox }}>
                         <Text>Budbee</Text>
-                        <Text>Leveransdag 3-5 dagar</Text>
                         <Text>29kr</Text>
+                        <Text>Leveransdag 3-5 dagar</Text>
                         <RadioButton
                             name="name"
                             value= "deliveryRadioButton3"
@@ -57,6 +63,7 @@ function DeliveryOptions() {
                 </Box>
             </Box>
         </AccordionPanel>
+        </Grommet>
     )
 }
 export default DeliveryOptions;
@@ -66,10 +73,17 @@ const deliveryOptionBox: CSSProperties = {
     margin: '.5rem',
     padding: '1rem',
     borderRadius: '1rem',
-    width: '20rem',
-    display: 'flex',
     flexWrap: 'wrap',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
 }
+
+// const radioButton: CSSProperties = {
+//     color: 'green',
+//     background: 'red',
+//     height: '10rem',
+// }
 
 // textstolek https://storybook.grommet.io/?path=/story/type-text-all--all
 // radiobutton simple https://storybook.grommet.io/?path=/story/input-radiobutton-simple--simple
