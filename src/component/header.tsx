@@ -1,21 +1,19 @@
 //import ShoppingCart from "./shoppingCart";
 import "./CSS/header.css";
 import { Cart } from 'grommet-icons';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CSSProperties } from "react";
 
 
 function Header() {
-    return(
+    return (
         <div className="header">
-            <BrowserRouter>
             <Link to="/" style={noTextDecoration}>
                 <h1 className="logo">BJÖRK</h1>
             </Link>
             <Link to="/shoppingCart">
                 <Cart color='white' size='medium' />
             </Link>
-            </BrowserRouter> 
         </div>
     )
 }
