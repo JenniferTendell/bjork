@@ -2,23 +2,29 @@ import ErrorBoundary from '../errorBoundary';
 import DetailsForm from './detailsForm'
 import DeliveryOptions from './deliveryOptions'
 import Payment from './payment'
-import { Accordion, Box } from 'grommet';
+import { Accordion, Box, Button } from 'grommet';
 
 // const [value, setValue] = React.useState('');
 // const [reveal, setReveal] = React.useState(false);
 
 function CheckOut() {
+
+    // onSubmit={({ value }) => { }}
+
     return (
         <Box>
             <ErrorBoundary>
                 <DetailsForm />
-                <Accordion multiple pad="medium" width="60%">
+                <Accordion multiple pad="medium" width="60%" >
 
                     {/* här ska alla accordinPanel ligga importerade */}
-                    <DeliveryOptions />
+                    <DeliveryOptions  />
                     <Payment />
                 </Accordion>
 
+                <Box direction="row" gap="medium">
+                    <Button type="submit" label="Bekräfta betalning" />
+                </Box>
                 {/* const [value, setValue] = React.useState({ }); */}
             </ErrorBoundary>
         </Box >
