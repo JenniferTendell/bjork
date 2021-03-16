@@ -25,7 +25,7 @@ function DeliveryOptions() {
     return (
         <Grommet theme={theme} color="#85A588">
         <AccordionPanel label="Leverans" color="#85A588">
-            <Box background="light-2" overflow="auto" height="large" >
+            <Box background="light-2" overflow="auto" height="medium" >
                 <Box height="large" flex={false}>
                     <Box style={{ ...deliveryOptionBox }} >
                         <Text>Postnord</Text>
