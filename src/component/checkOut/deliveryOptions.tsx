@@ -79,11 +79,6 @@ const deliveryOptionBox: CSSProperties = {
     justifyContent: 'space-between'
 }
 
-// const radioButton: CSSProperties = {
-//     color: 'green',
-//     background: 'red',
-//     height: '10rem',
-// }
 
 // textstolek https://storybook.grommet.io/?path=/story/type-text-all--all
 // radiobutton simple https://storybook.grommet.io/?path=/story/input-radiobutton-simple--simple
