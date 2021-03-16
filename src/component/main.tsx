@@ -3,6 +3,7 @@ import { Suspense } from "react"
 import { Route, Switch } from "react-router-dom"
 import CheckOut from "./checkOut/checkOut"
 import MasterView from "./MasterView-Components/masterView";
+import ProductView from "./productView";
 
 function Main() {
     return (
@@ -10,6 +11,9 @@ function Main() {
             <Switch>
                 <Route exact path="/">
                     <MasterView />
+                </Route>
+                <Route path="/product/:id">
+                    <ProductView />
                 </Route>
                 <Route path="/checkOut/">
                     <CheckOut />
