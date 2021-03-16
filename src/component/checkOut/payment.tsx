@@ -1,12 +1,13 @@
-import { AccordionPanel, Box, Text, Button, MaskedInput, TextInput, RadioButtonGroup, grommet, Grommet } from "grommet";
+import { AccordionPanel, Box, MaskedInput, RadioButtonGroup, grommet, Grommet, RadioButton } from "grommet";
 import { deepMerge } from "grommet/utils";
+import React from "react";
 
 
 //för kortnummer 
 const IPv4ElementExp = /^[0-1][0-9][0-9]$|[0-4][0-9]$|[0-5]$|[0-9][0-9]$|^[0-9]$/;
 // const month: number; new Date(2021, month, 0).getDate(); // hämtar så man får val när man trycker
 
-function payment() {
+function Payment() {
 
     const theme = deepMerge(grommet, {
         radioButton: {
@@ -18,98 +19,109 @@ function payment() {
         }
     });
 
+    const [selected, setSelected] = React.useState();
+
     return (
         <Grommet theme={theme}>
             <AccordionPanel label="Betalning">
-                <Text>Postnord</Text>
                 <Box background="light-2" style={{ height: 'large' }}>
-                    {/* <Box> */}
-                    <MaskedInput
-                        mask={[
-                            {
-                                length: [1, 4],
-                                regexp: IPv4ElementExp,
-                                placeholder: 'xxxx',
-                            },
-                            { fixed: '-' },
-                            {
-                                length: [1, 4],
-                                regexp: IPv4ElementExp,
-                                placeholder: 'xxxx',
-                            },
-                            { fixed: '-' },
-                            {
-                                length: [1, 4],
-                                regexp: IPv4ElementExp,
-                                placeholder: 'xxxx',
-                            },
-                            { fixed: '-' },
-                            {
-                                length: [1, 4],
-                                regexp: IPv4ElementExp,
-                                placeholder: 'xxxx',
-                            },
-                        ]}
-                    // value={value}
-                    // onChange={event => setValue(event.target.value)}
-                    />
-                    {/* </Box> */}
-
-                    {/* <Box> */}
-                    <MaskedInput
-                        mask={[
-                            {
-                                length: [1, 2],
-                                // options: Array.from({ length: 12 }, (v, k) => k + 1),
-                                regexp: /^1[0,1-2]$|^0?[1-9]$|^0$/,
-                                placeholder: 'mm',
-                            },
-                            { fixed: '-' },
-                            {
-                                length: 2,
-                                // options: Array.from({ length: 100 }, (v, k) => 2019 - k),
-                                regexp: /^2[1-9]$|^[0-9]$/,
-                                placeholder: 'yy',
-                            },
-                        ]}
-                    // value={value}
-                    // onChange={event => setValue(event.target.value)}
-                    />
-                    {/* </Box> */}
-
-                    <MaskedInput
-                        mask={[
-                            {
-                                length: 3,
-                                regexp: /[0-9]$/,
-                                placeholder: 'CVC',
-
-                            }
-                        ]}
-                    />
-                    <Box
-                        width="medium"
-                        direction="row"
-                        margin="large"
-                        align="center"
-                        round="small"
-                        border
-                    >
-                        <TextInput
-                        // plain
-                        // type={reveal ? 'text' : 'password'}
+                    <Box>
+                        <RadioButton
+                            label="Kort"
+                            name="name"
+                            value= "paymentMethodRadioBtn1"
+                            checked={selected === 'paymentMethodRadioBtn1'}
+                            onChange={(event: any) => setSelected(event.target.value)}
+                        />
+                        <MaskedInput
+                            mask={[
+                                {
+                                    length: [1, 4],
+                                    regexp: IPv4ElementExp,
+                                    placeholder: 'xxxx',
+                                },
+                                { fixed: '-' },
+                                {
+                                    length: [1, 4],
+                                    regexp: IPv4ElementExp,
+                                    placeholder: 'xxxx',
+                                },
+                                { fixed: '-' },
+                                {
+                                    length: [1, 4],
+                                    regexp: IPv4ElementExp,
+                                    placeholder: 'xxxx',
+                                },
+                                { fixed: '-' },
+                                {
+                                    length: [1, 4],
+                                    regexp: IPv4ElementExp,
+                                    placeholder: 'xxxx',
+                                },
+                            ]}
                         // value={value}
                         // onChange={event => setValue(event.target.value)}
                         />
-                        <Button
-                        // icon={reveal ? <View size="medium" /> : <Hide size="medium" />}
-                        // onClick={() => setReveal(!reveal)}
+
+                        <MaskedInput
+                            mask={[
+                                {
+                                    length: [1, 2],
+                                    // options: Array.from({ length: 12 }, (v, k) => k + 1),
+                                    regexp: /^1[0,1-2]$|^0?[1-9]$|^0$/,
+                                    placeholder: 'mm',
+                                },
+                                { fixed: '-' },
+                                {
+                                    length: 2,
+                                    // options: Array.from({ length: 100 }, (v, k) => 2019 - k),
+                                    regexp: /^2[1-9]$|^[0-9]$/,
+                                    placeholder: 'yy',
+                                },
+                            ]}
+                        // value={value}
+                        // onChange={event => setValue(event.target.value)}
                         />
+
+                        <MaskedInput
+                            mask={[
+                                {
+                                    length: 3,
+                                    regexp: /[0-9]$/,
+                                    placeholder: 'CVC',
+
+                                }
+                            ]}
+                        />
+                        {/* <Box
+                            width="medium"
+                            direction="row"
+                            margin="large"
+                            align="center"
+                            round="small"
+                            border
+                        >
+                            <TextInput
+                            // plain
+                            // type={reveal ? 'text' : 'password'}
+                            // value={value}
+                            // onChange={event => setValue(event.target.value)}
+                            />
+                            <Button
+                            // icon={reveal ? <View size="medium" /> : <Hide size="medium" />}
+                            // onClick={() => setReveal(!reveal)}
+                            />
+                        </Box> */}
                     </Box>
 
-
                     <Box>
-                        <Text>Klarna</Text>
+                        <RadioButton
+                            label="Klarna"
+                            name="name"
+                            value= "paymentMethodRadioBtn2"
+                            checked={selected === 'paymentMethodRadioBtn2'}
+                            onChange={(event: any) => setSelected(event.target.value)}
+                        />
                         <RadioButtonGroup
                             name="radio"
                             options={[
@@ -122,7 +134,13 @@ function payment() {
                         />
                     </Box>
                     <Box>
-                        <Text>Swish</Text>
+                        <RadioButton
+                            label="Swish"
+                            name="name"
+                            value= "paymentMethodRadioBtn3"
+                            checked={selected === 'paymentMethodRadioBtn3'}
+                            onChange={(event: any) => setSelected(event.target.value)}
+                        />
                         <MaskedInput
                             mask={[
                                 {
@@ -139,7 +157,7 @@ function payment() {
         </Grommet>
     )
 }
-export default payment;
+export default Payment;
 
 
 // IPv4MaskedInput.storyName = 'IPv4 address';
