@@ -1,28 +1,30 @@
 //import ShoppingCart from "./shoppingCart";
 import "./CSS/header.css";
-import { Cart } from 'grommet-icons';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CSSProperties } from "react";
+import { Box } from 'grommet';
+import ShoppingCart from "./shoppingCart";
+
 
 
 function Header() {
-    return(
-        <div className="header">
-            <BrowserRouter>
+    return (
+        <header className="header">
             <Link to="/" style={noTextDecoration}>
                 <h1 className="logo">BJÖRK</h1>
             </Link>
-            <Link to="/shoppingCart">
-                <Cart color='white' size='medium' />
-            </Link>
-            </BrowserRouter> 
-        </div>
+            <Box>
+                <ShoppingCart/>
+            </Box>
+        </header>
     )
 }
+
 
 export const noTextDecoration: CSSProperties = {
     textDecoration: 'none'
 }
+
 
 
 
