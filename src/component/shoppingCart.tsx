@@ -1,63 +1,46 @@
-import { Box, Menu, Image, Button } from 'grommet';
-import { Cart } from 'grommet-icons';
-import { CSSProperties } from "react";
+import { Box, Button, Text } from 'grommet';
+import ShoppingItem from './shoppingItem';
+
 
 function ShoppingCart() {
+    let cartItems = ['hej', 'på' ]
+
     return (
-        <Box align="center">
-        <Menu style={boxBackground}
-            items={[
-                {
-                    label: <Box style={boxSize} alignSelf="center">Kruka 299kr</Box>,
-                    onClick: () => { },
-                    icon: (
-                        <Box height="small" width="small">
-                            <Image
-                                fit="cover"
-                                src="//v2.grommet.io/assets/Wilderpeople_Ricky.jpg"
-                            />
-                        </Box>
-                    ),
-                },
-                {
-                    label: <Box alignSelf="center">Kruka 299kr</Box>,
-                    onClick: () => { },
-                    icon: (
-                        <Box height="small" width="small">
-                            <Image
-                                fit="cover"
-                                src="//v2.grommet.io/assets/Wilderpeople_Ricky.jpg"
-                            />
-                        </Box>
-                    ),
-                },
-                {
-
-                    onClick: () => { },
-                    icon: (
-                        <Box height="small" width="medium">
-                            <Button color="red"
-                                primary label="Gå till kassan"
-                            />
-                        </Box>
-                    ),
-                },
-            ]}
+        <Box
+            margin={{'top': 'small'}}
         >
-            <Box direction="row" gap="large" pad="medium">
-                <Cart color='white' />
-            </Box>
-        </Menu>
-    </Box>
+            <Text alignSelf='center'>
+                Kundvagn
+            </Text>
+             {cartItems.map((cartItem, index) =>
+                <ShoppingItem  
+                    cartItem={cartItem}
+                    key={index}   
+                />
+            )}
+            <Box
+                direction='row'
+                justify='around'
+                background='#B5BCB0'
+                pad={{'vertical': 'small'}}
+            >
+                <Text>
+                    Totalsumma:
+                </Text>
+                <Text>
+                    299kr
+                </Text>
+            </Box>    
+            <Button
+                label='Gå till kassan'
+                size='small'
+                margin={'small'}
+                color='#708C7E'
+                alignSelf='center'
+                href='/checkOut'  
+            />      
+        </Box>
     )
-}
-
-export const boxBackground: CSSProperties = {
-    background: '#708C7E'
-}
-
-export const boxSize: CSSProperties = {
-    width: '10rem',
 }
 
 export default ShoppingCart
