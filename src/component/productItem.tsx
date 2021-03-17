@@ -10,6 +10,11 @@ interface Props {
 function ProductItem(props: Props) {
     const { title, image, price } = props.product;
 
+    const addProductToCart: React.MouseEventHandler<HTMLDivElement> = (event) => {
+        // event.stopPropagation();
+        event.preventDefault();
+    }
+
     return (
         <Link to={"/product"}>
             <Box
@@ -49,7 +54,8 @@ function ProductItem(props: Props) {
                         height='2.5rem'
                         justify='center'
                         align='center'
-                        round='full'  
+                        round='full'
+                        onClick={addProductToCart}
                     >
                         <Shop size='18px' color='white'/>
                     </Box>
