@@ -1,7 +1,9 @@
+
 import { Suspense } from "react"
 import { Route, Switch } from "react-router-dom"
-import CheckOut from "./checkOut"
-import MasterView from "./masterView";
+import CheckOut from "./checkOut/checkOut"
+import MasterView from "./MasterView-Components/masterView";
+import ProductView from "./productView";
 
 function Main() {
     return (
@@ -10,7 +12,10 @@ function Main() {
                 <Route exact path="/">
                     <MasterView />
                 </Route>
-                <Route path="/checkout">
+                <Route path="/product/:id">
+                    <ProductView />
+                </Route>
+                <Route path="/checkOut/">
                     <CheckOut />
                 </Route>
             </Switch>
@@ -18,4 +23,4 @@ function Main() {
     )
 }
 
-export default Main
+export default Main;

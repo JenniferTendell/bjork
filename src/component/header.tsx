@@ -5,8 +5,6 @@ import { CSSProperties } from "react";
 import { Box } from 'grommet';
 import ShoppingCartButton from "./shoppingCartButton";
 
-
-
 function Header() {
     return (
         <header className="header">
@@ -20,12 +18,8 @@ function Header() {
     )
 }
 
-
 export const noTextDecoration: CSSProperties = {
     textDecoration: 'none'
 }
-
-
-
 
 export default Header
