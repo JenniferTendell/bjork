@@ -13,7 +13,6 @@ function DetailsForm() {
             style={{ ...form }}
             // value={value}
             // onChange={nextValue => setValue(nextValue)}
-            // onSubmit={({ value }) => { }}
         >
 
             <FormField name="fullname" htmlFor="fullname" label="För- och efternamn">
@@ -31,10 +30,11 @@ function DetailsForm() {
             <FormField name="zipcode" htmlFor="zipcode" label="Postnummer">
                 <TextInput id="zipcode" name="zipcode" />
             </FormField>
+            
+            <FormField name="city" htmlFor="city" label="Stad">
+                <TextInput id="city" name="zipccityode" />
+            </FormField>
 
-            {/* <Box direction="row" gap="medium">
-            <Button type="submit" primary label="Submit" />
-            </Box> */}
         </Form>
 
 

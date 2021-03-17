@@ -8,7 +8,7 @@ interface Props {
 }
 
 function ProductItem(props: Props) {
-    const { title, image, price } = props.product;
+    const { id, title, image, price } = props.product;
 
     const addProductToCart: React.MouseEventHandler<HTMLDivElement> = (event) => {
         // event.stopPropagation();
@@ -16,7 +16,7 @@ function ProductItem(props: Props) {
     }
 
     return (
-        <Link to={"/product"}>
+        <Link to={"/product/" + id}>
             <Box
                 height='medium'
                 width='medium'
