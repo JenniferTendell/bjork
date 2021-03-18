@@ -2,6 +2,8 @@ import { Product } from "./interfaceProducts";
 import { Box, Image, Text } from "grommet";
 import { Link } from "react-router-dom";
 import { Shop } from "grommet-icons";
+import { CartContext } from "../contexts/CartContext";
+import { useContext } from "react";
 
 interface Props {
     product: Product
@@ -9,8 +11,17 @@ interface Props {
 
 function ProductItem(props: Props) {
     const { id, title, image, price } = props.product;
+    const { addToCart } = useContext(CartContext);
+
+
+    const addProductToCart: React.MouseEventHandler<HTMLDivElement> = (event) => {
+        // event.stopPropagation();
+        event.preventDefault();
+        addToCart(props.product);
+    }
 
     return (
+
         <Link to={"/product/" + id}>
             <Box
                 height='medium'
@@ -30,18 +41,18 @@ function ProductItem(props: Props) {
                     direction='row'
                 >
                     <Box>
-                        <Text 
-                        color='#37513B'
-                        weight={500}
+                        <Text
+                            color='#37513B'
+                            weight={500}
                         >
                             {title}
                         </Text>
-                        <Text 
-                        color='#37513B'
-                        size='small'
+                        <Text
+                            color='#37513B'
+                            size='small'
                         >
                             {price} kr
-                    </Text>
+                        </Text>
                     </Box>
                     <Box
                         background='#708C7E'
@@ -49,9 +60,10 @@ function ProductItem(props: Props) {
                         height='2.5rem'
                         justify='center'
                         align='center'
-                        round='full'  
+                        round='full'
+                        onClick={addProductToCart}
                     >
-                        <Shop size='18px' color='white'/>
+                        <Shop size='18px' color='white' />
                     </Box>
                 </Box>
             </Box>
