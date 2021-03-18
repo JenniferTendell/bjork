@@ -1,9 +1,11 @@
 import { Box, Button, Text } from 'grommet';
+import { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
 import ShoppingItem from './shoppingItem';
 
 
 function ShoppingCart() {
-    let cartItems = ['hej', 'på' ]
+    const { cart } = useContext(CartContext)
 
     return (
         <Box
@@ -12,9 +14,9 @@ function ShoppingCart() {
             <Text alignSelf='center'>
                 Kundvagn
             </Text>
-             {cartItems.map((cartItem, index) =>
+             {cart.map((cartItem, index) =>
                 <ShoppingItem  
-                    cartItem={cartItem}
+                    product={cartItem}
                     key={index}   
                 />
             )}
@@ -25,7 +27,7 @@ function ShoppingCart() {
                 pad={{'vertical': 'small'}}
             >
                 <Text>
-                    Totalsumma:
+                    
                 </Text>
                 <Text>
                     299kr

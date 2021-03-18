@@ -6,7 +6,7 @@ import { CartContext } from "../contexts/CartContext";
 
 function ShoppingCartButton() {
     const [isCartOpen, setisCartOpen] = useState(false)
-    const { cart } = useContext(CartContext);
+    const { nrOfProducts } = useContext(CartContext);
 
     const toggleCartButton = () => {
         setisCartOpen(!isCartOpen)
@@ -24,7 +24,7 @@ function ShoppingCartButton() {
                     ? <Close color='white' />
                     : <Cart color='white' />
                 }
-                {cart.length > 0
+                {nrOfProducts > 0
                     ? <Box
                         round='small'
                         height='1.3rem'
@@ -38,7 +38,7 @@ function ShoppingCartButton() {
                             size='xsmall'
                             weight= 'bold'
                         >
-                            {cart.length}
+                            {nrOfProducts}
                         </Text>
                     </Box>
                     : <Box />

@@ -1,11 +1,12 @@
 import { Box, Button, Grid, Image, Select, Text } from 'grommet';
 import { Link } from 'react-router-dom';
-import { products } from '../component/interfaceProducts';
+import {  products } from '../component/interfaceProducts';
 
 
 function ProductView() {
     const urlPath = window.location.pathname
     const productId = Number(urlPath.split('/')[2])
+
 
     return (
         <main>
