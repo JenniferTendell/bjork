@@ -16,13 +16,11 @@ function CheckOut() {
             <ErrorBoundary>
                 <DetailsForm />
                 <Accordion multiple pad="medium" width="60%" >
-
-                    {/* här ska alla accordinPanel ligga importerade */}
                     <DeliveryOptions  />
                     <Payment />
                 </Accordion>
 
-                <Box direction="row" gap="medium">
+                <Box direction="row" gap="medium" pad="1rem">
                     <Button type="submit" label="Bekräfta betalning" />
                 </Box>
                 {/* const [value, setValue] = React.useState({ }); */}
