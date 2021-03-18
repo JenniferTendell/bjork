@@ -1,25 +1,36 @@
-import { Component, createContext } from "react";
+import {  createContext, FunctionComponent, useState } from "react";
 import { Product } from "../component/interfaceProducts";
 
-interface State {}
 
-interface CartContextValue extends State {
+interface CartContextValue {
+    cart: Product[];
     addToCart: (product: Product) => void;
+    removeProductFromCart: (product: Product) => void;
+    emptyCart: () => void;
 }
 
-const CartContext = createContext<CartContextValue>({
-    addToCart: () => {}
-})
+export const CartContext = createContext<CartContextValue>({} as any)
 
-class CartProvider extends Component<{}, State> {
+const CartProvider: FunctionComponent = ({children}) => {
+     const [cart, setCart] = useState<Product[]>([]);
 
-    render() {
+     const addToCart = (product: Product) => {
+         setCart([...cart, product])
+     }
+     const removeProductFromCart = () => {}
+     const emptyCart = () => setCart([])
+     
+     console.log(cart)
         return (
             <CartContext.Provider value={{
-                
+                cart,
+                addToCart,
+                removeProductFromCart,
+                emptyCart
             }}>
-                {this.props.children}
+                {children}
             </CartContext.Provider>
         )
-    }
 }
+
+export default CartProvider;
