@@ -16,11 +16,7 @@ function Payment() {
                 color: '#85A588',
             },
         },
-        maskedInput: {
-            margin: '5rem',
-        }
     });
-
 
     const [selectedPayMethod, setSelectedPayMethod] = useState()
 
@@ -28,7 +24,6 @@ function Payment() {
         <Grommet theme={theme}>
             <AccordionPanel label="Betalning">
 
-                {/* <h1>{selectedPayMethod}</h1> */}
                 <Box background="light-2" style={{ height: 'large' }}>
 
                     <Box margin='small'>
@@ -134,8 +129,8 @@ function Payment() {
                             //     {...props}
                             />
                         </Box>
-                            :
-                            <Box />
+                        :
+                        <Box />
                         }
                     </Box>
 
@@ -159,8 +154,8 @@ function Payment() {
                                 ]}
                             />
                         </Box>
-                            :
-                            <Box />
+                        :
+                        <Box />
                         }
                     </Box>
                 </Box>
