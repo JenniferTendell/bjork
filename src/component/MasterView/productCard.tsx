@@ -1,8 +1,8 @@
-import { Product } from "./interfaceProducts";
+import { Product } from "../mockedInterfaceProducts";
 import { Box, Image, Text } from "grommet";
 import { Link } from "react-router-dom";
 import { Shop } from "grommet-icons";
-import { CartContext } from "../contexts/CartContext";
+import { CartContext } from "../../contexts/CartContext";
 import { useContext } from "react";
 
 interface Props {

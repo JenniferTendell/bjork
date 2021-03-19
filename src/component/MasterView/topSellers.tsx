@@ -1,6 +1,6 @@
 import { Box, Carousel, Grommet } from 'grommet';
 import { Component, CSSProperties } from 'react';
-import { products } from '../interfaceProducts';
+import { products } from '../mockedInterfaceProducts';
 
 const rootImagesSize: CSSProperties = {
     width: '35rem',

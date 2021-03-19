@@ -1,6 +1,6 @@
 import { Box, Button, Text } from 'grommet';
 import { useContext } from 'react';
-import { CartContext } from '../contexts/CartContext';
+import { CartContext } from '../../contexts/CartContext';
 import ShoppingItem from './shoppingItem';
 
 

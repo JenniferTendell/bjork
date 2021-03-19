@@ -1,6 +1,6 @@
 import { Grid, Text, Select, Button, Box, Image } from "grommet"
 import { FormTrash } from "grommet-icons"
-import { Product } from "./interfaceProducts"
+import { Product } from "../mockedInterfaceProducts"
 
 interface Props {
     product: Product
