@@ -7,7 +7,7 @@ interface Props {
 }
 
 function ShoppingItem(props:Props) {
-
+    const { image, price, title } = props.product;
     return(
         <Grid
             columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
@@ -20,15 +20,15 @@ function ShoppingItem(props:Props) {
             <Box>
                 <Image 
                     fit='cover'
-                    src={props.product.image}
+                    src={image}
                 />
             </Box>
             <Box>
                 <Text size='small'>
-                    {props.product.title}
+                    {title}
                 </Text>
                 <Text size='small'>
-                    {props.product.price}
+                    {price}
                 </Text>
             </Box>
             <Select    
