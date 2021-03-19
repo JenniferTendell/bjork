@@ -5,29 +5,8 @@ import ShoppingItem from './shoppingItem';
 
 
 function ShoppingCart() {
-    const { cart } = useContext(CartContext);
-    let totalSum: number = 0;
+    const { cart, totalSum } = useContext(CartContext);
 
-
-    const getTotalSum = (totalSum: number) => {
-
-        const cartPrices = [];
-        
-        for (const item of cart) {
-            if (item.quantity > 1) {
-                const sum = item.quantity * item.price;
-                cartPrices.push(sum);
-            } else {
-                cartPrices.push(item.price)
-            }
-        }
-        
-        for (const price of cartPrices) {
-            totalSum += price
-        }
-        return totalSum;
-    }
-    
 
     return (
         <Box
@@ -52,7 +31,7 @@ function ShoppingCart() {
                     Total:
                 </Text>
                 <Text>
-                    {getTotalSum(totalSum)} kr
+                    {totalSum} kr
                 </Text>
             </Box>
             <Button
