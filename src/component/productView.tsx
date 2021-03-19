@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Image, Select, Text } from 'grommet';
 import { Link } from 'react-router-dom';
-import {  products } from '../component/interfaceProducts';
+import {  products } from './mockedInterfaceProducts';
 
 
 function ProductView() {

@@ -1,7 +1,7 @@
 import { Box, Grid } from 'grommet';
 import { Component } from 'react';
-import { products } from '../interfaceProducts';
-import ProductItem from '../productItem';
+import { products } from '../mockedInterfaceProducts';
+import ProductCard from './productCard';
 import TopSellers from './topSellers';
 
 class MasterView extends Component {
@@ -20,7 +20,7 @@ class MasterView extends Component {
                         margin='0'
                     >
                         {products.map((product, index) =>
-                            <ProductItem
+                            <ProductCard
                                 product={product}
                                 key={index}
                             />

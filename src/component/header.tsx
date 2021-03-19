@@ -3,7 +3,7 @@ import "./CSS/header.css";
 import { Link } from 'react-router-dom';
 import { CSSProperties } from "react";
 import { Box } from 'grommet';
-import ShoppingCartButton from "./shoppingCartButton";
+import ShoppingCartButton from "./ShoppingCart/shoppingCartButton";
 
 function Header() {
     return (
@@ -12,7 +12,7 @@ function Header() {
                 <h1 className="logo">BJÖRK</h1>
             </Link>
             <Box>
-                <ShoppingCartButton/>
+                <ShoppingCartButton />
             </Box>
         </header>
     )

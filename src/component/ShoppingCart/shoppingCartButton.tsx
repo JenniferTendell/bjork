@@ -2,7 +2,7 @@ import { Box, DropButton, Text } from "grommet"
 import ShoppingCart from "./shoppingCart"
 import { Cart, Close } from 'grommet-icons';
 import { useContext, useState } from "react";
-import { CartContext } from "../contexts/CartContext";
+import { CartContext } from "../../contexts/CartContext";
 
 function ShoppingCartButton() {
     const [isCartOpen, setisCartOpen] = useState(false)
