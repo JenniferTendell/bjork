@@ -49,7 +49,7 @@ const CartProvider: FunctionComponent = ({ children }) => {
 
         setCart(cartToSave);
         updateCartInLocalStorage(cartToSave);
-        setNoOfProducts(getCartLength(cartToSave));
+        setNrOfProducts(getCartLength(cartToSave));
         setTotalSum(getTotalSum(cartToSave));
     }
 
@@ -80,13 +80,13 @@ const CartProvider: FunctionComponent = ({ children }) => {
     const emptyCart = () => {
         setCart([]);
         localStorage.removeItem('cart');
-        setNoOfProducts(getCartLength([]));
+        setNrOfProducts(getCartLength([]));
     }
 
 
     /* HOOKS */
     const [cart, setCart] = useState<CartItem[]>(initializeCart());
-    const [nrOfProducts, setNoOfProducts] = useState<number>(getCartLength(cart));
+    const [nrOfProducts, setNrOfProducts] = useState<number>(getCartLength(cart));
     const [totalSum, setTotalSum] = useState<number>(getTotalSum(cart))
     return (
         <CartContext.Provider value={{
