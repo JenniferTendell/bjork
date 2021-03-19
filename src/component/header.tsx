@@ -12,7 +12,7 @@ function Header() {
                 <h1 className="logo">BJÖRK</h1>
             </Link>
             <Box>
-                <ShoppingCartButton/>
+                <ShoppingCartButton />
             </Box>
         </header>
     )
