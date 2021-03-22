@@ -1,12 +1,13 @@
 import { Button, Select, Text } from 'grommet';
 import { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
-import { products } from '../component/interfaceProducts';
+import {  products } from './mockedInterfaceProducts';
 
 
 function ProductView() {
     const urlPath = window.location.pathname
     const productId = Number(urlPath.split('/')[2])
+
 
     return (
         <main style={rootStyle}>

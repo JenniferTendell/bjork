@@ -1,8 +1,9 @@
-import { Product } from "./interfaceProducts";
+import { Product } from "../mockedInterfaceProducts";
+import { Box } from "grommet";
 import { Link } from "react-router-dom";
 import { Shop } from "grommet-icons";
-import { CSSProperties } from "react";
-import { Box } from "grommet";
+import { CartContext } from "../../contexts/CartContext";
+import { CSSProperties, useContext } from "react";
 
 interface Props {
     product: Product
@@ -10,6 +11,14 @@ interface Props {
 
 function ProductItem(props: Props) {
     const { id, title, image, price } = props.product;
+    const { addToCart } = useContext(CartContext);
+
+
+    const addProductToCart: React.MouseEventHandler<HTMLDivElement> = (event) => {
+        // event.stopPropagation();
+        event.preventDefault();
+        addToCart(props.product);
+    }
 
     return (
         <Link
@@ -30,6 +39,7 @@ function ProductItem(props: Props) {
                         height='2.5rem'
                         align='center'
                         justify='center'
+                        onClick={addProductToCart}
                     >
                         <Shop size='18px' color='white' />
                     </Box>

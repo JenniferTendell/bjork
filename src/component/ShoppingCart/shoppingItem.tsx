@@ -1,11 +1,13 @@
 import { Grid, Text, Select, Button, Box, Image } from "grommet"
 import { FormTrash } from "grommet-icons"
+import { Product } from "../mockedInterfaceProducts"
 
 interface Props {
-    cartItem: string
+    product: Product
 }
 
 function ShoppingItem(props:Props) {
+    const { image, price, title } = props.product;
     return(
         <Grid
             columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
@@ -18,20 +20,20 @@ function ShoppingItem(props:Props) {
             <Box>
                 <Image 
                     fit='cover'
-                    src="//v2.grommet.io/assets/Wilderpeople_Ricky.jpg"
+                    src={image}
                 />
             </Box>
             <Box>
                 <Text size='small'>
-                    {props.cartItem}
+                    {title}
                 </Text>
                 <Text size='small'>
-                    Pris
+                    {price}
                 </Text>
             </Box>
             <Select    
                 options={['1', '2', '3', '4', '5']}
-                placeholder='Fixa'
+                placeholder='FIXA'
                 size='small'
             />
             <Button 

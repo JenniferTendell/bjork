@@ -2,7 +2,7 @@
 import { Suspense } from "react"
 import { Route, Switch } from "react-router-dom"
 import CheckOut from "./checkOut/checkOut"
-import MasterView from "./MasterView-Components/masterView";
+import MasterView from "./MasterView/masterView";
 import ProductView from "./productView";
 
 function Main() {

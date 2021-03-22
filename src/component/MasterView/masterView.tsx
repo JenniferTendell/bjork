@@ -1,6 +1,6 @@
 import { Component, CSSProperties } from 'react';
-import { products } from '../interfaceProducts';
-import ProductItem from '../productItem';
+import { products } from '../mockedInterfaceProducts';
+import ProductCard from './productCard';
 import ImageCarousel from './imageCarousel';
 
 class MasterView extends Component {
@@ -10,7 +10,7 @@ class MasterView extends Component {
                 <ImageCarousel />
                 <div style={grid}>
                     {products.map((product, index) =>
-                        <ProductItem
+                        <ProductCard
                             product={product}
                             key={index}
                         />

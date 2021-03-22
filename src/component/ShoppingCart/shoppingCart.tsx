@@ -1,46 +1,49 @@
 import { Box, Button, Text } from 'grommet';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 import ShoppingItem from './shoppingItem';
 
 
 function ShoppingCart() {
-    let cartItems = ['hej', 'på' ]
+    const { cart, totalSum } = useContext(CartContext);
+
 
     return (
         <Box
-            margin={{'top': 'small'}}
+            margin={{ 'top': 'small' }}
         >
             <Text alignSelf='center'>
                 Kundvagn
             </Text>
-             {cartItems.map((cartItem, index) =>
-                <ShoppingItem  
-                    cartItem={cartItem}
-                    key={index}   
+            {cart.map((cartItem, index) =>
+                <ShoppingItem
+                    product={cartItem}
+                    key={index}
                 />
             )}
             <Box
                 direction='row'
                 justify='around'
                 background='#B5BCB0'
-                pad={{'vertical': 'small'}}
+                pad={{ 'vertical': 'small' }}
             >
                 <Text>
-                    Totalsumma:
+                    Total:
                 </Text>
                 <Text>
-                    299kr
+                    {totalSum} kr
                 </Text>
-            </Box>    
+            </Box>
             <Button
                 label='Gå till kassan'
                 size='small'
                 margin={'small'}
                 color='#708C7E'
                 alignSelf='center'
-                href='/checkOut'  
-            />      
+                href='/checkOut'
+            />
         </Box>
     )
 }
 
-export default ShoppingCart
+export default ShoppingCart;
