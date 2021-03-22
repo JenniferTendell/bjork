@@ -1,13 +1,17 @@
 import { AccordionPanel, Box, MaskedInput, RadioButtonGroup, grommet, Grommet, RadioButton } from "grommet";
 import { deepMerge } from "grommet/utils";
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useContext } from "react";
+import { OrderContext } from "../../contexts/orderContext";
 
-//för kortnummer 
-const IPv4ElementExp = /^[0-1][0-9][0-9]$|[0-4][0-9]$|[0-5]$|[0-9][0-9]$|^[0-9]$/;
 // const month: number; new Date(2021, month, 0).getDate(); // hämtar så man får val när man trycker
 
 function Payment() {
+    
+    const {  order } = useContext(OrderContext);
 
+    //för kortnummer 
+    const IPv4ElementExp = /^[0-1][0-9][0-9]$|[0-4][0-9]$|[0-5]$|[0-9][0-9]$|^[0-9]$/;
+    
     const theme = deepMerge(grommet, {
         radioButton: {
             color: '#85A588',
@@ -18,24 +22,23 @@ function Payment() {
         },
     });
 
-    const [selectedPayMethod, setSelectedPayMethod] = useState()
+    // const [paymentMethod, setPaymentMethod] = useState()
 
     return (
         <Grommet theme={theme}>
             <AccordionPanel label="Betalning">
 
                 <Box background="light-2" style={{ height: 'large' }}>
-
                     <Box margin='small'>
                         <RadioButton
                             label="Kort"
                             name="name"
-                            value="Kort"
-                            checked={selectedPayMethod === 'Kort'}
-                            onChange={(event: any) => setSelectedPayMethod(event.target.value)}
+                            value={order.paymentMethod}
+                            checked={order.paymentMethod === 'Kort'}
+                            // onChange={(event) => setPaymentMethodField(event.target.value)}
                         />
 
-                        {selectedPayMethod === "Kort" ? <Box style={{ ...payBox }}>
+                        {order.paymentMethod === "Kort" ? <Box style={{ ...payBox }}>
                             <Box pad='small'>
                                 <MaskedInput
 
@@ -114,10 +117,10 @@ function Payment() {
                             label="Klarna"
                             name="name"
                             value="Klarna"
-                            checked={selectedPayMethod === 'Klarna'}
-                            onChange={(event: any) => setSelectedPayMethod(event.target.value)}
+                            checked={order.paymentMethod === 'Klarna'}
+                            // onChange={(event) => setPaymentMethodField(event.target.value)}
                         />
-                        {selectedPayMethod === "Klarna" ? <Box style={{ ...payBox }}>
+                        {order.paymentMethod === "Klarna" ? <Box style={{ ...payBox }}>
                             <RadioButtonGroup
                                 name="radio"
                                 options={[
@@ -134,15 +137,15 @@ function Payment() {
                         }
                     </Box>
 
-                    <Box margin='small'>
+                    {/* <Box margin='small'>
                         <RadioButton
                             label="Swish"
                             name="name"
                             value="Swish"
-                            checked={selectedPayMethod === 'Swish'}
-                            onChange={(event: any) => setSelectedPayMethod(event.target.value)}
+                            checked={paymentMethod === 'Swish'}
+                            onChange={(event: any) => setPaymentMethod(event.target.value)}
                         />
-                        {selectedPayMethod === "Swish" ? <Box style={{ ...payBox }}>
+                        {paymentMethod === "Swish" ? <Box style={{ ...payBox }}>
                             <MaskedInput
                                 mask={[
                                     {
@@ -157,7 +160,7 @@ function Payment() {
                         :
                         <Box />
                         }
-                    </Box>
+                    </Box> */}
                 </Box>
             </AccordionPanel>
         </Grommet>
