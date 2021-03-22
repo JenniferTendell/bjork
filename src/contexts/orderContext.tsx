@@ -48,7 +48,7 @@ const OrderProvider: FunctionComponent = ({ children }) => {
     const setPaymentMethodField = (value: any) => {
         let clonedPaymentMethod = {paymentMethod};
         clonedPaymentMethod = value;
-        setPaymentMethod(clonedPaymentMethod)
+        setPaymentMethod(clonedPaymentMethod);
     }
 
     return (
