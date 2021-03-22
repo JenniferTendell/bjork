@@ -1,5 +1,6 @@
-import { Box, Grid, Text } from "grommet";
+import { Box, Text } from "grommet";
 import { Facebook, Instagram, Pinterest } from 'grommet-icons';
+import { CSSProperties } from "react";
 
 
 function Footer() {
@@ -8,19 +9,13 @@ function Footer() {
             <Box
                 background='#708C7E;'
                 align='center'
-                height='small'
-                margin={{ 'top': 'small' }}
+                height='flex'
+                pad={{ 'vertical': 'large' }}
             >
-                <Grid
-                    columns={['small', 'small', 'small']}
-                    rows={['xsmall']}
-                    gap='small'
-                >
+                <div style={grid}>
                     <Box
                         direction='column'
-                        justify='start'
                         align='center'
-                        pad={{ 'top': 'large' }}
                     >
                         <Text
                             size='medium'
@@ -28,7 +23,7 @@ function Footer() {
                             weight={400}
                         >
                             30 Dagars öppet köp
-                    </Text>
+                        </Text>
                         <Text
                             size='xsmall'
                             color='white'
@@ -37,13 +32,11 @@ function Footer() {
                             margin={{ 'top': 'xsmall' }}
                         >
                             Du som kund har alltid 30 dagars öppet köp.
-                    </Text>
+                        </Text>
                     </Box>
                     <Box
                         direction='column'
-                        justify='start'
                         align='center'
-                        pad={{ 'top': 'large' }}
                     >
                         <Text
                             size='medium'
@@ -51,7 +44,7 @@ function Footer() {
                             weight={400}
                         >
                             Kontakt
-                    </Text>
+                        </Text>
                         <Text
                             size='xsmall'
                             color='white'
@@ -59,14 +52,11 @@ function Footer() {
                             margin={{ 'top': 'xsmall' }}
                         >
                             Mail: order@bjork.se
-                    </Text>
+                        </Text>
                     </Box>
                     <Box
                         direction='column'
-                        justify='start'
                         align='center'
-                        pad={{ 'top': 'large' }}
-                        color='white'
                     >
                         <Text
                             size='medium'
@@ -74,22 +64,29 @@ function Footer() {
                             weight={400}
                         >
                             Följ oss på:
-                    </Text>
+                        </Text>
                         <Box
                             direction='row'
                             fill='horizontal'
                             justify='evenly'
-                            pad='medium'
+                            pad={{ 'top': 'small', 'horizontal': 'medium' }}
                         >
                             <Instagram color='white' size='medium' />
                             <Facebook color='white' size='medium' />
                             <Pinterest color='white' size='medium' />
                         </Box>
                     </Box>
-                </Grid>
+                </div>
             </Box>
         </footer>
     )
+}
+
+const grid: CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(12rem, 1fr))',
+    rowGap: '2rem',
+    width: '80%',
 }
 
 export default Footer
