@@ -1,37 +1,33 @@
-import { Box, Grid } from 'grommet';
-import { Component } from 'react';
+import { Component, CSSProperties } from 'react';
 import { products } from '../interfaceProducts';
 import ProductItem from '../productItem';
-import TopSellers from './topSellers';
+import ImageCarousel from './imageCarousel';
 
 class MasterView extends Component {
     render() {
         return (
             <main>
-                <TopSellers />
-                <Box
-                    margin={{'horizontal': 'xlarge'}}
-                    pad={{'vertical': 'large'}}
-                >
-                    <Grid
-                        rows={["medium", "..."]}
-                        columns={{ "count": "fit", "size": "small" }}
-                        gap='medium'
-                        margin='0'
-                    >
-                        {products.map((product, index) =>
-                            <ProductItem
-                                product={product}
-                                key={index}
-                            />
-                        )}
-                    </Grid>
-                </Box>
+                <ImageCarousel />
+                <div style={grid}>
+                    {products.map((product, index) =>
+                        <ProductItem
+                            product={product}
+                            key={index}
+                        />
+                    )}
+                </div>
             </main>
         );
     }
 }
 
+const grid: CSSProperties = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    width: '80%',
+    margin: '0 auto'
+}
 
 
 export default MasterView;

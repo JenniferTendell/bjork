@@ -12,7 +12,7 @@ function Footer() {
                 height='flex'
                 pad={{ 'vertical': 'large' }}
             >
-                <div style={footerGrid}>
+                <div style={grid}>
                     <Box
                         direction='column'
                         align='center'
@@ -82,7 +82,7 @@ function Footer() {
     )
 }
 
-const footerGrid: CSSProperties = {
+const grid: CSSProperties = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(12rem, 1fr))',
     rowGap: '2rem',

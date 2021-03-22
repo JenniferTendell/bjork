@@ -1,7 +1,8 @@
 import { Product } from "./interfaceProducts";
-import { Box, Image, Text } from "grommet";
 import { Link } from "react-router-dom";
 import { Shop } from "grommet-icons";
+import { CSSProperties } from "react";
+import { Box } from "grommet";
 
 interface Props {
     product: Product
@@ -11,53 +12,64 @@ function ProductItem(props: Props) {
     const { id, title, image, price } = props.product;
 
     return (
-        <Link to={"/product/" + id}>
-            <Box
-                height='medium'
-                width='medium'
-            >
-                <Image
-                    fit='cover'
-                    src={image}
-                />
-                <Box
-                    height='4rem'
-                    width='large'
-                    background='#B5BCB0'
-                    pad={'small'}
-                    justify='between'
-                    align='center'
-                    direction='row'
-                >
-                    <Box>
-                        <Text 
-                        color='#37513B'
-                        weight={500}
-                        >
-                            {title}
-                        </Text>
-                        <Text 
-                        color='#37513B'
-                        size='small'
-                        >
-                            {price} kr
-                    </Text>
-                    </Box>
+        <Link
+            to={"/product/" + id}
+            style={noTextDecoration}
+        >
+            <div style={rootStyle}>
+                <img style={imageStyle} src={image} alt={title} />
+                <div style={infoGrid}>
+                    <div>
+                        <h3 style={textStyle}>{title}</h3>
+                        <h4 style={textStyle}>{price}kr</h4>
+                    </div>
                     <Box
                         background='#708C7E'
+                        round='full'
                         width='2.5rem'
                         height='2.5rem'
-                        justify='center'
                         align='center'
-                        round='full'  
+                        justify='center'
                     >
-                        <Shop size='18px' color='white'/>
+                        <Shop size='18px' color='white' />
                     </Box>
-                </Box>
-            </Box>
+                </div>
+            </div>
         </Link>
     )
 }
 
+const noTextDecoration: CSSProperties = {
+    textDecoration: 'none'
+}
+
+const rootStyle: CSSProperties = {
+    display: 'grid',
+    gridTemplateRows: '16rem 4rem',
+    width: '15rem',
+    margin: '.5rem'
+}
+
+const imageStyle: CSSProperties = {
+    objectFit: 'cover',
+    height: '100%',
+    width: '100%',
+    objectPosition: 'center'
+}
+
+const infoGrid: CSSProperties = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#B5BCB0',
+    color: 'white',
+    padding: '0 1rem'
+}
+
+const textStyle: CSSProperties = {
+    fontSize: '.8rem',
+    fontWeight: 400,
+    margin: '0',
+}
 
 export default ProductItem
