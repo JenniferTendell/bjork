@@ -2,7 +2,7 @@ import { createContext, FunctionComponent, useState } from "react";
 import { Product } from "../component/mockedInterfaceProducts";
 
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
     quantity: number;
 }
 
