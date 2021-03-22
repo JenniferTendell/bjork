@@ -8,3 +8,7 @@ body {
 :root {
   --clr-green: #B5BCB0;
 }
+
+h1 {
+  font-family: 'Libre Barcode 128 Text';
+}
