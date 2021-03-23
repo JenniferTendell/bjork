@@ -1,4 +1,3 @@
-// import { create } from "node:domain";
 import { createContext, FunctionComponent, useState } from "react";
 import { CartItem } from "./CartContext";
 
@@ -23,38 +22,39 @@ interface OrderContextValue {
     order: Order;
     setCustomerField: (value: string, field: keyof Customer) => void;
     setDeliveryOptionField: (value: string) => void; 
-    setPaymentMethodField?: (value: string) => void; 
+    setPaymentMethodField: (value: string) => void; 
 }
 
 export const OrderContext = createContext<OrderContextValue>({} as any)
 
 const OrderProvider: FunctionComponent = ({ children }) => {
     const [customer, setCustomer] = useState<Customer>({});
-    const [deliveryOption, setDeliveryOption] = useState({});
-    const [paymentMethod, setPaymentMethod] = useState({})
+    const [deliveryOption, setDeliveryOption] = useState<string>('');
+    const [paymentMethod, setPaymentMethod] = useState<string>('')
     
     const setCustomerField = (value: string, field: keyof Customer) => {
         const clonedCustomer = { ...customer };
         clonedCustomer[field] = value;
         setCustomer(clonedCustomer);
     }
-
-    const setDeliveryOptionField = (value: any) => {
-        let clonedDeliveryOption = {deliveryOption};
-        clonedDeliveryOption = value; // HÄR ÄR DET FEL 
-        setDeliveryOption(clonedDeliveryOption);
+    
+    const setDeliveryOptionField = (value: string) => {
+        const choosenDelivery = value
+        setDeliveryOption(choosenDelivery)
     }
 
-    const setPaymentMethodField = (value: any) => {
-        let clonedPaymentMethod = {paymentMethod};
-        clonedPaymentMethod = value;
-        setPaymentMethod(clonedPaymentMethod);
+    const setPaymentMethodField = (value: string) => {
+        const chosenPayment = value
+        setPaymentMethod(chosenPayment);
     }
 
     return (
         <OrderContext.Provider value={{
             order: {
-                customer
+                customer,
+                deliveryOption,
+                paymentMethod,
+
             },
             setCustomerField,
             setDeliveryOptionField,
