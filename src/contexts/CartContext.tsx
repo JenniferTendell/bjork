@@ -75,7 +75,20 @@ const CartProvider: FunctionComponent = ({ children }) => {
         localStorage.setItem('cart', JSON.stringify(cart))
     }
 
-    const removeProductFromCart = () => { }
+    const removeProductFromCart = (product: Product) => { 
+        let cartToSave = [...cart]
+        const productIdToRemove = product.id;
+        const index = cartToSave.map(item => {
+            return item.id
+        }).indexOf(productIdToRemove)
+
+        cartToSave.splice(index, 1)
+
+        setCart(cartToSave)
+        setTotalSum(getTotalSum(cartToSave));
+        setNrOfProducts(getCartLength(cartToSave));
+        updateCartInLocalStorage(cartToSave);
+    }
 
     const emptyCart = () => {
         setCart([]);
