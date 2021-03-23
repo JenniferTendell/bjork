@@ -54,7 +54,6 @@ const OrderProvider: FunctionComponent = ({ children }) => {
                 customer,
                 deliveryOption,
                 paymentMethod,
-
             },
             setCustomerField,
             setDeliveryOptionField,

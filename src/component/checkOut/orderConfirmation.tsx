@@ -1,9 +1,9 @@
 import { Box, Text } from "grommet"
-// import { useContext } from "react";
-import OrderProvider, {  } from '../../contexts/orderContext';
+import { useContext } from "react";
+import OrderProvider, { OrderContext } from '../../contexts/orderContext';
 
 function OrderConfirmation( ) {
-    // const { order } = useContext(OrderContext)
+    const { order } = useContext(OrderContext)
 
     return (
         <OrderProvider>
@@ -11,19 +11,10 @@ function OrderConfirmation( ) {
             <Text> hej </Text>
 
             <Text>
-                {/* {order.customer} */}
-                {OrderProvider}
-                {/* Tack {order.fullname} för din order. */}
-                {/* Din beställning leveras med {deliveryOption}. */}
+                Tack {order.customer.fullname} för din order.
+                Din beställning leveras med {order.deliveryOption}.
             </Text>
     
-            {/* {fullname}
-            {email}
-            {address}
-            {zipcode}
-            {city}
-            {selectedDeliveryOption} 
-            {selectedPayMethod} */}
         </Box>
         </OrderProvider>
     )

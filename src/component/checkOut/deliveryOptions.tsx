@@ -1,7 +1,6 @@
 import { AccordionPanel, Box, Text, RadioButton, grommet, Grommet } from "grommet";
 import { deepMerge } from "grommet/utils";
 import { useContext } from "react";
-import { CSSProperties } from "react";
 import { OrderContext } from "../../contexts/orderContext";
 
 interface Option {
@@ -29,13 +28,11 @@ function DeliveryOptions() {
             titel: 'Postnord',
             price: 29,
             days: '3-5 arbetsdagar'
-        },
-        {
+        },{
             titel: 'DHL',
             price: 59,
             days: '2 arbetsdagar'
-        },
-        {
+        },{
             titel: 'Budbee',
             price: 0,
             days: '3-8 arbetsdagar'
@@ -49,7 +46,15 @@ function DeliveryOptions() {
                 <Box height="small" flex={false}>
 
                     {options.map((option, index ) => 
-                        <Box style={deliveryOptionBox} key={index}>
+                        <Box key={index}
+                            background='#B5BCB0'
+                            pad='small'
+                            round='small'
+                            margin='small'
+                            direction='row'
+                            justify='between'
+                            
+                        >
                             <Text>{option.titel}</Text>
                             <Text>{option.price} kr</Text>
                             <Text>Leverans: {option.days}</Text>
@@ -68,14 +73,3 @@ function DeliveryOptions() {
     )
 }
 export default DeliveryOptions;
-
-const deliveryOptionBox: CSSProperties = {
-    background: '#B5BCB0',
-    margin: '.5rem',
-    padding: '1rem',
-    borderRadius: '1rem',
-    flexWrap: 'wrap',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-}
