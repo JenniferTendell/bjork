@@ -1,15 +1,16 @@
 import { Accordion, Box, Button } from 'grommet';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import ErrorBoundary from '../errorBoundary';
 import DetailsForm from './detailsForm';
 import DeliveryOptions from './deliveryOptions';
 import Payment from './payment';
 import OrderProvider from '../../contexts/orderContext';
+// import { useState } from 'react';
 
 function CheckOut() {
 
-    // onSubmit={({ value }) => { }}
-    // {const [submitAllChoses, setSubmitAllChoses] = useState()
+    // {const [ setHandleSubmitButton ] = useState()
+   
 
     return (
         <OrderProvider>
@@ -22,15 +23,15 @@ function CheckOut() {
                     </Accordion>
 
                     <Box direction="row" gap="medium" pad="1rem">
-                        <Link to='./orderConfirmation'>
+                        {/* <Link to='./orderConfirmation'> */}
                             <Button
+                                form="idDetailsForm"
                                 type="submit"
                                 label="Bekräfta betalning"
-                            // value={submitAllChoses}
-                            // onChange={event => setSubmitAllChoses(event.target.value)}
-                            // onSubmit={event => console.log('Submit', {fullname} )}
+                                // value={handleSubmitButton}
+                                // onChange={event => setHandleSubmitButton(event.target.value)}
                             />
-                        </Link>
+                        {/* </Link> */}
                     </Box>
                 </ErrorBoundary>
             </Box >
