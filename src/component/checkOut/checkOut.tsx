@@ -7,7 +7,6 @@ import Payment from './payment';
 
 import { OrderContext } from '../../contexts/orderContext';
 import { useContext } from 'react';
-import OrderProvider from '../../contexts/orderContext';
 import { theme } from "../theme";
 
 function CheckOut() {
@@ -34,6 +33,7 @@ function CheckOut() {
                                 type="submit"
                                 label="Bekräfta köp"
                                 disabled={!isFormValid}
+                                color='#708C7E'
                             />
                         </Link>
                     </Box>
