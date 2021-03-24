@@ -1,10 +1,11 @@
-import { Accordion, Box, Button } from 'grommet';
+import { Accordion, Box, Button, Grommet } from 'grommet';
 import { Link } from 'react-router-dom';
 import ErrorBoundary from '../errorBoundary';
 import DetailsForm from './detailsForm';
 import DeliveryOptions from './deliveryOptions';
 import Payment from './payment';
 import OrderProvider from '../../contexts/orderContext';
+import { theme } from "../theme";
 
 function CheckOut() {
 
@@ -12,6 +13,7 @@ function CheckOut() {
     // {const [submitAllChoses, setSubmitAllChoses] = useState()
 
     return (
+        <Grommet theme={theme}>
         <OrderProvider>
             <Box>
                 <ErrorBoundary>
@@ -35,6 +37,7 @@ function CheckOut() {
                 </ErrorBoundary>
             </Box >
         </OrderProvider>
+        </Grommet>
     )
 }
 export default CheckOut;

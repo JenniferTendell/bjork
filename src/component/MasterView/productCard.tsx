@@ -1,9 +1,10 @@
 import { Product } from "../mockedInterfaceProducts";
-import { Box } from "grommet";
+import { Box, Grommet } from "grommet";
 import { Link } from "react-router-dom";
 import { Shop } from "grommet-icons";
 import { CartContext } from "../../contexts/CartContext";
 import { CSSProperties, useContext } from "react";
+import {  theme } from "../theme";
 
 interface Props {
     product: Product
@@ -21,6 +22,7 @@ function ProductItem(props: Props) {
     }
 
     return (
+        <Grommet theme={theme}>
         <Link
             to={"/product/" + id}
             style={noTextDecoration}
@@ -46,6 +48,7 @@ function ProductItem(props: Props) {
                 </div>
             </div>
         </Link>
+        </Grommet>
     )
 }
 
