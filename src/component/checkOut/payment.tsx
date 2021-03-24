@@ -1,7 +1,7 @@
-import { AccordionPanel, Box, MaskedInput, RadioButtonGroup, grommet, Grommet, RadioButton } from "grommet";
-import { deepMerge } from "grommet/utils";
+import { AccordionPanel, Box, MaskedInput, RadioButtonGroup, Grommet, RadioButton } from "grommet";
 import { CSSProperties, useContext } from "react";
 import { OrderContext } from "../../contexts/orderContext";
+import { theme } from "../theme";
 
 // const month: number; new Date(2021, month, 0).getDate(); // hämtar så man får val när man trycker
 
@@ -11,22 +11,7 @@ function Payment() {
 
     //för kortnummer 
     const IPv4ElementExp = /^[0-1][0-9][0-9]$|[0-4][0-9]$|[0-5]$|[0-9][0-9]$|^[0-9]$/;
-    
-    const theme = deepMerge(grommet, {
-        global: {
-            colors: {
-              focus: "none"
-            }
-          },
-        radioButton: {
-            color: '#85A588',
-            check: {
-                background: '#85A588',
-                color: '#85A588',
-            },
-        },
-    });
-
+   
     return (
         <Grommet theme={theme}>
             <AccordionPanel label="Betalning">

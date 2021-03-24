@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { CSSProperties } from "react";
 import { Box, Grommet } from 'grommet';
 import ShoppingCartButton from "./ShoppingCart/shoppingCartButton";
-import {  theme } from "./theme";
+import { theme } from "./theme";
 
 function Header() {
     return (
