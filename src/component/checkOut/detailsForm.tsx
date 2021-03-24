@@ -3,26 +3,48 @@ import { MailOption } from "grommet-icons";
 import { CSSProperties, useContext } from "react";
 import { OrderContext } from "../../contexts/orderContext";
 
+// interface FieldInput {
+//     name: string,
+//     htmlFor: string,
+//     label: string,
+//     id: string,
+//     type: string,
+// }
+
 function DetailsForm() {
 
     const { setCustomerField, order } = useContext(OrderContext);
-    // const { setFullname, setEmail, setAddress } = useContext(OrderContext);
+
+    // const fieldInputs: FieldInput[] = [
+    //     {
+    //         name: 'fullname',
+    //         htmlFor: 'fullname',
+    //         label: 'För- och efternamn',
+    //         id: 'fullname',
+    //         type: 'text', 
+    //     },
+    //     {
+    //         name: 'email',
+    //         htmlFor: 'email',
+    //         label: 'Email',
+    //         id: 'email',
+    //         type: 'email', 
+    //     },
+    // ]
 
     return (
         <Form
             style={{ ...form }}
-            // value={value}
-            // onChange={nextValue => setValue(nextValue)}
-            // onChange={value => console.log('Change', value)}
+            id="idDetailsForm"
         >
-            <FormField name="fullname" htmlFor="fullname" label="För- och efternamn">
+            <FormField name="fullname" htmlFor="fullname" label="För- och efternamn" >
                 <TextInput required id="fullname" 
                     value={order.customer.fullname}
                     onChange={(event) => setCustomerField(event.target.value, "fullname") } 
                 />
             </FormField>
 
-            <FormField name="email" label="Email"  required>
+            <FormField name="email" label="Email" required>
                 <TextInput reverse icon={<MailOption />}  type="email" name="email"
                     value={order.customer.email}
                     onChange={(event) => setCustomerField(event.target.value, "email") } 

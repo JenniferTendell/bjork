@@ -59,6 +59,7 @@ function DeliveryOptions() {
                             <Text>{option.price} kr</Text>
                             <Text>Leverans: {option.days}</Text>
                             <RadioButton 
+                                required
                                 name="Delivery"
                                 value={option.titel}
                                 checked={order.deliveryOption === option.titel }
