@@ -10,7 +10,8 @@ function ShoppingCart() {
 
     return (
         <Box
-            margin={{ 'top': 'small' }}
+            margin={{ 'top': 'medium' }}
+            height='100vh'
         >
             <Text alignSelf='center'>
                 Kundvagn

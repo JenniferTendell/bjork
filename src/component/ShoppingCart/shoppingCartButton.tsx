@@ -5,22 +5,20 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 function ShoppingCartButton() {
-    const [isCartOpen, setisCartOpen] = useState(false)
+    const [open, setOpen] = useState(false)
     const { nrOfProducts } = useContext(CartContext);
-
-    const toggleCartButton = () => {
-        setisCartOpen(!isCartOpen)
-    }
 
 
     return (
         <DropButton
+            open={open}
+            onClose={() => setOpen(false)}
+            onOpen={() => setOpen(true)}
             dropContent={<ShoppingCart />}
-            dropProps={{ align: { top: 'bottom' } }}
-            onClick={toggleCartButton}
+            dropProps={{ align: { top: 'bottom'} }}
         >
             <Box direction= 'row'>
-                {isCartOpen
+                {open
                     ? <Close color='white' />
                     : <Cart color='white' />
                 }
