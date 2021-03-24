@@ -14,13 +14,18 @@ function DeliveryOptions() {
     const { setDeliveryOptionField, order } = useContext(OrderContext);
 
     const theme = deepMerge(grommet, {
+        global: {
+            colors: {
+              focus: "none"
+            }
+          },
         radioButton: {
             color: '#85A588',
             check: {
                 background: '#85A588',
                 color: '#85A588',
-            },
-        }
+            }
+        },
     });
 
     const options: Option[] = [

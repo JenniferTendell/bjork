@@ -1,11 +1,14 @@
-import { Accordion, Box, Button } from 'grommet';
+import { Accordion, Box, Button, Grommet } from 'grommet';
 import { Link } from 'react-router-dom';
 import ErrorBoundary from '../errorBoundary';
 import DetailsForm from './detailsForm';
 import DeliveryOptions from './deliveryOptions';
 import Payment from './payment';
+
 import { OrderContext } from '../../contexts/orderContext';
 import { useContext } from 'react';
+import OrderProvider from '../../contexts/orderContext';
+import { theme } from "../theme";
 
 function CheckOut() {
 
@@ -14,6 +17,7 @@ function CheckOut() {
     const isFormValid = order.customer.fullname;
     
     return (
+        <Grommet theme={theme}>
             <Box>
                 <ErrorBoundary>
                     <DetailsForm />
@@ -35,6 +39,7 @@ function CheckOut() {
                     </Box>
                 </ErrorBoundary>
             </Box >
+        </Grommet>
     )
 }
 export default CheckOut;

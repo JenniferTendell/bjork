@@ -1,5 +1,7 @@
 import { Grid, Text, Select, Button, Box, Image } from "grommet"
 import { FormTrash } from "grommet-icons"
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 import { Product } from "../mockedInterfaceProducts"
 
 interface Props {
@@ -8,6 +10,12 @@ interface Props {
 
 function ShoppingItem(props:Props) {
     const { image, price, title } = props.product;
+    const { removeProductFromCart } = useContext(CartContext)
+
+    const removeCartProduct = () => {
+        removeProductFromCart(props.product);
+    }
+
     return(
         <Grid
             columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
@@ -40,6 +48,7 @@ function ShoppingItem(props:Props) {
                 size='small'
                 color='grey'
                 focusIndicator={false}
+                onClick={removeCartProduct}
             >
                 <FormTrash />
             </Button>        
