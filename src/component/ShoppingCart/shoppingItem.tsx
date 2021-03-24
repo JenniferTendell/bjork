@@ -25,7 +25,9 @@ function ShoppingItem(props:Props) {
             justify='center'
             pad={{'vertical': 'small', 'left': 'small'}} 
         >
-            <Box>
+            <Box
+                height='100%'
+            >
                 <Image 
                     fit='cover'
                     src={image}
