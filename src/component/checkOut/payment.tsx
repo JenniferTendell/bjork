@@ -7,7 +7,7 @@ import { OrderContext } from "../../contexts/orderContext";
 
 function Payment() {
     
-    const {  order } = useContext(OrderContext);
+    const { setPaymentMethodField, order } = useContext(OrderContext);
 
     //för kortnummer 
     const IPv4ElementExp = /^[0-1][0-9][0-9]$|[0-4][0-9]$|[0-5]$|[0-9][0-9]$|^[0-9]$/;
@@ -27,8 +27,6 @@ function Payment() {
         },
     });
 
-    // const [paymentMethod, setPaymentMethod] = useState()
-
     return (
         <Grommet theme={theme}>
             <AccordionPanel label="Betalning">
@@ -37,10 +35,10 @@ function Payment() {
                     <Box margin='small'>
                         <RadioButton
                             label="Kort"
-                            name="name"
-                            value={order.paymentMethod}
+                            name="Kort"
+                            value='Kort'
                             checked={order.paymentMethod === 'Kort'}
-                            // onChange={(event) => setPaymentMethodField(event.target.value)}
+                            onChange={(event) => setPaymentMethodField(event.target.value)}
                         />
 
                         {order.paymentMethod === "Kort" ? <Box style={{ ...payBox }}>
@@ -72,8 +70,6 @@ function Payment() {
                                             placeholder: 'xxxx',
                                         },
                                     ]}
-                                // value={value}
-                                // onChange={event => setValue(event.target.value)}
                                 />
                             </Box>
 
@@ -94,8 +90,6 @@ function Payment() {
                                             placeholder: 'yy',
                                         },
                                     ]}
-                                // value={value}
-                                // onChange={event => setValue(event.target.value)}
                                 />
                             </Box>
 
@@ -116,14 +110,13 @@ function Payment() {
                         }
                     </Box>
 
-
                     <Box margin='small'>
                         <RadioButton
                             label="Klarna"
                             name="name"
                             value="Klarna"
                             checked={order.paymentMethod === 'Klarna'}
-                            // onChange={(event) => setPaymentMethodField(event.target.value)}
+                            onChange={(event) => setPaymentMethodField(event.target.value)}
                         />
                         {order.paymentMethod === "Klarna" ? <Box style={{ ...payBox }}>
                             <RadioButtonGroup
@@ -132,9 +125,6 @@ function Payment() {
                                     { label: 'Faktura 14 dagar', value: 'c1' },
                                     { label: 'Betala direkt', value: 'c2' },
                                 ]}
-                            //     value={value}
-                            //     onChange={event => setValue(event.target.value)}
-                            //     {...props}
                             />
                         </Box>
                         :
@@ -142,22 +132,21 @@ function Payment() {
                         }
                     </Box>
 
-                    {/* <Box margin='small'>
+                    <Box margin='small'>
                         <RadioButton
                             label="Swish"
                             name="name"
                             value="Swish"
-                            checked={paymentMethod === 'Swish'}
-                            onChange={(event: any) => setPaymentMethod(event.target.value)}
+                            checked={order.paymentMethod === 'Swish'}
+                            onChange={(event: any) => setPaymentMethodField(event.target.value)}
                         />
-                        {paymentMethod === "Swish" ? <Box style={{ ...payBox }}>
+                        {order.paymentMethod === "Swish" ? <Box style={{ ...payBox }}>
                             <MaskedInput
                                 mask={[
                                     {
                                         length: 10,
                                         regexp: /[0-9]$/,
                                         placeholder: 'Telefonnummer',
-
                                     }
                                 ]}
                             />
@@ -165,7 +154,7 @@ function Payment() {
                         :
                         <Box />
                         }
-                    </Box> */}
+                    </Box>
                 </Box>
             </AccordionPanel>
         </Grommet>

@@ -4,20 +4,24 @@ import ErrorBoundary from '../errorBoundary';
 import DetailsForm from './detailsForm';
 import DeliveryOptions from './deliveryOptions';
 import Payment from './payment';
+
+import { OrderContext } from '../../contexts/orderContext';
+import { useContext } from 'react';
 import OrderProvider from '../../contexts/orderContext';
 import { theme } from "../theme";
 
 function CheckOut() {
 
-    // onSubmit={({ value }) => { }}
-    // {const [submitAllChoses, setSubmitAllChoses] = useState()
-
+    const { order } = useContext(OrderContext)
+   
+    const isFormValid = order.customer.fullname;
+    
     return (
         <Grommet theme={theme}>
-        <OrderProvider>
             <Box>
                 <ErrorBoundary>
                     <DetailsForm />
+                    
                     <Accordion multiple pad="medium" width="60%" >
                         <DeliveryOptions />
                         <Payment />
@@ -26,22 +30,16 @@ function CheckOut() {
                     <Box direction="row" gap="medium" pad="1rem">
                         <Link to='./orderConfirmation'>
                             <Button
+                                form="idDetailsForm"
                                 type="submit"
-                                label="Bekräfta betalning"
-                            // value={submitAllChoses}
-                            // onChange={event => setSubmitAllChoses(event.target.value)}
-                            // onSubmit={event => console.log('Submit', {fullname} )}
+                                label="Bekräfta köp"
+                                disabled={!isFormValid}
                             />
                         </Link>
                     </Box>
                 </ErrorBoundary>
             </Box >
-        </OrderProvider>
         </Grommet>
     )
 }
 export default CheckOut;
-
-// submit:
-// https://storybook.grommet.io/?path=/story/input-checkbox-inside-a-formfield--inside-form-field
-// https://storybook.grommet.io/?path=/story/input-form-controlled-input-lazy--controlled-input-lazy
