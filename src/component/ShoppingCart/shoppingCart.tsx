@@ -17,7 +17,7 @@ function ShoppingCart() {
             </Text>
             {cart.map((cartItem, index) =>
                 <ShoppingItem
-                    product={cartItem}
+                    cartItem={cartItem}
                     key={index}
                 />
             )}

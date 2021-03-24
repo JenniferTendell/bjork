@@ -1,28 +1,25 @@
 import { Grid, Text, Button, Box, Image } from "grommet"
-import { FormTrash } from "grommet-icons"
+import {  FormTrash } from "grommet-icons"
 import { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
-import { Product } from "../mockedInterfaceProducts"
+import { CartContext, CartItem } from "../../contexts/CartContext";
 
 interface Props {
-    product: Product
+    cartItem: CartItem
 }
 
 function ShoppingItem(props: Props) {
-    const { image, price, title } = props.product;
+    const { image, price, title, quantity } = props.cartItem;
     const { removeProductFromCart, subQuantity, addQuantity } = useContext(CartContext)
 
     const removeCartProduct = () => {
-        removeProductFromCart(props.product);
+        removeProductFromCart(props.cartItem);
     }
 
     const handleAddOnClick = () => {
-        addQuantity(props.product)
-        console.log(handleAddOnClick)
+        addQuantity(props.cartItem)
     }
     const handleSubOnClick = () => {
-        subQuantity(props.product)
-        console.log(subQuantity)
+        subQuantity(props.cartItem)
     }
 
     return (
@@ -61,7 +58,7 @@ function ShoppingItem(props: Props) {
                 >
                     -
                 </button>
-                <Text size='small'>Antal:</Text>
+                <Text size='small'>Antal: {quantity}</Text>
             </Box>
             <Button
                 size='small'
