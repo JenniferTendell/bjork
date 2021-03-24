@@ -10,6 +10,11 @@ function OrderConfirmation( ) {
             <Text>
                 Tack {order.customer.fullname} för din order.
                 Din beställning leveras med {order.deliveryOption}.
+                Betalning sker med {order.paymentMethod}
+                Kortinfo är 
+                {order.cardDetails?.cardNumber} 
+                {order.cardDetails?.expireDate} 
+                {order.cardDetails?.cvcCode}
             </Text>
     
         </Box>
