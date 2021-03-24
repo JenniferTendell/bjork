@@ -1,14 +1,21 @@
+import { CSSProperties, useContext } from 'react';
 import { Button, Select, Text, Grommet } from 'grommet';
-import { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../contexts/CartContext';
 import {  products } from './mockedInterfaceProducts';
 import {  theme } from "./theme";
 
 
 function ProductView() {
+    const { addToCart } = useContext(CartContext)
+    
     const urlPath = window.location.pathname
     const productId = Number(urlPath.split('/')[2])
+    const product = products[productId]!
 
+    const addProductToCart = () => {
+        addToCart(product);
+    }
 
     return (
         <Grommet theme={theme}>
@@ -26,8 +33,8 @@ function ProductView() {
                 <div style={imageContainer}>
                     <img
                         style={imageStyle}
-                        src={products[productId]?.image}
-                        alt={products[productId]?.title}
+                        src={product.image}
+                        alt={product.title}
                     />
                 </div>
                 <div style={productInfoContainer}>
@@ -36,12 +43,12 @@ function ProductView() {
                             size='xlarge'
                             color='#37513B'
                         >
-                            {products[productId]?.title}
+                            {product.title}
                         </Text>
                         <Text
                             color='#37513B'
                         >
-                            {products[productId]?.price}kr
+                            {product.price}kr
                         </Text>
                     </div>
                     <div>
@@ -49,7 +56,7 @@ function ProductView() {
                             size='small'
                             color='#37513B'
                         >
-                            {products[productId]?.info}
+                            {product.info}
                         </Text>
                     </div>
                     <div style={buySectionStyle}>
@@ -64,6 +71,7 @@ function ProductView() {
                             color='#708C7E'
                             margin={{ 'top': 'medium' }}
                             size='small'
+                            onClick={addProductToCart}
                         />
                     </div>
                 </div>
