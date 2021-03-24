@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Shop } from "grommet-icons";
 import { CartContext } from "../../contexts/CartContext";
 import { CSSProperties, useContext } from "react";
-import {  theme } from "../theme";
+import { theme } from "../theme";
 
 interface Props {
     product: Product

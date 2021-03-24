@@ -3,7 +3,7 @@ import { Button, Select, Text, Grommet } from 'grommet';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 import {  products } from './mockedInterfaceProducts';
-import {  theme } from "./theme";
+import { theme } from "./theme";
 
 
 function ProductView() {
