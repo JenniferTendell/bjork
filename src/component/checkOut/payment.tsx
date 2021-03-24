@@ -13,6 +13,11 @@ function Payment() {
     const IPv4ElementExp = /^[0-1][0-9][0-9]$|[0-4][0-9]$|[0-5]$|[0-9][0-9]$|^[0-9]$/;
     
     const theme = deepMerge(grommet, {
+        global: {
+            colors: {
+              focus: "none"
+            }
+          },
         radioButton: {
             color: '#85A588',
             check: {

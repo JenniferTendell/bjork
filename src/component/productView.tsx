@@ -1,7 +1,8 @@
-import { Button, Select, Text } from 'grommet';
+import { Button, Select, Text, Grommet } from 'grommet';
 import { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import {  products } from './mockedInterfaceProducts';
+import {  theme } from "./theme";
 
 
 function ProductView() {
@@ -10,6 +11,7 @@ function ProductView() {
 
 
     return (
+        <Grommet theme={theme}>
         <main style={rootStyle}>
             <div>
                 <Link to="/">
@@ -67,6 +69,7 @@ function ProductView() {
                 </div>
             </div>
         </main>
+        </Grommet>
     )
 }
 
