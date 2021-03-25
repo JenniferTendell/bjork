@@ -1,50 +1,53 @@
-import { Box, DropButton, Text } from "grommet"
+import { Box, Button, Layer, Text } from "grommet"
 import ShoppingCart from "./shoppingCart"
-import { Cart, Close } from 'grommet-icons';
+import { Cart } from 'grommet-icons';
 import { useContext, useState } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 function ShoppingCartButton() {
-    const [isCartOpen, setisCartOpen] = useState(false)
+    const [showCart, setShowCart] = useState(false)
     const { nrOfProducts } = useContext(CartContext);
 
-    const toggleCartButton = () => {
-        setisCartOpen(!isCartOpen)
+    // Todo, ändrar inte statet...
+    function onCloseCart() {
+        setShowCart(false)
+        console.log(showCart)
     }
 
-
     return (
-        <DropButton
-            dropContent={<ShoppingCart />}
-            dropProps={{ align: { top: 'bottom' } }}
-            onClick={toggleCartButton}
+        <Button
+            onClick={() => setShowCart(true)}
         >
-            <Box direction= 'row'>
-                {isCartOpen
-                    ? <Close color='white' />
-                    : <Cart color='white' />
-                }
-                {nrOfProducts > 0
-                    ? <Box
+            <Box direction='row'>
+                <Cart color='white' />
+                {nrOfProducts > 0 && (
+                    <Box
                         round='small'
                         height='1.3rem'
                         width='1.3rem'
                         background='#37513B'
                         justify='center'
-                        margin= {{ 'left': '-0.3rem', 'top': '-0.5rem' }}
+                        margin={{ 'left': '-0.3rem', 'top': '-0.5rem' }}
                     >
                         <Text
                             textAlign='center'
                             size='xsmall'
-                            weight= 'bold'
+                            weight='bold'
                         >
                             {nrOfProducts}
                         </Text>
                     </Box>
-                    : <Box />
-                }
+                )}
             </Box>
-        </DropButton>
+            {showCart && (
+                <Layer
+                    onClickOutside={() => setShowCart(false)}
+                    position='right'
+                >
+                    <ShoppingCart closeCart={onCloseCart}/>
+                </Layer>
+            )}
+        </Button>
     )
 }
 

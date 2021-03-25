@@ -36,6 +36,7 @@ function CheckOut() {
                                 type="submit"
                                 label="Bekräfta köp"
                                 disabled={!isFormValid}
+                                color='#708C7E'
                             />
                         </Link>
                     </Box>

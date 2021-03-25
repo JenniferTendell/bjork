@@ -1,47 +1,90 @@
-import { Box, Button, Text } from 'grommet';
+import { Box, Button, Grid, Text } from 'grommet';
+import { Close } from 'grommet-icons';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../../contexts/CartContext';
 import ShoppingItem from './shoppingItem';
 
+interface Props {
+    closeCart: () => void
+}
 
-function ShoppingCart() {
+function ShoppingCart(props: Props) {
     const { cart, totalSum } = useContext(CartContext);
-
 
     return (
         <Box
-            margin={{ 'top': 'small' }}
+            margin={{ 'top': 'medium' }}
+            height='100vh'
+            width={{'max': 'flex', 'min': 'medium'}}
         >
-            <Text alignSelf='center'>
-                Kundvagn
-            </Text>
-            {cart.map((cartItem, index) =>
-                <ShoppingItem
-                    product={cartItem}
-                    key={index}
-                />
-            )}
-            <Box
-                direction='row'
-                justify='around'
-                background='#B5BCB0'
-                pad={{ 'vertical': 'small' }}
+            <Grid
+                fill
+                rows={['xxsmall', 'flex', '7rem']}
             >
-                <Text>
-                    Total:
-                </Text>
-                <Text>
-                    {totalSum} kr
-                </Text>
-            </Box>
-            <Button
-                label='Gå till kassan'
-                size='small'
-                margin={'small'}
-                color='#708C7E'
-                alignSelf='center'
-                href='/checkOut'
-            />
+                <Box
+                    direction='row'
+                    justify='between'
+                    margin={{ 'horizontal': 'small' }}
+                >
+                    <Close
+                        color='#37513B'
+                        onClick={() => props.closeCart()}
+                    />
+                    <Text color='#37513B' margin={{'right': '1.5rem'}}>
+                        Kundvagn
+                    </Text>
+                    <Box />
+                </Box>
+                <Box 
+                    overflow='auto' 
+                    align='center'
+                    pad={{'horizontal': '5%'}}
+                >
+                    {cart.map((cartItem, index) =>
+                        <ShoppingItem
+                            cartItem={cartItem}
+                            key={index}
+                        />
+                    )}
+                    {cart.length < 1 && (
+                        <Text textAlign='center' margin={{'top': 'large'}}>
+                            Din kundvagn är tom
+                        </Text>
+                    )}
+                </Box>
+                <Box>
+                    <Box
+                        direction='row'
+                        justify='around'
+                        background='#B5BCB0'
+                        pad={{ 'vertical': 'small' }}
+                    >
+                        <Text color='#37513B'>
+                            Total:
+                        </Text>
+                        <Text color='#37513B'>
+                            {totalSum} kr
+                        </Text>
+                    </Box>
+                    <Box
+                        width='50%'
+                        alignSelf='center'
+                        align='center'
+                        pad='1rem'
+                    >
+                        <Link to='/checkOut'>
+                            <Button
+                                label='Gå till kassan'
+                                size='small'
+                                color='#37513B'
+                                onClick={() => props.closeCart()}
+                                disabled={cart.length < 1}
+                            />
+                        </Link>
+                    </Box>
+                </Box>
+            </Grid>
         </Box>
     )
 }

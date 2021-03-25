@@ -13,6 +13,8 @@ interface CartContextValue {
     emptyCart: () => void;
     nrOfProducts: number;
     totalSum: number;
+    addQuantity: (product: Product) => void;
+    subQuantity: (product: Product) => void;
 }
 
 export const CartContext = createContext<CartContextValue>({} as any)
@@ -34,7 +36,6 @@ const CartProvider: FunctionComponent = ({ children }) => {
         })
         return length;
     }
-
 
     const addToCart = (product: Product) => {
 
@@ -75,7 +76,8 @@ const CartProvider: FunctionComponent = ({ children }) => {
         localStorage.setItem('cart', JSON.stringify(cart))
     }
 
-    const removeProductFromCart = (product: Product) => { 
+
+    const removeProductFromCart = (product: Product) => {
         let cartToSave = [...cart]
         const productIdToRemove = product.id;
         const index = cartToSave.map(item => {
@@ -96,11 +98,46 @@ const CartProvider: FunctionComponent = ({ children }) => {
         setNrOfProducts(getCartLength([]));
     }
 
+    const addQuantity = (product: Product) => {
+        let cartToSave = [...cart]
+        const cartItem = cart.find(cartItem => cartItem.id === product.id)
+
+        if (cartItem) {
+            cartItem.quantity++;
+        }
+
+        setCart(cartToSave);
+        updateCartInLocalStorage(cartToSave);
+        setNrOfProducts(getCartLength(cartToSave));
+        setTotalSum(getTotalSum(cartToSave));
+    }
+
+    const subQuantity = (product: Product) => {
+        let cartToSave = [...cart]
+        const cartItem = cart.find(cartItem => cartItem.id === product.id)
+        const productIdToRemove = product.id;
+        const index = cartToSave.map(item => {
+            return item.id
+        }).indexOf(productIdToRemove)
+
+        if (cartItem!.quantity > 1) {
+            cartItem!.quantity--;
+        } else {
+            cartToSave.splice(index, 1)
+        }
+
+        setCart(cartToSave);
+        updateCartInLocalStorage(cartToSave);
+        setNrOfProducts(getCartLength(cartToSave));
+        setTotalSum(getTotalSum(cartToSave));
+    }
+
 
     /* HOOKS */
     const [cart, setCart] = useState<CartItem[]>(initializeCart());
     const [nrOfProducts, setNrOfProducts] = useState<number>(getCartLength(cart));
     const [totalSum, setTotalSum] = useState<number>(getTotalSum(cart))
+
     return (
         <CartContext.Provider value={{
             cart,
@@ -108,7 +145,9 @@ const CartProvider: FunctionComponent = ({ children }) => {
             removeProductFromCart,
             emptyCart,
             nrOfProducts,
-            totalSum
+            totalSum,
+            addQuantity,
+            subQuantity
         }}>
             {children}
         </CartContext.Provider>
