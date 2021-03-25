@@ -12,12 +12,10 @@ function OrderConfirmation( ) {
     }
 
     // let getgrejer = localStorage.getItem('cart');
-    // getgrejer = JSON.parse('getgrejer');
 
     return (
         <Box pad='large'>
             <Text>
-                {/* UNIKT ORDERNUMMER MED RANOMD KANSKE  */}
                 Tack {order.customer.fullname} för din order.
                 Din beställning leveras med {order.deliveryOption}.
                 Betalning sker med {order.paymentMethod}.
@@ -27,7 +25,7 @@ function OrderConfirmation( ) {
                 {order.cardDetails?.cvcCode}.
                 Ordernummer: {printOrderNumber(1000, 9999)}
                 {/* {getgrejer} */}
-            </Text>
+            </Text>                
     
         </Box>
     )
