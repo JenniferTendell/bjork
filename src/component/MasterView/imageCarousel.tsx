@@ -1,12 +1,14 @@
-import { Box, Carousel } from 'grommet';
+import { Box, Carousel, Grommet } from 'grommet';
 import { Component, CSSProperties } from 'react';
 import { products } from '../mockedInterfaceProducts';
+import { theme } from "../theme";
 
 
 class ImageCarousel extends Component {
     static parameters: { chromatic: { disable: boolean; }; };
     render() {
         return (
+            <Grommet theme={theme}>
             <Box 
                 pad={{'horizontal': 'large', 'vertical': 'medium'}}
                 width={{'max': '70rem'}}
@@ -43,6 +45,7 @@ class ImageCarousel extends Component {
                     </Box>
                 </Carousel>
             </Box>
+            </Grommet>
         )
     }
 }

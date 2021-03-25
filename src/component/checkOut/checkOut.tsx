@@ -1,21 +1,26 @@
-import { Accordion, Box, Button } from 'grommet';
+import { Accordion, Box, Button, Grommet } from 'grommet';
 import { Link } from 'react-router-dom';
 import ErrorBoundary from '../errorBoundary';
 import DetailsForm from './detailsForm';
 import DeliveryOptions from './deliveryOptions';
 import Payment from './payment';
-import OrderProvider from '../../contexts/orderContext';
+
+import { OrderContext } from '../../contexts/orderContext';
+import { useContext } from 'react';
+import { theme } from "../theme";
 
 function CheckOut() {
 
-    // onSubmit={({ value }) => { }}
-    // {const [submitAllChoses, setSubmitAllChoses] = useState()
-
+    const { order } = useContext(OrderContext)
+   
+    const isFormValid = order.customer.fullname;
+    
     return (
-        <OrderProvider>
+        <Grommet theme={theme}>
             <Box>
                 <ErrorBoundary>
                     <DetailsForm />
+                    
                     <Accordion multiple pad="medium" width="60%" >
                         <DeliveryOptions />
                         <Payment />
@@ -24,21 +29,17 @@ function CheckOut() {
                     <Box direction="row" gap="medium" pad="1rem">
                         <Link to='./orderConfirmation'>
                             <Button
+                                form="idDetailsForm"
                                 type="submit"
-                                label="Bekräfta betalning"
-                            // value={submitAllChoses}
-                            // onChange={event => setSubmitAllChoses(event.target.value)}
-                            // onSubmit={event => console.log('Submit', {fullname} )}
+                                label="Bekräfta köp"
+                                disabled={!isFormValid}
+                                color='#708C7E'
                             />
                         </Link>
                     </Box>
                 </ErrorBoundary>
             </Box >
-        </OrderProvider>
+        </Grommet>
     )
 }
 export default CheckOut;
-
-// submit:
-// https://storybook.grommet.io/?path=/story/input-checkbox-inside-a-formfield--inside-form-field
-// https://storybook.grommet.io/?path=/story/input-form-controlled-input-lazy--controlled-input-lazy
