@@ -12,7 +12,7 @@ function CartInCheckout() {
             <Box>
                 {cart.map((cartItem, index) =>
                     <ShoppingItem
-                        product={cartItem}
+                        cartItem={cartItem}
                         key={index}
                     />
                 )}
