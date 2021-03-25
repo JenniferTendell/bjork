@@ -10,12 +10,19 @@ interface Customer {
     city: string
 }
 
+interface CardDetails {
+    cardNumber?: string
+    expireDate?: string
+    cvcCode?: string
+}
+
 // info that exists in an order
 interface Order {
     cartItems?: CartItem[];
     customer: Customer;
     deliveryOption?: string;
     paymentMethod?: string;
+    cardDetails?: CardDetails;
 }
 
 interface OrderContextValue {
@@ -23,6 +30,7 @@ interface OrderContextValue {
     setCustomerField: (defaultValue: string, field: keyof Customer) => void;
     setDeliveryOptionField: (value: string) => void; 
     setPaymentMethodField: (value: string) => void; 
+    setCardField: (defaultValue: string, field: keyof CardDetails) => void;
 }
 
 export const OrderContext = createContext<OrderContextValue>({} as any)
@@ -37,23 +45,33 @@ const OrderProvider: FunctionComponent = ({ children }) => {
         city: '', 
     });
     const [deliveryOption, setDeliveryOption] = useState<string>('');
-    const [paymentMethod, setPaymentMethod] = useState<string>('')
+    const [paymentMethod, setPaymentMethod] = useState<string>('');
+    const [cardDetails, setCardDetails] = useState<CardDetails>({});
     
     const setCustomerField = (value: string, field: keyof Customer) => {
         const clonedCustomer = { ...customer };
         clonedCustomer[field] = value;
         setCustomer(clonedCustomer);
-        console.log(clonedCustomer)
-    }
+        console.log(clonedCustomer);
+    };
 
     const setDeliveryOptionField = (value: string) => {
-        const choosenDelivery = value
-        setDeliveryOption(choosenDelivery)
-    }
+        const choosenDelivery = value;
+        setDeliveryOption(choosenDelivery);
+        console.log(choosenDelivery)
+    };
 
     const setPaymentMethodField = (value: string) => {
-        const chosenPayment = value
+        const chosenPayment = value;
         setPaymentMethod(chosenPayment);
+        console.log(chosenPayment)
+    };
+    
+    const setCardField = (value: string, field: keyof CardDetails) => {
+        const clonedCardDetails = {...cardDetails}; 
+        clonedCardDetails[field]= value;
+        setCardDetails(clonedCardDetails);
+        console.log(clonedCardDetails)
     }
     
     return (
@@ -62,10 +80,12 @@ const OrderProvider: FunctionComponent = ({ children }) => {
                 customer,
                 deliveryOption,
                 paymentMethod,
+                cardDetails
             },
             setCustomerField,
             setDeliveryOptionField,
             setPaymentMethodField,
+            setCardField,
         }}>
             {children}
         </OrderContext.Provider>

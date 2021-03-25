@@ -132,7 +132,6 @@ const CartProvider: FunctionComponent = ({ children }) => {
         setTotalSum(getTotalSum(cartToSave));
     }
 
-
     /* HOOKS */
     const [cart, setCart] = useState<CartItem[]>(initializeCart());
     const [nrOfProducts, setNrOfProducts] = useState<number>(getCartLength(cart));

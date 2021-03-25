@@ -2,24 +2,27 @@ import { Accordion, Box, Button, Grommet } from 'grommet';
 import { Link } from 'react-router-dom';
 import ErrorBoundary from '../errorBoundary';
 import DetailsForm from './detailsForm';
+import CartInCheckout from './cartInCheckout';
 import DeliveryOptions from './deliveryOptions';
 import Payment from './payment';
-
 import { OrderContext } from '../../contexts/orderContext';
 import { useContext } from 'react';
 import { theme } from "../theme";
 
 function CheckOut() {
-
+    
     const { order } = useContext(OrderContext)
-   
-    const isFormValid = order.customer.fullname;
+
+    const isFormValid = order.customer.fullname; //denna ska fyllas på med allt
     
     return (
         <Grommet theme={theme}>
             <Box>
                 <ErrorBoundary>
-                    <DetailsForm />
+                    <Box direction='row'>
+                        <DetailsForm />
+                        <CartInCheckout />
+                    </Box>
                     
                     <Accordion multiple pad="medium" width="60%" >
                         <DeliveryOptions />

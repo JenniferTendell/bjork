@@ -2,24 +2,18 @@ import { Text, Button, Box } from "grommet"
 import { FormTrash } from "grommet-icons"
 import { CSSProperties, useContext } from "react";
 import { CartContext, CartItem } from "../../contexts/CartContext";
+import AmountButton from "../amountButton";
 
 interface Props {
     cartItem: CartItem
 }
 
 function ShoppingItem(props: Props) {
-    const { image, price, title, quantity } = props.cartItem;
-    const { removeProductFromCart, subQuantity, addQuantity } = useContext(CartContext)
+    const { image, price, title } = props.cartItem;
+    const { removeProductFromCart } = useContext(CartContext)
 
     const removeCartProduct = () => {
         removeProductFromCart(props.cartItem);
-    }
-
-    const handleAddOnClick = () => {
-        addQuantity(props.cartItem)
-    }
-    const handleSubOnClick = () => {
-        subQuantity(props.cartItem)
     }
 
     return (
@@ -33,56 +27,45 @@ function ShoppingItem(props: Props) {
                     src={image}
                     alt={title}
                 />
-                <div style={{paddingLeft: '1rem'}}>
+                <div style={{ paddingLeft: '1rem' }}>
                     <div style={productInfo}>
                         <Text size='small'>
                             {title}
                         </Text>
                         <Text size='small'>
                             {price} kr
-                    </Text>
+                        </Text>
                     </div>
-                    <Box direction='row'>
-                        <button
-                            id="add"
-                            onClick={handleAddOnClick}
-                        >
-                            +
-                        </button>
-                        <button
-                            id="remove"
-                            onClick={handleSubOnClick}
-                        >
-                            -
-                        </button>
-                        <Text size='small'>Antal: {quantity}</Text>
-                    </Box>
                 </div>
-                <Button
-                    size='small'
-                    color='grey'
-                    focusIndicator={false}
-                    onClick={removeCartProduct}
-                >
-                    <FormTrash />
-                </Button>
+                <div>
+                    <AmountButton product={props.cartItem} />
+                    <Button
+                        size='small'
+                        color='grey'
+                        focusIndicator={false}
+                        onClick={removeCartProduct}
+                    >
+                        <FormTrash />
+                    </Button>
+                </div>
             </div>
             <Box
-                border={{ 
-                    'color': '#B5BCB0', 
-                    'size': 'xsmall', 
-                    'style': 'solid', 
-                    'side': 'bottom' 
+                border={{
+                    'color': '#B5BCB0',
+                    'size': 'xsmall',
+                    'style': 'solid',
+                    'side': 'bottom'
                 }}
                 margin={{ 'top': 'medium' }}
             />
+
         </Box>
     )
 }
 
 const rootStyle: CSSProperties = {
     display: 'grid',
-    gridTemplateColumns: '4rem 1fr 2rem',
+    gridTemplateColumns: '4rem 1fr 1fr',
     gridTemplateRows: '4rem',
     alignItems: 'center',
 }
