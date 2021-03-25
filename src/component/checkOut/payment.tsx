@@ -16,17 +16,17 @@ function Payment() {
         <Grommet theme={theme}>
             <AccordionPanel label="Betalning">
 
-                <Box background="light-2" style={{ height: 'large' }}>
+                <Box background='light-2' style={{ height: 'large' }}>
                     <Box margin='small'>
                         <RadioButton
-                            label="Kort"
-                            name="Kort"
+                            label='Kort'
+                            name='Kort'
                             value='Kort'
                             checked={order.paymentMethod === 'Kort'}
                             onChange={(event) => setPaymentMethodField(event.target.value)}
                         />
 
-                        {order.paymentMethod === "Kort" && (
+                        {order.paymentMethod === 'Kort' && (
                             <Box style={{ ...payBox }}>
                                 <Box pad='small'>
                                     <MaskedInput

@@ -13,7 +13,6 @@ function DeliveryOptions() {
     
     const { setDeliveryOptionField, order } = useContext(OrderContext);
 
-
     const options: Option[] = [
         {
             titel: 'Postnord',
