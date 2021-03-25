@@ -18,7 +18,7 @@ function ShoppingItem(props:Props) {
 
     return(
         <Grid
-            columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
+            columns={['xsmall', '.5fr', '1fr', '.5fr']}
             rows={'xsmall'}
             gap={'small'} 
             align='center' 

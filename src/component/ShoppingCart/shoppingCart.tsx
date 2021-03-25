@@ -36,7 +36,11 @@ function ShoppingCart(props: Props) {
                     </Text>
                     <Box />
                 </Box>
-                <Box overflow='auto'>
+                <Box 
+                    overflow='auto' 
+                    align='center'
+                    pad={{'horizontal': '5%'}}
+                >
                     {cart.map((cartItem, index) =>
                         <ShoppingItem
                             product={cartItem}
@@ -67,7 +71,7 @@ function ShoppingCart(props: Props) {
                         width='50%'
                         alignSelf='center'
                         align='center'
-                        pad='small'
+                        pad='1rem'
                     >
                         <Link to='/checkOut'>
                             <Button
