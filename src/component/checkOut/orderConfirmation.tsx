@@ -1,8 +1,9 @@
-import { Box, Text } from "grommet"
+import { Box, Button, Text } from "grommet"
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { OrderContext } from '../../contexts/orderContext';
 
-function OrderConfirmation( ) {
+function OrderConfirmation() {
     const { order } = useContext(OrderContext)
 
     const printOrderNumber = (min: number, max: number) => {
@@ -11,23 +12,37 @@ function OrderConfirmation( ) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    // let getgrejer = localStorage.getItem('cart');
-
     return (
-        <Box pad='large'>
-            <Text>
-                Tack {order.customer.fullname} för din order.
-                Din beställning leveras med {order.deliveryOption}.
-                Betalning sker med {order.paymentMethod}.
-                Dina kortuppgifter är 
-                {order.cardDetails?.cardNumber} 
-                {order.cardDetails?.expireDate} 
-                {order.cardDetails?.cvcCode}.
-                Ordernummer: {printOrderNumber(1000, 9999)}
-                {/* {getgrejer} */}
-            </Text>                
-    
+        <Box
+            justify='center'
+            align='center'
+            height='60vh' // ändra denna kanske
+        >
+            <Box
+                background='#B5BCB0'
+                pad='medium'
+                round='small'
+                align="center"
+            >
+                <Text>
+                    Tack {order.customer.fullname} för din order.
+                </Text>
+                <Text>
+                    Din beställning leveras med {order.deliveryOption}.
+                </Text>
+                <Text>
+                    Ordernummer: {printOrderNumber(1000, 9999)}
+                </Text>
+                <Text>
+                    Orderbekräftelse har skickats till {order.customer.email}
+                </Text>
+                <Link to='/'>
+                    <Button color='#708C7E'
+                        label='Fortsätt handla'
+                    />
+                </Link>
+            </Box>
         </Box>
     )
 }
-export default OrderConfirmation; 
+export default OrderConfirmation;

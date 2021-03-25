@@ -8,12 +8,22 @@ import Payment from './payment';
 import { OrderContext } from '../../contexts/orderContext';
 import { useContext } from 'react';
 import { theme } from "../theme";
+import { CartContext } from '../../contexts/CartContext';
 
 function CheckOut() {
     
     const { order } = useContext(OrderContext)
-
-    const isFormValid = order.customer.fullname; //denna ska fyllas på med allt
+    const { emptyCart } = useContext(CartContext)
+    
+    const isFormValid = 
+        order.customer.fullname && 
+        order.customer.phoneNumber &&
+        order.customer.address &&
+        order.customer.zipcode &&
+        order.customer.city &&
+        order.deliveryOption && 
+        order.paymentMethod
+    ;
     
     return (
         <Grommet theme={theme}>
@@ -29,7 +39,7 @@ function CheckOut() {
                         <Payment />
                     </Accordion>
 
-                    <Box direction="row" gap="medium" pad="1rem">
+                    <Box direction="row" gap="medium" pad="1rem" justify='center'>
                         <Link to='./orderConfirmation'>
                             <Button
                                 form="idDetailsForm"
@@ -37,6 +47,7 @@ function CheckOut() {
                                 label="Bekräfta köp"
                                 disabled={!isFormValid}
                                 color='#708C7E'
+                                onClick={emptyCart}
                             />
                         </Link>
                     </Box>
