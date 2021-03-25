@@ -1,9 +1,10 @@
 import { CSSProperties, useContext } from 'react';
-import { Button, Select, Text, Grommet } from 'grommet';
+import { Button, Text, Grommet } from 'grommet';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 import {  products } from './mockedInterfaceProducts';
 import { theme } from "./theme";
+import AmountButton from './amountButton';
 
 
 function ProductView() {
@@ -60,12 +61,7 @@ function ProductView() {
                         </Text>
                     </div>
                     <div style={buySectionStyle}>
-                        <Select
-                            options={['1', '2', '3', '4', '5']}
-                            placeholder='Välj antal'
-                            size='small'
-                            margin={{ 'horizontal': 'large' }}
-                        />
+                        <AmountButton product={product} />
                         <Button
                             label='Lägg i kundvagn'
                             color='#708C7E'

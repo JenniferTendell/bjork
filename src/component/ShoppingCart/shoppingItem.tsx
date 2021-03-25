@@ -2,24 +2,19 @@ import { Grid, Text, Button, Box, Image } from "grommet"
 import {  FormTrash } from "grommet-icons"
 import { useContext } from "react";
 import { CartContext, CartItem } from "../../contexts/CartContext";
+import AmountButton from "../amountButton";
 
 interface Props {
     cartItem: CartItem
 }
 
+
 function ShoppingItem(props: Props) {
-    const { image, price, title, quantity } = props.cartItem;
-    const { removeProductFromCart, subQuantity, addQuantity } = useContext(CartContext)
+    const { image, price, title } = props.cartItem;
+    const { removeProductFromCart } = useContext(CartContext)
 
     const removeCartProduct = () => {
         removeProductFromCart(props.cartItem);
-    }
-
-    const handleAddOnClick = () => {
-        addQuantity(props.cartItem)
-    }
-    const handleSubOnClick = () => {
-        subQuantity(props.cartItem)
     }
 
     return (
@@ -47,21 +42,7 @@ function ShoppingItem(props: Props) {
                     {price}
                 </Text>
             </Box>
-            <Box direction='row'>
-                <button
-                    id="add"
-                    onClick={handleAddOnClick}
-                >
-                    +
-                </button>
-                <button
-                    id="remove"
-                    onClick={handleSubOnClick}
-                >
-                    -
-                </button>
-                <Text size='small'>Antal: {quantity}</Text>
-            </Box>
+            <AmountButton product={props.cartItem} />
             <Button
                 size='small'
                 color='grey'

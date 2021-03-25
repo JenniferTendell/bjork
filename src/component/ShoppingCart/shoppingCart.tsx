@@ -1,12 +1,12 @@
 import { Box, Button, Grid, Text } from 'grommet';
 import { Close } from 'grommet-icons';
-import { useContext } from 'react';
+import { MouseEvent, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../contexts/CartContext';
 import ShoppingItem from './shoppingItem';
 
 interface Props {
-    closeCart: () => void
+    closeCart: (e: MouseEvent) => void
 }
 
 function ShoppingCart(props: Props) {
@@ -29,7 +29,7 @@ function ShoppingCart(props: Props) {
                 >
                     <Close
                         color='#37513B'
-                        onClick={() => props.closeCart()}
+                        onClick={props.closeCart}
                     />
                     <Text color='#37513B' margin={{'right': '1.5rem'}}>
                         Kundvagn
@@ -78,7 +78,7 @@ function ShoppingCart(props: Props) {
                                 label='Gå till kassan'
                                 size='small'
                                 color='#37513B'
-                                onClick={() => props.closeCart()}
+                                onClick={props.closeCart}
                                 disabled={cart.length < 1}
                             />
                         </Link>

@@ -1,7 +1,7 @@
 import { Box, Button, Layer, Text } from "grommet"
 import ShoppingCart from "./shoppingCart"
 import { Cart } from 'grommet-icons';
-import { useContext, useState } from "react";
+import { useContext, useState, MouseEvent } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 function ShoppingCartButton() {
@@ -9,7 +9,8 @@ function ShoppingCartButton() {
     const { nrOfProducts } = useContext(CartContext);
 
     // Todo, ändrar inte statet...
-    function onCloseCart() {
+    function onCloseCart(e: MouseEvent) {
+        e.stopPropagation();
         setShowCart(false)
         console.log(showCart)
     }
