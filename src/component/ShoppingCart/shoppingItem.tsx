@@ -24,15 +24,17 @@ function ShoppingItem(props: Props) {
 
     return (
         <Grid
-            columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
+            columns={['xsmall', '.5fr', '1fr', '.5fr']}
             rows={'xsmall'}
             gap={'small'}
             align='center'
             justify='center'
             pad={{ 'vertical': 'small', 'left': 'small' }}
         >
-            <Box>
-                <Image
+            <Box
+                height='100%'
+            >
+                <Image 
                     fit='cover'
                     src={image}
                 />
