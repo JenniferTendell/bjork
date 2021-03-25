@@ -1,6 +1,6 @@
-import { Grid, Text, Button, Box, Image } from "grommet"
-import {  FormTrash } from "grommet-icons"
-import { useContext } from "react";
+import { Text, Button, Box } from "grommet"
+import { FormTrash } from "grommet-icons"
+import { CSSProperties, useContext } from "react";
 import { CartContext, CartItem } from "../../contexts/CartContext";
 
 interface Props {
@@ -23,55 +23,82 @@ function ShoppingItem(props: Props) {
     }
 
     return (
-        <Grid
-            columns={['xsmall', '.5fr', '1fr', '.5fr']}
-            rows={'xsmall'}
-            gap={'small'}
-            align='center'
-            justify='center'
-            pad={{ 'vertical': 'small', 'left': 'small' }}
+        <Box
+            width='100%'
+            margin={{ 'bottom': 'medium' }}
         >
-            <Box
-                height='100%'
-            >
-                <Image 
-                    fit='cover'
+            <div style={rootStyle}>
+                <img
+                    style={imageStyle}
                     src={image}
+                    alt={title}
                 />
-            </Box>
-            <Box>
-                <Text size='small'>
-                    {title}
-                </Text>
-                <Text size='small'>
-                    {price}
-                </Text>
-            </Box>
-            <Box direction='row'>
-                <button
-                    id="add"
-                    onClick={handleAddOnClick}
+                <div style={{paddingLeft: '1rem'}}>
+                    <div style={productInfo}>
+                        <Text size='small'>
+                            {title}
+                        </Text>
+                        <Text size='small'>
+                            {price} kr
+                    </Text>
+                    </div>
+                    <Box direction='row'>
+                        <button
+                            id="add"
+                            onClick={handleAddOnClick}
+                        >
+                            +
+                        </button>
+                        <button
+                            id="remove"
+                            onClick={handleSubOnClick}
+                        >
+                            -
+                        </button>
+                        <Text size='small'>Antal: {quantity}</Text>
+                    </Box>
+                </div>
+                <Button
+                    size='small'
+                    color='grey'
+                    focusIndicator={false}
+                    onClick={removeCartProduct}
                 >
-                    +
-                </button>
-                <button
-                    id="remove"
-                    onClick={handleSubOnClick}
-                >
-                    -
-                </button>
-                <Text size='small'>Antal: {quantity}</Text>
-            </Box>
-            <Button
-                size='small'
-                color='grey'
-                focusIndicator={false}
-                onClick={removeCartProduct}
-            >
-                <FormTrash />
-            </Button>
-        </Grid>
+                    <FormTrash />
+                </Button>
+            </div>
+            <Box
+                border={{ 
+                    'color': '#B5BCB0', 
+                    'size': 'xsmall', 
+                    'style': 'solid', 
+                    'side': 'bottom' 
+                }}
+                margin={{ 'top': 'medium' }}
+            />
+        </Box>
     )
+}
+
+const rootStyle: CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: '4rem 1fr 2rem',
+    gridTemplateRows: '4rem',
+    alignItems: 'center',
+}
+
+
+
+const imageStyle: CSSProperties = {
+    objectFit: 'cover',
+    width: '100%',
+    height: '100%',
+    objectPosition: 'center',
+}
+
+const productInfo: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
 }
 
 export default ShoppingItem

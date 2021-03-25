@@ -16,7 +16,7 @@ function ShoppingCart(props: Props) {
         <Box
             margin={{ 'top': 'medium' }}
             height='100vh'
-            width={{'max': 'flex', 'min': 'medium'}}
+            width='flex'
         >
             <Grid
                 fill
@@ -31,15 +31,15 @@ function ShoppingCart(props: Props) {
                         color='#37513B'
                         onClick={() => props.closeCart()}
                     />
-                    <Text color='#37513B' margin={{'right': '1.5rem'}}>
+                    <Text color='#37513B' margin={{ 'right': '1.5rem' }}>
                         Kundvagn
                     </Text>
                     <Box />
                 </Box>
-                <Box 
-                    overflow='auto' 
+                <Box
+                    overflow='auto'
                     align='center'
-                    pad={{'horizontal': '5%'}}
+                    pad={{ 'horizontal': '5%' }}
                 >
                     {cart.map((cartItem, index) =>
                         <ShoppingItem
@@ -48,9 +48,18 @@ function ShoppingCart(props: Props) {
                         />
                     )}
                     {cart.length < 1 && (
-                        <Text textAlign='center' margin={{'top': 'large'}}>
-                            Din kundvagn är tom
-                        </Text>
+                        <Box 
+                            margin={{'horizontal': 'large'}}
+                            align='center'
+                        >
+                            <Text 
+                                textAlign='center' 
+                                margin={{ 'top': 'large' }}
+                                size='small'
+                            >
+                                Din kundvagn är tom
+                            </Text>
+                        </Box>
                     )}
                 </Box>
                 <Box>
@@ -68,7 +77,7 @@ function ShoppingCart(props: Props) {
                         </Text>
                     </Box>
                     <Box
-                        width='50%'
+                        width='100%'
                         alignSelf='center'
                         align='center'
                         pad='1rem'
