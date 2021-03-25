@@ -1,7 +1,7 @@
-import { AccordionPanel, Box, Text, RadioButton, grommet, Grommet } from "grommet";
-import { deepMerge } from "grommet/utils";
+import { AccordionPanel, Box, Text, RadioButton, Grommet } from "grommet";
 import { useContext } from "react";
 import { OrderContext } from "../../contexts/orderContext";
+import { theme } from "../theme";
 
 interface Option {
     titel: string,
@@ -13,20 +13,6 @@ function DeliveryOptions() {
     
     const { setDeliveryOptionField, order } = useContext(OrderContext);
 
-    const theme = deepMerge(grommet, {
-        global: {
-            colors: {
-              focus: "none"
-            }
-          },
-        radioButton: {
-            color: '#85A588',
-            check: {
-                background: '#85A588',
-                color: '#85A588',
-            }
-        },
-    });
 
     const options: Option[] = [
         {

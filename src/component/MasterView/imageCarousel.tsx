@@ -1,7 +1,7 @@
 import { Box, Carousel, Grommet } from 'grommet';
 import { Component, CSSProperties } from 'react';
 import { products } from '../mockedInterfaceProducts';
-import {  theme } from "../theme";
+import { theme } from "../theme";
 
 
 class ImageCarousel extends Component {

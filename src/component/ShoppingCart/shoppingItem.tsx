@@ -1,31 +1,39 @@
-import { Grid, Text, Select, Button, Box, Image } from "grommet"
-import { FormTrash } from "grommet-icons"
+import { Grid, Text, Button, Box, Image } from "grommet"
+import {  FormTrash } from "grommet-icons"
 import { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
-import { Product } from "../mockedInterfaceProducts"
+import { CartContext, CartItem } from "../../contexts/CartContext";
 
 interface Props {
-    product: Product
+    cartItem: CartItem
 }
 
-function ShoppingItem(props:Props) {
-    const { image, price, title } = props.product;
-    const { removeProductFromCart } = useContext(CartContext)
+function ShoppingItem(props: Props) {
+    const { image, price, title, quantity } = props.cartItem;
+    const { removeProductFromCart, subQuantity, addQuantity } = useContext(CartContext)
 
     const removeCartProduct = () => {
-        removeProductFromCart(props.product);
+        removeProductFromCart(props.cartItem);
     }
 
-    return(
+    const handleAddOnClick = () => {
+        addQuantity(props.cartItem)
+    }
+    const handleSubOnClick = () => {
+        subQuantity(props.cartItem)
+    }
+
+    return (
         <Grid
-            columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
+            columns={['xsmall', '.5fr', '1fr', '.5fr']}
             rows={'xsmall'}
-            gap={'small'} 
-            align='center' 
+            gap={'small'}
+            align='center'
             justify='center'
-            pad={{'vertical': 'small', 'left': 'small'}} 
+            pad={{ 'vertical': 'small', 'left': 'small' }}
         >
-            <Box>
+            <Box
+                height='100%'
+            >
                 <Image 
                     fit='cover'
                     src={image}
@@ -39,19 +47,29 @@ function ShoppingItem(props:Props) {
                     {price}
                 </Text>
             </Box>
-            <Select    
-                options={['1', '2', '3', '4', '5']}
-                placeholder='FIXA'
-                size='small'
-            />
-            <Button 
+            <Box direction='row'>
+                <button
+                    id="add"
+                    onClick={handleAddOnClick}
+                >
+                    +
+                </button>
+                <button
+                    id="remove"
+                    onClick={handleSubOnClick}
+                >
+                    -
+                </button>
+                <Text size='small'>Antal: {quantity}</Text>
+            </Box>
+            <Button
                 size='small'
                 color='grey'
                 focusIndicator={false}
                 onClick={removeCartProduct}
             >
                 <FormTrash />
-            </Button>        
+            </Button>
         </Grid>
     )
 }
