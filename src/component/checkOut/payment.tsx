@@ -6,12 +6,27 @@ import { theme } from "../theme";
 // const month: number; new Date(2021, month, 0).getDate(); // hämtar så man får val när man trycker
 
 function Payment() {
-    
-    const { setPaymentMethodField, order } = useContext(OrderContext);
+
+    const { setPaymentMethodField, setCardField, order } = useContext(OrderContext);
 
     //för kortnummer 
     const IPv4ElementExp = /^[0-1][0-9][0-9]$|[0-4][0-9]$|[0-5]$|[0-9][0-9]$|^[0-9]$/;
-   
+
+    const theme = deepMerge(grommet, {
+        global: {
+            colors: {
+                focus: "none"
+            }
+        },
+        radioButton: {
+            color: '#85A588',
+            check: {
+                background: '#85A588',
+                color: '#85A588',
+            },
+        },
+    });
+
     return (
         <Grommet theme={theme}>
             <AccordionPanel label="Betalning">
@@ -26,73 +41,74 @@ function Payment() {
                             onChange={(event) => setPaymentMethodField(event.target.value)}
                         />
 
-                        {order.paymentMethod === "Kort" ? <Box style={{ ...payBox }}>
-                            <Box pad='small'>
-                                <MaskedInput
+                        {order.paymentMethod === "Kort" && (
+                            <Box style={{ ...payBox }}>
+                                <Box pad='small'>
+                                    <MaskedInput
+                                        onChange={(event) => setCardField(event.target.value, "cardNumber")}
+                                        mask={[
+                                            {
+                                                length: [1, 4],
+                                                regexp: IPv4ElementExp,
+                                                placeholder: 'xxxx',
+                                            },
+                                            { fixed: '-' },
+                                            {
+                                                length: [1, 4],
+                                                regexp: IPv4ElementExp,
+                                                placeholder: 'xxxx',
+                                            },
+                                            { fixed: '-' },
+                                            {
+                                                length: [1, 4],
+                                                regexp: IPv4ElementExp,
+                                                placeholder: 'xxxx',
+                                            },
+                                            { fixed: '-' },
+                                            {
+                                                length: [1, 4],
+                                                regexp: IPv4ElementExp,
+                                                placeholder: 'xxxx',
+                                            },
+                                        ]}
+                                    />
+                                </Box>
 
-                                    mask={[
-                                        {
-                                            length: [1, 4],
-                                            regexp: IPv4ElementExp,
-                                            placeholder: 'xxxx',
-                                        },
-                                        { fixed: '-' },
-                                        {
-                                            length: [1, 4],
-                                            regexp: IPv4ElementExp,
-                                            placeholder: 'xxxx',
-                                        },
-                                        { fixed: '-' },
-                                        {
-                                            length: [1, 4],
-                                            regexp: IPv4ElementExp,
-                                            placeholder: 'xxxx',
-                                        },
-                                        { fixed: '-' },
-                                        {
-                                            length: [1, 4],
-                                            regexp: IPv4ElementExp,
-                                            placeholder: 'xxxx',
-                                        },
-                                    ]}
-                                />
-                            </Box>
+                                <Box pad='small'>
+                                    <MaskedInput
+                                        onChange={(event) => setCardField(event.target.value, "expireDate")}
+                                        mask={[
+                                            {
+                                                length: [1, 2],
+                                                // options: Array.from({ length: 12 }, (v, k) => k + 1),
+                                                regexp: /^1[0,1-2]$|^0?[1-9]$|^0$/,
+                                                placeholder: 'mm',
+                                            },
+                                            { fixed: '-' },
+                                            {
+                                                length: 2,
+                                                // options: Array.from({ length: 100 }, (v, k) => 2019 - k),
+                                                regexp: /^2[1-9]$|^[0-9]$/,
+                                                placeholder: 'yy',
+                                            },
+                                        ]}
+                                    />
+                                </Box>
 
-                            <Box pad='small'>
-                                <MaskedInput
-                                    mask={[
-                                        {
-                                            length: [1, 2],
-                                            // options: Array.from({ length: 12 }, (v, k) => k + 1),
-                                            regexp: /^1[0,1-2]$|^0?[1-9]$|^0$/,
-                                            placeholder: 'mm',
-                                        },
-                                        { fixed: '-' },
-                                        {
-                                            length: 2,
-                                            // options: Array.from({ length: 100 }, (v, k) => 2019 - k),
-                                            regexp: /^2[1-9]$|^[0-9]$/,
-                                            placeholder: 'yy',
-                                        },
-                                    ]}
-                                />
+                                <Box pad='small'>
+                                    <MaskedInput
+                                        onChange={(event) => setCardField(event.target.value, "cvcCode")}
+                                        mask={[
+                                            {
+                                                length: 3,
+                                                regexp: /[0-9]$/,
+                                                placeholder: 'CVC',
+                                            }
+                                        ]}
+                                    />
+                                </Box>
                             </Box>
-
-                            <Box pad='small'>
-                                <MaskedInput
-                                    mask={[
-                                        {
-                                            length: 3,
-                                            regexp: /[0-9]$/,
-                                            placeholder: 'CVC',
-                                        }
-                                    ]}
-                                />
-                            </Box>
-                        </Box>
-                        :
-                        <Box />
-                        }
+                        )}
                     </Box>
 
                     <Box margin='small'>
@@ -103,18 +119,17 @@ function Payment() {
                             checked={order.paymentMethod === 'Klarna'}
                             onChange={(event) => setPaymentMethodField(event.target.value)}
                         />
-                        {order.paymentMethod === "Klarna" ? <Box style={{ ...payBox }}>
-                            <RadioButtonGroup
-                                name="radio"
-                                options={[
-                                    { label: 'Faktura 14 dagar', value: 'c1' },
-                                    { label: 'Betala direkt', value: 'c2' },
-                                ]}
-                            />
-                        </Box>
-                        :
-                        <Box />
-                        }
+                        {order.paymentMethod === "Klarna" && (
+                            <Box style={{ ...payBox }}>
+                                <RadioButtonGroup
+                                    name="radio"
+                                    options={[
+                                        { label: 'Faktura 14 dagar', value: 'c1' },
+                                        { label: 'Betala direkt', value: 'c2' },
+                                    ]}
+                                />
+                            </Box>
+                        )}
                     </Box>
 
                     <Box margin='small'>
@@ -125,20 +140,19 @@ function Payment() {
                             checked={order.paymentMethod === 'Swish'}
                             onChange={(event: any) => setPaymentMethodField(event.target.value)}
                         />
-                        {order.paymentMethod === "Swish" ? <Box style={{ ...payBox }}>
-                            <MaskedInput
-                                mask={[
-                                    {
-                                        length: 10,
-                                        regexp: /[0-9]$/,
-                                        placeholder: 'Telefonnummer',
-                                    }
-                                ]}
-                            />
-                        </Box>
-                        :
-                        <Box />
-                        }
+                        {order.paymentMethod === "Swish" && (
+                            <Box style={{ ...payBox }}>
+                                <MaskedInput
+                                    mask={[
+                                        {
+                                            length: 10,
+                                            regexp: /[0-9]$/,
+                                            placeholder: 'Telefonnummer',
+                                        }
+                                    ]}
+                                />
+                            </Box>
+                        )}
                     </Box>
                 </Box>
             </AccordionPanel>
