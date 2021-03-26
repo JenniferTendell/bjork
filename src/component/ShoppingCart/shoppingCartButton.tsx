@@ -28,7 +28,7 @@ function ShoppingCartButton() {
                         width='1.3rem'
                         background='#37513B'
                         justify='center'
-                        margin={{ 'left': '-0.3rem', 'top': '-0.5rem' }}
+                        margin={{ 'left': '-0.3rem', 'top': '1rem' }}
                     >
                         <Text
                             textAlign='center'

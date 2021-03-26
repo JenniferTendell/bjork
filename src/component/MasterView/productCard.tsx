@@ -41,6 +41,8 @@ function ProductItem(props: Props) {
                         align='center'
                         justify='center'
                         onClick={addProductToCart}
+                        hoverIndicator={{'color': '#37513B'}}
+                        
                     >
                         <Shop size='18px' color='white' />
                     </Box>
