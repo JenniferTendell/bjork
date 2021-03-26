@@ -25,25 +25,14 @@ function CheckOut() {
         order.paymentMethod
     ;
 
-    // async function loadingPayment() {
-    //     let promise = new Promise((resolve,) => {
-    //         setTimeout(() => resolve('done!!!'), 5000)
-    //     })
-
-    //     let result = await promise;
-
-    //     alert(result); // ska vara linken. 
-    //     <Link to='./orderconfirmation/' />
-    // }
-
     const [open, setOpen] = useState(false);
     const [isDataLoaded, setIsDataLoaded] = useState(false);
 
     const onOpen = () => {
         setOpen(true);
         setTimeout(() => {
-          setOpen(false);
-          setIsDataLoaded(true);
+            setOpen(false);
+            setIsDataLoaded(true);
         }, 2000);
     };
 
@@ -51,75 +40,48 @@ function CheckOut() {
         <Grommet theme={theme}>
             <ErrorBoundary>
                 <Box>
-                    {/* {localStorage.length > 0 ? */}
+                    <Box direction='row'>
+                        <DetailsForm />
+                        <CartInCheckout />
+                    </Box>
+                    <Accordion multiple pad="medium" width="60%" >
+                        <DeliveryOptions />
+                        <Payment />
+                    </Accordion>
+
+                    <Box direction="row" gap="medium" pad="1rem" justify='center'>
                         <Box>
-                            <Box direction='row'>
-                                <DetailsForm />
-                                <CartInCheckout />
-                            </Box>
-                            <Accordion multiple pad="medium" width="60%" >
-                                <DeliveryOptions />
-                                <Payment />
-                            </Accordion>
-
-                            <Box direction="row" gap="medium" pad="1rem" justify='center'>
+                            <Button
+                                form="idDetailsForm"
+                                type="submit"
+                                label="Bekräfta köp"
+                                disabled={!isFormValid}
+                                color='#708C7E'
+                                onClick={() => { onOpen(); emptyCart() }}
+                            // onClick={onOpen}
+                            />
+                            {isDataLoaded && (
                                 <Box>
-                                    {/* <Link to='./orderConfirmation/' onClick={loadingPayment}> */}
-                                        <Button
-                                            form="idDetailsForm"
-                                            type="submit"
-                                            label="Bekräfta köp"
-                                            disabled={!isFormValid}
-                                            color='#708C7E'
-                                            onClick={() => { onOpen(); emptyCart() }}
-                                            // onClick={onOpen}
-                                        />
-                                    {/* </Link> */}
-                                    {isDataLoaded && (
-                                        <Box>
-                                            {/* <Text>Congrats! 🎉 </Text> */}
-                                            {/* <Link to='./orderConfirmation/'></Link> */}
-                                            {/* {emptyCart()} */}
-                                            <Redirect to='./orderConfirmation' />
-                                            {/* <OrderConfirmation /> */}
-                                        </Box>
-                                    )}
+                                    <Redirect to='./orderConfirmation' />
                                 </Box>
-                                {open && (
-                                    <Layer>
-                                        <Box
-                                            pad='large'
-                                            align="center"
-                                            justify="center"
-                                        >
-                                            <Text>Loading...</Text>
-                                        </Box>
-                                    </Layer>
-                                )}
-                            </Box>
-
+                            )}
                         </Box>
-                        {/* :
-                        <Box
-                            height='60vh'
-                            align='center'
-                            justify='center'
-                        >
-                            <Text>
-                                Du har inget i vagnen tyvärr
-                            </Text>
-                            <Link to='/'>
-                                <Button
-                                    color='#708C7E'
-                                    label='Shoppa mer'
-                                />
-                            </Link>
-                        </Box> */}
-                    {/* // } */}
+                        {open && (
+                            <Layer>
+                                <Box
+                                    pad='large'
+                                    align="center"
+                                    justify="center"
+                                    color='#708C7E' // funkar inte 
+                                >
+                                    <Text>Laddar...</Text>
+                                </Box>
+                            </Layer>
+                        )}
+                    </Box>
                 </Box >
             </ErrorBoundary>
         </Grommet >
     )
 }
-
 export default CheckOut;
