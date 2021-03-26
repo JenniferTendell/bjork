@@ -37,14 +37,27 @@ function DetailsForm() {
             style={{ ...form }}
             id="idDetailsForm"
         >
+            {/* {fieldInputs.map((fieldInput, index) => 
+                <FormField key={index}
+                    name={fieldInput.name}
+                    htmlFor={fieldInput.htmlFor}
+                    label={fieldInput.label}
+                >
+                    <TextInput 
+                        id={fieldInput.id}
+                        value={order.customer.({...fieldInput.name}) }
+                        onChange={(event) => setCustomerField(event.target.value, {fieldInput.id})}
+                    />
+                </FormField>
+            )} */}
             <FormField name="fullname" htmlFor="fullname" label="För- och efternamn" >
-                <TextInput required id="fullname" 
+                <TextInput id="fullname" 
                     value={order.customer.fullname}
                     onChange={(event) => setCustomerField(event.target.value, "fullname") } 
                 />
             </FormField>
 
-            <FormField name="email" label="Email" required>
+            <FormField name="email" label="Email" >
                 <TextInput reverse icon={<MailOption />}  type="email" name="email"
                     value={order.customer.email}
                     onChange={(event) => setCustomerField(event.target.value, "email") } 
