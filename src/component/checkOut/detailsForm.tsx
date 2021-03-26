@@ -38,13 +38,13 @@ function DetailsForm() {
             id="idDetailsForm"
         >
             <FormField name="fullname" htmlFor="fullname" label="För- och efternamn" >
-                <TextInput required id="fullname" 
+                <TextInput id="fullname" 
                     value={order.customer.fullname}
                     onChange={(event) => setCustomerField(event.target.value, "fullname") } 
                 />
             </FormField>
 
-            <FormField name="email" label="Email" required>
+            <FormField name="email" label="Email" >
                 <TextInput reverse icon={<MailOption />}  type="email" name="email"
                     value={order.customer.email}
                     onChange={(event) => setCustomerField(event.target.value, "email") } 
