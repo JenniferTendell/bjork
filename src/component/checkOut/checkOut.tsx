@@ -9,7 +9,7 @@ import { OrderContext } from '../../contexts/orderContext';
 import { useState, useContext, } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 import Lottie from 'react-lottie';
-import animationData from './assets/loadingbox.json'
+import animationData from './assets/loadingCart.json'
 
 function CheckOut() {
 
