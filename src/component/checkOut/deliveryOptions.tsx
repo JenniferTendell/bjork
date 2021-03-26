@@ -1,7 +1,6 @@
-import { AccordionPanel, Box, Text, RadioButton, Grommet } from "grommet";
+import { AccordionPanel, Box, Text, RadioButton } from "grommet";
 import { useContext } from "react";
 import { OrderContext } from "../../contexts/orderContext";
-import { theme } from "../theme";
 
 interface Option {
     titel: string,
@@ -30,7 +29,6 @@ function DeliveryOptions() {
     ]
 
     return (
-        <Grommet theme={theme} color="#85A588">
         <AccordionPanel label="Leverans" color="#85A588">
             <Box background="light-2" overflow="auto">
                 <Box height="small" flex={false}>
@@ -60,7 +58,6 @@ function DeliveryOptions() {
                 </Box>
             </Box>
         </AccordionPanel>
-        </Grommet>
     )
 }
 export default DeliveryOptions;

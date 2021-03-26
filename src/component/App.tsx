@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import ErrorBoundary from './errorBoundary';
 import OrderProvider from "../contexts/orderContext";
 import CartProvider from "../contexts/CartContext";
+import { theme } from "./theme";
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
       <ErrorBoundary>
         <OrderProvider>
           <CartProvider>
-            <Grommet>
+            <Grommet theme={theme}>
               <Layout />
             </Grommet>
           </CartProvider>

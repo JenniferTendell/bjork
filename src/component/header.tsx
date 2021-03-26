@@ -1,13 +1,11 @@
-//import ShoppingCart from "./shoppingCart";
 import { Link } from 'react-router-dom';
 import { CSSProperties } from "react";
-import { Box, Grommet } from 'grommet';
+import { Box } from 'grommet';
 import ShoppingCartButton from "./ShoppingCart/shoppingCartButton";
-import { theme } from "./theme";
+
 
 function Header() {
     return (
-        <Grommet theme={theme}>
         <header style={header}>
             <Link to="/" style={noTextDecoration}>
                 <h1 style={logo}>BJÖRK</h1>
@@ -16,7 +14,6 @@ function Header() {
                 <ShoppingCartButton />
             </Box>
         </header>
-        </Grommet>
     )
 }
 

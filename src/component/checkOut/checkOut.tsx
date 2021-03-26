@@ -1,4 +1,4 @@
-import { Accordion, Box, Text, Button, Grommet } from 'grommet';
+import { Accordion, Box, Text, Button } from 'grommet';
 import { Link } from 'react-router-dom';
 import ErrorBoundary from '../errorBoundary';
 import DetailsForm from './detailsForm';
@@ -7,7 +7,6 @@ import DeliveryOptions from './deliveryOptions';
 import Payment from './payment';
 import { OrderContext } from '../../contexts/orderContext';
 import { useContext } from 'react';
-import { theme } from "../theme";
 import { CartContext } from '../../contexts/CartContext';
 
 function CheckOut() {
@@ -26,7 +25,6 @@ function CheckOut() {
         ;
 
     return (
-        <Grommet theme={theme}>
             <ErrorBoundary>
                 <Box>
                     {localStorage.length > 0 ?
@@ -73,7 +71,6 @@ function CheckOut() {
                     }
                 </Box >
             </ErrorBoundary>
-        </Grommet>
     )
 }
 export default CheckOut;
