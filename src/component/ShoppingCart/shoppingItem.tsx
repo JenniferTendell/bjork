@@ -1,4 +1,4 @@
-import { Text, Button, Box } from "grommet"
+import { Text, Button } from "grommet"
 import { FormTrash } from "grommet-icons"
 import { CSSProperties, useContext } from "react";
 import { CartContext, CartItem } from "../../contexts/CartContext";
@@ -17,18 +17,16 @@ function ShoppingItem(props: Props) {
     }
 
     return (
-        <Box
-            width='100%'
-            margin={{ 'bottom': 'medium' }}
-        >
             <div style={rootStyle}>
-                <img
-                    style={imageStyle}
-                    src={image}
-                    alt={title}
-                />
-                <div style={{ paddingLeft: '1rem' }}>
-                    <div style={productInfo}>
+                <div style={flexContainer}>
+                    <div style={imageContainer}>
+                        <img
+                            style={imageStyle}
+                            src={image}
+                            alt={title}
+                        />
+                    </div>
+                    <div style={productText}>
                         <Text size='small'>
                             {title}
                         </Text>
@@ -37,51 +35,73 @@ function ShoppingItem(props: Props) {
                         </Text>
                     </div>
                 </div>
-                <div>
-                    <AmountButton product={props.cartItem} />
-                    <Button
-                        size='small'
-                        color='grey'
-                        focusIndicator={false}
-                        onClick={removeCartProduct}
-                    >
-                        <FormTrash />
-                    </Button>
+                <div style={flexContainer}>
+                    <div style={{...productButton, ...flexStart}}>
+                        <AmountButton product={props.cartItem} />
+                    </div>
+                    <div style={{...productButton, ...flexEnd}}>
+                        <Button
+                            size='small'
+                            color='grey'
+                            focusIndicator={false}
+                            onClick={removeCartProduct}
+                        >
+                            <FormTrash />
+                        </Button>
+                    </div>
                 </div>
             </div>
-            <Box
-                border={{
-                    'color': '#B5BCB0',
-                    'size': 'xsmall',
-                    'style': 'solid',
-                    'side': 'bottom'
-                }}
-                margin={{ 'top': 'medium' }}
-            />
-
-        </Box>
     )
 }
 
 const rootStyle: CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: '4rem 1fr 1fr',
-    gridTemplateRows: '4rem',
-    alignItems: 'center',
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: '100%',
+    marginBottom: '1rem',
+    height: 'auto',
+    borderBottom: '.1rem solid #B5BCB0'
 }
 
+const flexContainer: CSSProperties = {
+    display: 'flex',
+    flex: 1,
+    maxWidth: '1fr',
+    minWidth: '12rem',
+}
 
+const imageContainer: CSSProperties = {
+    width: '5rem',
+    height: '5rem',
+    marginRight: '1rem',
+}
 
 const imageStyle: CSSProperties = {
     objectFit: 'cover',
     width: '100%',
     height: '100%',
-    objectPosition: 'center',
 }
 
-const productInfo: CSSProperties = {
+const productText: CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'center',
+}
+
+const productButton: CSSProperties = {
+    display: 'flex',
+    flex: 1,
+    maxWidth: '1fr',
+    minWidth: '5rem',
+    paddingTop: '1rem'
+}
+
+const flexEnd: CSSProperties = {
+    justifyContent: 'flex-end',
+}
+
+const flexStart: CSSProperties = {
+    justifyContent: 'flex-start',
 }
 
 export default ShoppingItem
