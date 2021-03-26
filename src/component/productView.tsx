@@ -92,12 +92,14 @@ const imageContainer: CSSProperties = {
     display: 'flex',
     minWidth: '15rem',
     maxWidth: '20rem',
+    maxHeight: '25rem',
     margin: '0 2rem 1rem 2rem'
 }
 
 const imageStyle: CSSProperties = {
     objectFit: 'cover',
     width: '100%',
+    height: '100%',
     objectPosition: 'center',
 }
 
