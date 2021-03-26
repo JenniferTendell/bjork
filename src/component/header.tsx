@@ -37,6 +37,7 @@ export const logo: CSSProperties = {
     fontSize: '2.8rem',
     color: 'white',
     textDecoration: 'none',
+    marginTop: '2.5rem'
 }
 
 
