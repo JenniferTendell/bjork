@@ -1,4 +1,5 @@
-import { Accordion, Box, Text, Button, Grommet, Layer } from 'grommet';
+
+import { Accordion, Box, Text, Button, Layer } from 'grommet';
 import { Redirect } from 'react-router-dom';
 import ErrorBoundary from '../errorBoundary';
 import DetailsForm from './detailsForm';
@@ -7,7 +8,6 @@ import DeliveryOptions from './deliveryOptions';
 import Payment from './payment';
 import { OrderContext } from '../../contexts/orderContext';
 import { useState, useContext } from 'react';
-import { theme } from "../theme";
 import { CartContext } from '../../contexts/CartContext';
 
 function CheckOut() {
@@ -37,7 +37,6 @@ function CheckOut() {
     };
 
     return (
-        <Grommet theme={theme}>
             <ErrorBoundary>
                 <Box>
                     <Box direction='row'>
@@ -81,7 +80,6 @@ function CheckOut() {
                     </Box>
                 </Box >
             </ErrorBoundary>
-        </Grommet >
     )
 }
 export default CheckOut;

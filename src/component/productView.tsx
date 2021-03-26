@@ -1,9 +1,8 @@
 import { CSSProperties, useContext } from 'react';
-import { Button, Text, Grommet } from 'grommet';
+import { Button, Text } from 'grommet';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 import {  products } from './mockedInterfaceProducts';
-import { theme } from "./theme";
 import AmountButton from './amountButton';
 
 
@@ -19,7 +18,6 @@ function ProductView() {
     }
 
     return (
-        <Grommet theme={theme}>
         <main style={rootStyle}>
             <div>
                 <Link to="/">
@@ -73,7 +71,6 @@ function ProductView() {
                 </div>
             </div>
         </main>
-        </Grommet>
     )
 }
 
