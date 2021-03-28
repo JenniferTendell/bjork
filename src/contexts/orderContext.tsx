@@ -56,9 +56,9 @@ const OrderProvider: FunctionComponent = ({ children }) => {
     };
 
     const setDeliveryOptionField = (value: string) => {
-        const choosenDelivery = value;
-        setDeliveryOption(choosenDelivery);
-        console.log(choosenDelivery)
+        const chosenDelivery = value;
+        setDeliveryOption(chosenDelivery);
+        console.log(chosenDelivery)
     };
 
     const setPaymentMethodField = (value: string) => {

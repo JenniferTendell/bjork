@@ -24,8 +24,8 @@ class ImageCarousel extends Component {
                     <Box>
                         <img
                             style={rootImagesSize}
-                            src={products[10]?.image}
-                            alt={products[10]?.title}
+                            src={products[15]?.image}
+                            alt={products[15]?.title}
                         />
                     </Box>
                     <Box>
@@ -51,7 +51,7 @@ class ImageCarousel extends Component {
 
 const rootImagesSize: CSSProperties = {
     width: '80%',
-    height: '20rem',
+    height: '25rem',
     objectFit: 'cover',
     margin: '0 auto'
 }

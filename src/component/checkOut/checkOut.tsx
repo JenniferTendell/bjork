@@ -6,7 +6,7 @@ import CartInCheckout from './cartInCheckout';
 import DeliveryOptions from './deliveryOptions';
 import Payment from './payment';
 import { OrderContext } from '../../contexts/orderContext';
-import { useState, useContext, } from 'react';
+import { useState, useContext } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 import Lottie from 'react-lottie';
 import animationData from './assets/loadingCart.json'
@@ -14,7 +14,7 @@ import animationData from './assets/loadingCart.json'
 function CheckOut() {
 
     const { order } = useContext(OrderContext);
-    const { emptyCart, } = useContext(CartContext);
+    const { emptyCart } = useContext(CartContext);
 
     const defaultOptions = {
         loop: true,
@@ -26,6 +26,12 @@ function CheckOut() {
     };
 
     const isFormValid =
+        order.customer.fullname &&
+        order.customer.phoneNumber &&
+        order.customer.address &&
+        order.customer.zipcode &&
+        order.customer.city &&
+        order.deliveryOption &&
         order.paymentMethod
         ;
 
@@ -43,17 +49,19 @@ function CheckOut() {
     return (
         <ErrorBoundary>
             <Box>
-                <Box direction='row'>
-                    <DetailsForm />
+                <Box direction='row' justify='center' >
+                    <Box>
+                        <DetailsForm />
+                        <Accordion multiple pad="large" >
+                            <DeliveryOptions />
+                            <Payment />
+                        </Accordion>
+                    </Box>
                     <CartInCheckout />
                 </Box>
-                <Accordion multiple pad="medium" width="60%" >
-                    <DeliveryOptions />
-                    <Payment />
-                </Accordion>
 
-                <Box direction="row" gap="medium" pad="1rem" justify='center'>
-                    <Box>
+                <Box direction="column" align='center'>
+                    <Box width='small' margin='small'>
                         <Button
                             form="idDetailsForm"
                             type="submit"
@@ -61,7 +69,6 @@ function CheckOut() {
                             disabled={!isFormValid}
                             color='#708C7E'
                             onClick={() => { onOpen(); emptyCart() }}
-                        // onClick={onOpen}
                         />
                         {isDataLoaded && (
                             <Box>
@@ -84,12 +91,11 @@ function CheckOut() {
                                     />
                                     <Text>Din order behandlas...</Text>
                                 </Box>
-
                             </Box>
                         </Layer>
                     )}
                 </Box>
-            </Box >
+            </Box>
         </ErrorBoundary>
     )
 }
