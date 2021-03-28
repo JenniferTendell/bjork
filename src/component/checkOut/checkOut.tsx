@@ -37,7 +37,7 @@ function CheckOut() {
         setTimeout(() => {
             setOpen(false);
             setIsDataLoaded(true);
-        }, 4000);
+        }, 4500);
     };
 
     return (
@@ -75,7 +75,6 @@ function CheckOut() {
                                 pad='large'
                                 align="center"
                                 justify="center"
-                                color='#708C7E' // funkar inte 
                             >
                                 <Box direction='column' align='center'>
                                     <Lottie
