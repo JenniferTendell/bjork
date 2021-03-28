@@ -8,7 +8,7 @@ function CartInCheckout() {
     const { cart, totalSum } = useContext(CartContext)
 
     return (
-        <Box>
+        <Box pad='large'>
             <Box>
                 {cart.map((cartItem, index) =>
                     <ShoppingItem
