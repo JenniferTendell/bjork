@@ -69,6 +69,11 @@ function CheckOut() {
                                 label="Bekräfta köp"
                                 disabled={!isFormValid}
                                 color='#708C7E'
+                                style={{
+                                    'fontWeight': 'normal', 
+                                    'background': '#708C7E',
+                                    'color': 'white',
+                                }}
                                 onClick={() => { onOpen(); emptyCart() }}
                             />
                             {isDataLoaded && (

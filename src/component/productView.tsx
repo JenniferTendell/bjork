@@ -63,6 +63,11 @@ function ProductView() {
                         <Button
                             label='Lägg i kundvagn'
                             color='#708C7E'
+                            style={{
+                                'fontWeight': 'normal', 
+                                'background': '#708C7E',
+                                'color': 'white',
+                            }}
                             margin={{ 'top': 'medium' }}
                             size='small'
                             onClick={addProductToCart}

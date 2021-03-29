@@ -69,8 +69,8 @@ function OrderConfirmation() {
                 >
                     <Link to='/'>
                         <Button 
-                            color='#708C7E'
                             label='Fortsätt handla'
+                            color='#708C7E'
                             style={{
                                 'fontWeight': 'normal', 
                                 'background': '#708C7E',
