@@ -75,7 +75,7 @@ function ProductView() {
 }
 
 const rootStyle: CSSProperties = {
-    margin: '2rem'
+    padding: '6rem 2rem'
 }
 
 const contentStyle: CSSProperties = {
