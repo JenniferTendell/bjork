@@ -8,7 +8,7 @@ function CartInCheckout() {
     const { cart, totalSum } = useContext(CartContext)
 
     return (
-        <Box pad='large'>
+        <Box pad='large' style={{ 'flex':'1' }}>
             <Box>
                 {cart.map((cartItem, index) =>
                     <ShoppingItem
@@ -19,11 +19,9 @@ function CartInCheckout() {
             </Box>
             <Box>
                 <Text size='small'>Varav moms {totalSum * 0.25 }</Text>
-                <Text weight='bold'>Totalbelopp: {totalSum}</Text>
-                
+                <Text weight='bold'>Totalbelopp: {totalSum}</Text>   
             </Box>
         </Box>
-
     )
 }
 

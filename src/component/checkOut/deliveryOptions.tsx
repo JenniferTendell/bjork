@@ -1,18 +1,12 @@
 import { AccordionPanel, Box, Text, RadioButton } from "grommet";
 import { useContext } from "react";
-import { OrderContext } from "../../contexts/orderContext";
-
-interface Option {
-    titel: string,
-    price: number,
-    days: string,
-}
+import { DeliveryDetails, OrderContext } from "../../contexts/orderContext";
 
 function DeliveryOptions() {
     
     const { setDeliveryOptionField, order } = useContext(OrderContext);
 
-    const options: Option[] = [
+    const options: DeliveryDetails[] = [
         {
             titel: 'Postnord',
             price: 0,
@@ -51,9 +45,9 @@ function DeliveryOptions() {
                                 <RadioButton 
                                     required
                                     name="Delivery"
-                                    value={option.titel}
-                                    checked={order.deliveryOption === option.titel }
-                                    onChange={(event) => setDeliveryOptionField(event.target.value)}
+                                    value={index}
+                                    checked={order.deliveryOption?.titel === option.titel}
+                                    onChange={() => {setDeliveryOptionField(option) }}
                                 />
                             </Box>
                         </Box>

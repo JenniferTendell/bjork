@@ -14,3 +14,15 @@ body, html {
 h1 {
   font-family: 'Libre Barcode 128 Text';
 }
+
+.checkoutDirectionSmallScreen {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 580px) {
+  .checkoutDirectionSmallScreen {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
