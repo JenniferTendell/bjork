@@ -1,6 +1,7 @@
 import { Box, Text } from "grommet";
-import { Facebook, Instagram, Pinterest } from 'grommet-icons';
+import { Facebook, HostMaintenance, Instagram, Pinterest } from 'grommet-icons';
 import { CSSProperties } from "react";
+import { Link } from "react-router-dom";
 
 
 function Footer() {
@@ -33,6 +34,42 @@ function Footer() {
                         >
                             Du som kund har alltid 30 dagars öppet köp.
                         </Text>
+                    </Box>
+                    <Box
+                        direction='column'
+                        align='center'
+                    >
+                        <Text
+                            size='medium'
+                            color='white'
+                            weight={400}
+                        >
+                            Admin
+                        </Text>
+                        <Link 
+                            to="/admin"
+                            style={noTextDecoration}
+                        >
+                            <Box
+                                border={{ color: 'white', size: 'xsmall' }}
+                                round='.5rem'
+                                direction='row'
+                                width='8rem'
+                                justify='between'
+                                pad={'.5rem'}
+                                margin={{ 'top': '.5rem' }}  
+                            >
+                                <HostMaintenance
+                                    color='white'
+                                />
+                                <Text
+                                    color='white'
+                                    size='small' 
+                                >
+                                    Redigera
+                                </Text>
+                            </Box>
+                        </Link>
                     </Box>
                     <Box
                         direction='column'
@@ -84,9 +121,13 @@ function Footer() {
 
 const grid: CSSProperties = {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(12rem, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(15rem, 1fr))',
     rowGap: '2rem',
     width: '80%',
+}
+
+const noTextDecoration: CSSProperties = {
+    textDecoration: 'none'
 }
 
 export default Footer
