@@ -10,11 +10,12 @@ import { useState, useContext } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 import Lottie from 'react-lottie';
 import animationData from './assets/loadingCart.json'
+import '../../index.css'
 
 function CheckOut() {
 
     const { order } = useContext(OrderContext);
-    const { emptyCart } = useContext(CartContext);
+    const { emptyCart, totalSum } = useContext(CartContext);
 
     const defaultOptions = {
         loop: true,
@@ -48,21 +49,24 @@ function CheckOut() {
 
     return (
         <main>
-            <ErrorBoundary>
-                <Box>
-                    <Box direction='row' justify='center' >
-                        <Box>
-                            <DetailsForm />
-                            <Accordion multiple pad="large" >
-                                <DeliveryOptions />
-                                <Payment />
-                            </Accordion>
-                        </Box>
-                        <CartInCheckout />
+        <ErrorBoundary>
+            <Box>
+                <div className={'checkoutDirectionSmallScreen'} >
+                    <Box pad='large' style={{ 'flex': '1'}}>
+                        <DetailsForm />
+                        <Accordion multiple>
+                            <DeliveryOptions />
+                            <Payment />
+                        </Accordion>
                     </Box>
+                    <CartInCheckout />
+                </div>
 
-                    <Box direction="column" align='center'>
-                        <Box width='small' margin='small'>
+                <Box direction="column" align='center'>
+                    <Box width='small' margin='small'>
+                        <Box align='center'>
+                            Totalbelopp inkl frakt: {totalSum + order.deliveryOption!.price}
+                        </Box>           
                             <Button
                                 form="idDetailsForm"
                                 type="submit"

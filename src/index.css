@@ -22,5 +22,17 @@ main {
 
 h1 {
   font-family: 'Libre Barcode 128 Text';
-  color: white;
 }
+
+.checkoutDirectionSmallScreen {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 580px) {
+  .checkoutDirectionSmallScreen {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+/* color: white; */
