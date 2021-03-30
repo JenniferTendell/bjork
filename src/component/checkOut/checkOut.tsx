@@ -13,9 +13,20 @@ import animationData from './assets/loadingCart.json'
 import '../../index.css'
 
 function CheckOut() {
-
+    
     const { order } = useContext(OrderContext);
     const { emptyCart, totalSum } = useContext(CartContext);
+    
+    const [open, setOpen] = useState(false);
+    const [isDataLoaded, setIsDataLoaded] = useState(false);
+   
+    const onOpen = () => {
+        setOpen(true);
+        setTimeout(() => {
+            setOpen(false);
+            setIsDataLoaded(true);
+        }, 4500);
+    };
 
     const defaultOptions = {
         loop: true,
@@ -37,41 +48,34 @@ function CheckOut() {
         order.paymentMethod
     ;
 
-    const [open, setOpen] = useState(false);
-    const [isDataLoaded, setIsDataLoaded] = useState(false);
-
-    const onOpen = () => {
-        setOpen(true);
-        setTimeout(() => {
-            setOpen(false);
-            setIsDataLoaded(true);
-        }, 4500);
-    };
-
     return (
         <main>
-        <ErrorBoundary>
-            <Box>
-                <div className={'checkoutDirectionSmallScreen'} >
-                    <Box pad='large' style={{ 'flex': '1'}}>
-                        <DetailsForm />
-                        <Accordion multiple>
-                            <DeliveryOptions />
-                            <Payment />
-                        </Accordion>
-                    </Box>
-                    <CartInCheckout />
-                </div>
+            <ErrorBoundary>
+                <Box>
+                    <div className={'checkoutDirectionSmallScreen'} >
+                        <Box pad='large' style={{ 'flex': '1' }}>
+                            <DetailsForm />
+                            <Accordion multiple>
+                                <DeliveryOptions />
+                                <Payment />
+                            </Accordion>
+                        </Box>
+                        <CartInCheckout />
+                    </div>
 
-                <Box direction="column" align='center'>
-                    <Box width='small' margin='small'>
-                        <Box align='center'>
-                            {order.deliveryOption?.price === undefined ? 
-                                <Box>{totalSum} kr</Box>
-                            :
-                                <Box>{totalSum + order.deliveryOption.price} kr</Box>
-                            }
-                        </Box>           
+                    <Box direction="column" align='center'>
+                        <Box width='small' margin='small'>
+                            <Box align='center' pad='small' >
+                                {order.deliveryOption?.price === undefined ?
+                                    <Text>
+                                        {totalSum} kr
+                                    </Text>
+                                    :
+                                    <Text weight='bold'>
+                                        Totalbelopp: {totalSum + order.deliveryOption.price} kr
+                                    </Text>
+                                }
+                            </Box>
                             <Button
                                 form="idDetailsForm"
                                 type="submit"
@@ -79,7 +83,7 @@ function CheckOut() {
                                 disabled={!isFormValid}
                                 color='#708C7E'
                                 style={{
-                                    'fontWeight': 'normal', 
+                                    'fontWeight': 'normal',
                                     'background': '#708C7E',
                                     'color': 'white',
                                 }}
