@@ -9,14 +9,14 @@ Happy mocked shopping!
 
 ## Links
 
-(Grommet)[https://v2.grommet.io/docs]
-(Björk website)[https://bjorkinterior.netlify.app/]
+[Grommet](https://v2.grommet.io/docs)
+[Björk website](https://bjorkinterior.netlify.app/)
 
 ## Creators
-(Jennifer)[https://github.com/JenniferTendell]
-(Marie)[https://github.com/mariewag]
-(Felicia)[https://github.com/feliciavonbraun]
-(Mikaela)[https://github.com/MikaelaAnd]
+[Jennifer](https://github.com/JenniferTendell)
+[Marie](https://github.com/mariewag)
+[Felicia](https://github.com/feliciavonbraun)
+[Mikaela](https://github.com/MikaelaAnd)
 
 
 
