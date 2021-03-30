@@ -5,7 +5,7 @@ import { Product } from "../mockedInterfaceProducts"
 
 interface Props {
     product: Product
-    openEdit: (e: MouseEvent) => void
+    openEdit: (e: MouseEvent, product: Product) => void
 }
 
 function AdminAssortmentProduct(props: Props) {
@@ -45,7 +45,7 @@ function AdminAssortmentProduct(props: Props) {
             <Button
                 id='editExistingProduct'
                 icon={<Configure />}
-                onClick={props.openEdit}
+                onClick={(e) => props.openEdit(e, props.product)}
             />  
         </Box>
     )

@@ -1,12 +1,15 @@
 import { Box, Form, FormField, Text, TextInput, TextArea } from "grommet"
-//import { Product } from "../mockedInterfaceProducts";
-/*
-interface Props {
-    product: Product
-}
-*/
+import {products} from '../mockedInterfaceProducts'
 
-function EditExistingProduct() {
+interface Props {
+    chosenProductId: string
+}
+
+
+function EditExistingProduct(props: Props) {
+    const id = parseInt(props.chosenProductId)
+    const product = products[id]
+
     return (
         <Box
             height='100%'
@@ -26,15 +29,15 @@ function EditExistingProduct() {
                     <FormField>
                         <TextInput
                             name='title'
-                            //placeholder={props.product.title}
+                            placeholder={product?.title}
                         />
                         <TextInput
                             name='price'
-                            //placeholder={props.product.price + ' kr'}
+                            placeholder={product?.price + ' kr'}
                         />
                         <TextArea
                             name='info'
-                            //placeholder={props.product.info}
+                            placeholder={product?.info}
                             resize={false}
                         />
                     </FormField>
