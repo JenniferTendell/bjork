@@ -1,14 +1,26 @@
-import { Box, Form, FormField, Text, TextInput, TextArea } from "grommet"
-import {products} from '../mockedInterfaceProducts'
+import { Box, Form, FormField, Text, TextInput, TextArea, Image } from "grommet"
+import { useEffect, useState } from "react"
+import { products } from '../mockedInterfaceProducts'
 
 interface Props {
     chosenProductId: string
 }
 
-
 function EditExistingProduct(props: Props) {
     const id = parseInt(props.chosenProductId)
     const product = products[id]
+
+    const [newTitle, setNewTitle] = useState('')
+    const [newPrice, setNewPrice] = useState(0)
+    const [newInfo, setNewInfo] = useState('')
+    const [newImage, setNewImage] = useState('')
+
+    useEffect(() => {
+        setNewInfo(product!.info)
+        setNewPrice(product!.price)
+        setNewTitle(product!.title)
+        setNewImage(product!.image)
+    },[product])
 
     return (
         <Box
@@ -22,26 +34,65 @@ function EditExistingProduct(props: Props) {
                 Redigera produkt
             </Text>
             <Box
+                wrap
                 width='100%'
                 margin={{ 'top': '1rem' }}
+                direction='row'
+                justify='between'
+                align='center'
             >
-                <Form>
-                    <FormField>
-                        <TextInput
-                            name='title'
-                            placeholder={product?.title}
-                        />
-                        <TextInput
-                            name='price'
-                            placeholder={product?.price + ' kr'}
-                        />
-                        <TextArea
-                            name='info'
-                            placeholder={product?.info}
-                            resize={false}
-                        />
-                    </FormField>
-                </Form>
+                <Box
+                    width='15rem'
+                    height='15rem'
+                >
+                    <Image
+                        src={newImage}
+                        fit='cover'
+                    />
+                </Box>
+                <Box
+                    width={{'min': '60%'}}
+                >
+                    <Form>
+                        <FormField
+                            label='Titel'
+                        >
+                            <TextInput
+                                value={newTitle}
+                                onChange={e => setNewTitle(e.target.value)}
+                                size='small'
+                            />
+                        </FormField>
+                        <FormField
+                            label='Pris (kr)'
+                        >
+                            <TextInput
+                                value={newPrice}
+                                onChange={e => setNewPrice(parseInt(e.target.value))}
+                                size='small'
+                            />
+                        </FormField>
+                        <FormField
+                            label='Bild'
+                        >
+                            <TextInput
+                                value={newImage}
+                                onChange={e => setNewImage(e.target.value)}
+                                size='small'
+                            />
+                        </FormField>
+                        <FormField
+                            label='Produktbeskrivning'
+                        >
+                            <TextArea
+                                value={newInfo}
+                                onChange={e => setNewInfo(e.target.value)}
+                                resize={false}
+                                size='small'
+                            />
+                        </FormField>
+                    </Form>
+                </Box>
             </Box>
         </Box>
     )
