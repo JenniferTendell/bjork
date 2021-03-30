@@ -6,6 +6,7 @@ import EditExistingProduct from "./editExistingProduct"
 interface Props {
     closeEdit: () => void
     showAddNewProduct: boolean
+    chosenProductId: string
 }
 
 function EditProduct(props: Props) {
@@ -26,8 +27,10 @@ function EditProduct(props: Props) {
                 </Box>
 
                 {props.showAddNewProduct  
-                    ? <AddNewProduct />
-                    : <EditExistingProduct />
+                    ?   <AddNewProduct />
+                    :   <EditExistingProduct 
+                            chosenProductId={props.chosenProductId}
+                        />
                 }
                 
                 <Box

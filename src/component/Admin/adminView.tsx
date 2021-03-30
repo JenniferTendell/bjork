@@ -1,6 +1,6 @@
 import { Box, Text, Button } from "grommet"
 import { MouseEvent, useState } from "react"
-import { products } from "../mockedInterfaceProducts"
+import { Product, products } from "../mockedInterfaceProducts"
 import EditProduct from "./editProduct"
 import AdminAssortmentProduct from "./AdminAssortmentProduct"
 
@@ -8,14 +8,16 @@ import AdminAssortmentProduct from "./AdminAssortmentProduct"
 function AdminView() {
     const [editProduct, setEditProduct] = useState(false)
     const [showAddNewProduct, setShowAddNewProduct] = useState(false)
+    const [chosenProductId, setChosenProductId] = useState('')
 
-    const handlePageToShow = (e: MouseEvent) => {
+    const handlePageToShow = (e: MouseEvent, product?: Product) => {
         setEditProduct(true)
         
         if (e.currentTarget.id === 'addNewProduct') {
             setShowAddNewProduct(true)
         } else {
             setShowAddNewProduct(false)
+            setChosenProductId(product!.id)
         }
     }
     
@@ -56,7 +58,8 @@ function AdminView() {
             {editProduct && (
                 <EditProduct
                     closeEdit={() => setEditProduct(false)}
-                    showAddNewProduct={showAddNewProduct}  
+                    showAddNewProduct={showAddNewProduct} 
+                    chosenProductId={chosenProductId} 
                 />
             )}
         </main>
