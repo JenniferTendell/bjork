@@ -63,9 +63,10 @@ function CheckOut() {
 
                 <Box direction="column" align='center'>
                     <Box width='small' margin='small'>
-                        {totalSum}
-                        {order.deliveryOption?.price}
-                        {/* {totalSum  +? order.deliveryOption?.price} */}
+                        <Box align='center'>
+                            Totalbelopp inkl frakt: {totalSum + order.deliveryOption!.price}
+                        </Box>
+                           
                         <Button
                             form="idDetailsForm"
                             type="submit"

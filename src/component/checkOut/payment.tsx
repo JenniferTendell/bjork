@@ -1,20 +1,23 @@
-import { AccordionPanel, Box, MaskedInput, RadioButtonGroup, RadioButton } from "grommet";
-import { CSSProperties, useContext } from "react";
+import { AccordionPanel, Box, MaskedInput, RadioButtonGroup, RadioButton, FormField, Form } from "grommet";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import { OrderContext } from "../../contexts/orderContext";
 
 // const month: number; new Date(2021, month, 0).getDate(); // hämtar så man får val när man trycker
 
 function Payment() {
-
+    
     const { setPaymentMethodField, setCardField, order } = useContext(OrderContext);
 
-    //för kortnummer 
     const IPv4ElementExp = /^[0-1][0-9][0-9]$|[0-4][0-9]$|[0-5]$|[0-9][0-9]$|^[0-9]$/;
+
+    const [phone, setPhone] = useState('');
+    useEffect( () => {
+        setPhone(order.customer.phoneNumber)
+    }, [order.customer.phoneNumber]);
 
     return (
         <AccordionPanel label="Betalning">
-
-            <Box background='light-2' style={{ height: 'large' }}>
+            <Box background='light-2' >
                 <Box margin='small'>
                     <RadioButton
                         label='Kort'
@@ -97,7 +100,7 @@ function Payment() {
                 <Box margin='small'>
                     <RadioButton
                         label="Klarna"
-                        name="name"
+                        name="Klarna"
                         value="Klarna"
                         checked={order.paymentMethod === 'Klarna'}
                         onChange={(event) => setPaymentMethodField(event.target.value)}
@@ -117,17 +120,27 @@ function Payment() {
 
                 <Box margin='small'>
                     <RadioButton
-                        label="Swish"
-                        name="name"
-                        value="Swish"
+                        label='Swish'
+                        name='phonenumber'
+                        value='Swish'
                         checked={order.paymentMethod === 'Swish'}
                         onChange={(event: any) => setPaymentMethodField(event.target.value)}
                     />
-                    {order.paymentMethod === "Swish" && (
+                    {order.paymentMethod === 'Swish' && (
                         <Box style={{ ...payBox }}>
+                           <Form>
+                                <FormField 
+                                    placeholder='Telefonnummer'
+                                    value={phone}
+                                    onChange={event => setPhone(event.target.value)}
+                                    type='number'
+                                />
+                           </Form>
                             <MaskedInput
+                                value={phone}
                                 mask={[
                                     {
+                                        
                                         length: 10,
                                         regexp: /[0-9]$/,
                                         placeholder: 'Telefonnummer',
@@ -148,12 +161,6 @@ const payBox: CSSProperties = {
     padding: '1rem',
     borderRadius: '1rem',
 }
-
-// IPv4MaskedInput.storyName = 'IPv4 address';
-
-// IPv4MaskedInput.parameters = {
-//   chromatic: { disable: true },
-// };
 
 // kort-nummer https://storybook.grommet.io/?path=/story/input-maskedinput-ipv4-address--i-pv-4-masked-input
 // utgångsdatum https://storybook.grommet.io/?path=/story/input-maskedinput-date--date-masked-input
