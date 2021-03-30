@@ -10,9 +10,9 @@ function Payment() {
 
     const IPv4ElementExp = /^[0-1][0-9][0-9]$|[0-4][0-9]$|[0-5]$|[0-9][0-9]$|^[0-9]$/;
 
-    const [phone, setPhone] = useState('');
+    const [autoPhonenumberFromCustomer, setAutoPhonenumberFromCustomer] = useState('');
     useEffect( () => {
-        setPhone(order.customer.phoneNumber)
+        setAutoPhonenumberFromCustomer(order.customer.phoneNumber)
     }, [order.customer.phoneNumber]);
 
     return (
@@ -65,16 +65,14 @@ function Payment() {
                                     onChange={(event) => setCardField(event.target.value, "expireDate")}
                                     mask={[
                                         {
-                                            length: [1, 2],
-                                            // options: Array.from({ length: 12 }, (v, k) => k + 1),
-                                            regexp: /^1[0,1-2]$|^0?[1-9]$|^0$/,
+                                            length: 2,
+                                            regexp: /^1[0-2]$|^0?[1-9]$|^0$/,
                                             placeholder: 'mm',
                                         },
                                         { fixed: '-' },
                                         {
                                             length: 2,
-                                            // options: Array.from({ length: 100 }, (v, k) => 2019 - k),
-                                            regexp: /^2[1-9]$|^[0-9]$/,
+                                            regexp: /^2[1-9]$|^[2-9]$|^3[0-9]$|^4[0-9]$|^5[0-9]$|^6[0-9]$|^7[0-9]$|^8[0-9]$|^9[0-9]$/,
                                             placeholder: 'yy',
                                         },
                                     ]}
@@ -121,7 +119,7 @@ function Payment() {
                 <Box margin='small'>
                     <RadioButton
                         label='Swish'
-                        name='phonenumber'
+                        name='autoPhonenumberFromCustomer'
                         value='Swish'
                         checked={order.paymentMethod === 'Swish'}
                         onChange={(event: any) => setPaymentMethodField(event.target.value)}
@@ -131,22 +129,11 @@ function Payment() {
                            <Form>
                                 <FormField 
                                     placeholder='Telefonnummer'
-                                    value={phone}
-                                    onChange={event => setPhone(event.target.value)}
+                                    value={autoPhonenumberFromCustomer}
+                                    onChange={event => setAutoPhonenumberFromCustomer(event.target.value)}
                                     type='number'
                                 />
                            </Form>
-                            <MaskedInput
-                                value={phone}
-                                mask={[
-                                    {
-                                        
-                                        length: 10,
-                                        regexp: /[0-9]$/,
-                                        placeholder: 'Telefonnummer',
-                                    }
-                                ]}
-                            />
                         </Box>
                     )}
                 </Box>

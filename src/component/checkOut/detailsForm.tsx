@@ -20,8 +20,6 @@ function DetailsForm() {
                 </FormField>
 
                 <FormField name="email" label="Email" >
-                    {/* <TextInput reverse icon={<MailOption />} type="email" name="email"
-                    /> */}
                     <MaskedInput
                         name="email"
                         reverse icon={<MailOption />} 
