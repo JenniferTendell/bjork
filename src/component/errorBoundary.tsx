@@ -2,7 +2,7 @@ import { Box, Button, Heading } from "grommet";
 import { Component, ErrorInfo } from "react";
 import Lottie from "react-lottie";
 import animationData from './assets/errorCat.json'
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import {  RouteComponentProps, withRouter } from "react-router-dom";
 
 interface Props extends RouteComponentProps{}
 
@@ -20,27 +20,23 @@ const defaultOptions = {
 };
 
 class ErrorBoundary extends Component<Props, State> {
-
-    state: State = {
-        hasError: false,
-    };
-
-    static getDerivedStateFromError(): State {
-        return { hasError: true}
-    }
+        state = {
+            hasError: false,
+        };
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
         console.log({ error, errorInfo });
+        this.setState(state => ({...state, hasError: true}))
     }
 
     reloadPage = () =>  {
-        window.history.back();
+       window.location.pathname = '/'
     }
 
     render() {
         if (this.state.hasError) {
             return (
-                <div >
+                <div>
                    <Box
                         justify='center'
                         align='center'
@@ -50,7 +46,8 @@ class ErrorBoundary extends Component<Props, State> {
                             level='3'
                             color='#37513B'
                         >
-                            Ojdå, något gick fel!</Heading>
+                            Ojdå, något gick fel!
+                        </Heading>
                         <Button 
                             label='Tillbaka'
                             size='small'

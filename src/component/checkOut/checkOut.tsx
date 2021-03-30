@@ -1,6 +1,5 @@
 import { Accordion, Box, Button, Layer, Text } from 'grommet';
 import { Redirect } from 'react-router-dom';
-import ErrorBoundary from '../errorBoundary';
 import DetailsForm from './detailsForm';
 import CartInCheckout from './cartInCheckout';
 import DeliveryOptions from './deliveryOptions';
@@ -46,9 +45,10 @@ function CheckOut() {
         }, 4500);
     };
 
+   (null as any)
+
     return (
         <main>
-            <ErrorBoundary>
                 <Box>
                     <Box direction='row' justify='center' >
                         <Box>
@@ -60,7 +60,6 @@ function CheckOut() {
                         </Box>
                         <CartInCheckout />
                     </Box>
-
                     <Box direction="column" align='center'>
                         <Box width='small' margin='small'>
                             <Button
@@ -102,7 +101,6 @@ function CheckOut() {
                         )}
                     </Box>
                 </Box>
-            </ErrorBoundary>
         </main>
     )
 }
