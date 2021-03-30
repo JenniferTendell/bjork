@@ -9,26 +9,21 @@ Happy mocked shopping!
 
 ## Links
 
-[Grommet](https://v2.grommet.io/docs)
+[Grommet](https://v2.grommet.io/docs)<br>
 [Björk website](https://bjorkinterior.netlify.app/)
 
 ## Creators
-[Jennifer](https://github.com/JenniferTendell)
-[Marie](https://github.com/mariewag)
-[Felicia](https://github.com/feliciavonbraun)
-[Mikaela](https://github.com/MikaelaAnd)
+[Jennifer](https://github.com/JenniferTendell)<br>
+[Marie](https://github.com/mariewag)<br>
+[Felicia](https://github.com/feliciavonbraun)<br>
+[Mikaela](https://github.com/MikaelaAnd)<br>
 
 
 
 ### For developers:
-### Run `npm i` and `npm start`
-
+#### Run `npm i` and `npm start`
 To start the project in developer mode. 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### Getting Started with Create React App
-
+#### Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
