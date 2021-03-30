@@ -14,7 +14,7 @@ function EditProduct(props: Props) {
         <Layer>
             <Box
                 width='large'
-                height='medium'
+                height='100%'
                 pad='1rem'
             >
                 <Box
@@ -37,7 +37,7 @@ function EditProduct(props: Props) {
                     direction='row'
                     width='medium'
                     justify='between'
-                    margin='0 auto'
+                    margin='2rem auto'
                     align='center'
                 >
                     <Button
