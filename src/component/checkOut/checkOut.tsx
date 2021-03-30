@@ -28,13 +28,14 @@ function CheckOut() {
 
     const isFormValid =
         order.customer.fullname &&
+        order.customer.email &&
         order.customer.phoneNumber &&
         order.customer.address &&
         order.customer.zipcode &&
         order.customer.city &&
         order.deliveryOption &&
         order.paymentMethod
-        ;
+    ;
 
     const [open, setOpen] = useState(false);
     const [isDataLoaded, setIsDataLoaded] = useState(false);
@@ -65,7 +66,11 @@ function CheckOut() {
                 <Box direction="column" align='center'>
                     <Box width='small' margin='small'>
                         <Box align='center'>
-                            Totalbelopp inkl frakt: {totalSum + order.deliveryOption!.price}
+                            {order.deliveryOption?.price === undefined ? 
+                                <Box>{totalSum} kr</Box>
+                            :
+                                <Box>{totalSum + order.deliveryOption.price} kr</Box>
+                            }
                         </Box>           
                             <Button
                                 form="idDetailsForm"
