@@ -48,6 +48,7 @@ function CheckOut() {
     };
 
     return (
+        <main>
         <ErrorBoundary>
             <Box>
                 <div className={'checkoutDirectionSmallScreen'} >
@@ -65,43 +66,48 @@ function CheckOut() {
                     <Box width='small' margin='small'>
                         <Box align='center'>
                             Totalbelopp inkl frakt: {totalSum + order.deliveryOption!.price}
+                        </Box>           
+                            <Button
+                                form="idDetailsForm"
+                                type="submit"
+                                label="Bekräfta köp"
+                                disabled={!isFormValid}
+                                color='#708C7E'
+                                style={{
+                                    'fontWeight': 'normal', 
+                                    'background': '#708C7E',
+                                    'color': 'white',
+                                }}
+                                onClick={() => { onOpen(); emptyCart() }}
+                            />
+                            {isDataLoaded && (
+                                <Box>
+                                    <Redirect to='./orderConfirmation' />
+                                </Box>
+                            )}
                         </Box>
-                           
-                        <Button
-                            form="idDetailsForm"
-                            type="submit"
-                            label="Bekräfta köp"
-                            disabled={!isFormValid}
-                            color='#708C7E'
-                            onClick={() => { onOpen(); emptyCart() }}
-                        />
-                        {isDataLoaded && (
-                            <Box>
-                                <Redirect to='./orderConfirmation' />
-                            </Box>
+                        {open && (
+                            <Layer>
+                                <Box
+                                    pad='large'
+                                    align="center"
+                                    justify="center"
+                                >
+                                    <Box direction='column' align='center'>
+                                        <Lottie
+                                            options={defaultOptions}
+                                            height={400}
+                                            width={400}
+                                        />
+                                        <Text>Din order behandlas...</Text>
+                                    </Box>
+                                </Box>
+                            </Layer>
                         )}
                     </Box>
-                    {open && (
-                        <Layer>
-                            <Box
-                                pad='large'
-                                align="center"
-                                justify="center"
-                            >
-                                <Box direction='column' align='center'>
-                                    <Lottie
-                                        options={defaultOptions}
-                                        height={400}
-                                        width={400}
-                                    />
-                                    <Text>Din order behandlas...</Text>
-                                </Box>
-                            </Box>
-                        </Layer>
-                    )}
                 </Box>
-            </Box>
-        </ErrorBoundary>
+            </ErrorBoundary>
+        </main>
     )
 }
 export default CheckOut;

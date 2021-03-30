@@ -86,8 +86,12 @@ function ShoppingCart(props: Props) {
                     <Link to='/checkOut'>
                         <Button
                             label='Gå till kassan'
-                            size='small'
-                            color='#37513B'
+                            color='#708C7E'
+                            style={{
+                                'fontWeight': 'normal', 
+                                'background': '#708C7E',
+                                'color': 'white',
+                            }}
                             onClick={props.closeCart}
                             disabled={cart.length < 1}
                         />

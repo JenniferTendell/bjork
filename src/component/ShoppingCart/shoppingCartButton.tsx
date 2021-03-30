@@ -44,7 +44,7 @@ function ShoppingCartButton() {
                 <Layer
                     onClickOutside={() => setShowCart(false)}
                     position='right'
-                >
+                >               
                     <ShoppingCart closeCart={onCloseCart}/>
                 </Layer>
             )}
