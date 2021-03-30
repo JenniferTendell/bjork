@@ -27,6 +27,9 @@ export const header: CSSProperties = {
     justifyContent: 'space-around',
     height: '4.5rem',
     backgroundColor: '#708C7E',
+    position: 'fixed',
+    width: '100%',
+    margin: '0'
 }
 
 export const logo: CSSProperties = {

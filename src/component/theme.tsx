@@ -24,7 +24,7 @@ import { deepMerge } from "grommet/utils";
       icons: {
         color: '#708C7E'
       }
-    }   
+    } 
 });
 
     

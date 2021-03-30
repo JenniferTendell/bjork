@@ -63,6 +63,11 @@ function ProductView() {
                         <Button
                             label='Lägg i kundvagn'
                             color='#708C7E'
+                            style={{
+                                'fontWeight': 'normal', 
+                                'background': '#708C7E',
+                                'color': 'white',
+                            }}
                             margin={{ 'top': 'medium' }}
                             size='small'
                             onClick={addProductToCart}
@@ -75,7 +80,7 @@ function ProductView() {
 }
 
 const rootStyle: CSSProperties = {
-    margin: '2rem'
+    padding: '6rem 2rem'
 }
 
 const contentStyle: CSSProperties = {

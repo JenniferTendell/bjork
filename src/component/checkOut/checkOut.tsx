@@ -47,56 +47,63 @@ function CheckOut() {
     };
 
     return (
-        <ErrorBoundary>
-            <Box>
-                <Box direction='row' justify='center' >
-                    <Box>
-                        <DetailsForm />
-                        <Accordion multiple pad="large" >
-                            <DeliveryOptions />
-                            <Payment />
-                        </Accordion>
+        <main>
+            <ErrorBoundary>
+                <Box>
+                    <Box direction='row' justify='center' >
+                        <Box>
+                            <DetailsForm />
+                            <Accordion multiple pad="large" >
+                                <DeliveryOptions />
+                                <Payment />
+                            </Accordion>
+                        </Box>
+                        <CartInCheckout />
                     </Box>
-                    <CartInCheckout />
-                </Box>
 
-                <Box direction="column" align='center'>
-                    <Box width='small' margin='small'>
-                        <Button
-                            form="idDetailsForm"
-                            type="submit"
-                            label="Bekräfta köp"
-                            disabled={!isFormValid}
-                            color='#708C7E'
-                            onClick={() => { onOpen(); emptyCart() }}
-                        />
-                        {isDataLoaded && (
-                            <Box>
-                                <Redirect to='./orderConfirmation' />
-                            </Box>
+                    <Box direction="column" align='center'>
+                        <Box width='small' margin='small'>
+                            <Button
+                                form="idDetailsForm"
+                                type="submit"
+                                label="Bekräfta köp"
+                                disabled={!isFormValid}
+                                color='#708C7E'
+                                style={{
+                                    'fontWeight': 'normal', 
+                                    'background': '#708C7E',
+                                    'color': 'white',
+                                }}
+                                onClick={() => { onOpen(); emptyCart() }}
+                            />
+                            {isDataLoaded && (
+                                <Box>
+                                    <Redirect to='./orderConfirmation' />
+                                </Box>
+                            )}
+                        </Box>
+                        {open && (
+                            <Layer>
+                                <Box
+                                    pad='large'
+                                    align="center"
+                                    justify="center"
+                                >
+                                    <Box direction='column' align='center'>
+                                        <Lottie
+                                            options={defaultOptions}
+                                            height={400}
+                                            width={400}
+                                        />
+                                        <Text>Din order behandlas...</Text>
+                                    </Box>
+                                </Box>
+                            </Layer>
                         )}
                     </Box>
-                    {open && (
-                        <Layer>
-                            <Box
-                                pad='large'
-                                align="center"
-                                justify="center"
-                            >
-                                <Box direction='column' align='center'>
-                                    <Lottie
-                                        options={defaultOptions}
-                                        height={400}
-                                        width={400}
-                                    />
-                                    <Text>Din order behandlas...</Text>
-                                </Box>
-                            </Box>
-                        </Layer>
-                    )}
                 </Box>
-            </Box>
-        </ErrorBoundary>
+            </ErrorBoundary>
+        </main>
     )
 }
 export default CheckOut;

@@ -11,6 +11,16 @@ body, html {
   --clr-green: #B5BCB0;
 }
 
+header {
+  z-index: 15;
+  margin: 0;
+}
+
+main {
+  padding-top: 5rem;
+}
+
 h1 {
   font-family: 'Libre Barcode 128 Text';
+  color: white;
 }
