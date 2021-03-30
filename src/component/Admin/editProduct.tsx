@@ -10,6 +10,12 @@ interface Props {
 }
 
 function EditProduct(props: Props) {
+
+
+    const onSave = () => {
+
+    }
+
     return (
         <Layer>
             <Box
@@ -48,6 +54,7 @@ function EditProduct(props: Props) {
                     <Button
                         label='Spara'
                         size='small'
+                        onClick={() => { onSave() }}
                     />
                 </Box>
             </Box>
@@ -55,4 +62,4 @@ function EditProduct(props: Props) {
     )
 }
 
-export default EditProduct
+export default EditProduct;
