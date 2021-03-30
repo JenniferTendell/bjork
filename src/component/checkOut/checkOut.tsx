@@ -64,11 +64,11 @@ function CheckOut() {
                     </div>
 
                     <Box direction="column" align='center'>
-                        <Box width='small' margin='small'>
-                            <Box align='center' pad='small' >
+                        <Box width='small+10px' margin='small'>
+                            <Box align='center' pad='small'>
                                 {order.deliveryOption?.price === undefined ?
-                                    <Text>
-                                        {totalSum} kr
+                                    <Text weight='bold'>
+                                        Totalbelopp: {totalSum} kr
                                     </Text>
                                     :
                                     <Text weight='bold'>
