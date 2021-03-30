@@ -1,6 +1,6 @@
 import { Suspense } from "react"
 import { Route, Switch } from "react-router-dom"
-import AdminView from "./adminView";
+import AdminView from "./Admin/adminView";
 import CheckOut from "./checkOut/checkOut"
 import OrderConfirmation from "./checkOut/orderConfirmation";
 import MasterView from "./MasterView/masterView";

@@ -8,11 +8,9 @@ function ShoppingCartButton() {
     const [showCart, setShowCart] = useState(false)
     const { nrOfProducts } = useContext(CartContext);
 
-    // Todo, ändrar inte statet...
     function onCloseCart(e: MouseEvent) {
         e.stopPropagation();
         setShowCart(false)
-        console.log(showCart)
     }
 
     return (
