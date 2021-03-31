@@ -14,7 +14,6 @@ function EditProduct(props: Props) {
         <Layer>
             <Box
                 width='large'
-                height='100%'
                 pad='1rem'
             >
                 <Box
@@ -25,17 +24,15 @@ function EditProduct(props: Props) {
                         onClick={props.closeEdit}
                     />
                 </Box>
-
                 {props.showAddNewProduct  
                     ?   <AddNewProduct />
                     :   <EditExistingProduct 
                             chosenProductId={props.chosenProductId}
                         />
                 }
-                
                 <Box
                     direction='row'
-                    width='medium'
+                    width='20rem'
                     justify='between'
                     margin='2rem auto'
                     align='center'
