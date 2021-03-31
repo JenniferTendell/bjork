@@ -20,38 +20,47 @@ function EditExistingProduct(props: Props) {
         setNewPrice(product!.price)
         setNewTitle(product!.title)
         setNewImage(product!.image)
-    },[product])
+    }, [product])
 
     return (
         <Box
-            height='100%'
-            justify='between'
+            height='100vh'
+            width='100%'
+            overflow='auto'
+            pad={{'bottom': '2rem'}}
         >
             <Text
-                size='large'
+                size='xlarge'
                 textAlign='center'
             >
                 Redigera produkt
             </Text>
             <Box
                 wrap
-                width='100%'
-                margin={{ 'top': '1rem' }}
+                margin={{ 'top': '2rem' }}
                 direction='row'
-                justify='between'
+                justify='center'
                 align='center'
             >
                 <Box
-                    width='15rem'
-                    height='15rem'
+                    width='20rem'
+                    align='center'
                 >
-                    <Image
-                        src={newImage}
-                        fit='cover'
-                    />
+                    <Box
+                        width={{'max': '60%', 'min': '13rem'}}
+                        height={{'max': '60%', 'min': '13rem'}}
+                        
+                    >
+                        <Image
+                            src={newImage}
+                            fit='cover'
+                            width='100%'
+                            height='100%'
+                        />
+                    </Box>
                 </Box>
                 <Box
-                    width={{'min': '60%'}}
+                    width={{'min': '50%'}}
                 >
                     <Form>
                         <FormField
@@ -60,7 +69,7 @@ function EditExistingProduct(props: Props) {
                             <TextInput
                                 value={newTitle}
                                 onChange={e => setNewTitle(e.target.value)}
-                                size='small'
+                                size='xsmall'
                             />
                         </FormField>
                         <FormField
@@ -69,7 +78,7 @@ function EditExistingProduct(props: Props) {
                             <TextInput
                                 value={newPrice}
                                 onChange={e => setNewPrice(parseInt(e.target.value))}
-                                size='small'
+                                size='xsmall'
                             />
                         </FormField>
                         <FormField
@@ -78,7 +87,7 @@ function EditExistingProduct(props: Props) {
                             <TextInput
                                 value={newImage}
                                 onChange={e => setNewImage(e.target.value)}
-                                size='small'
+                                size='xsmall'
                             />
                         </FormField>
                         <FormField
@@ -88,7 +97,9 @@ function EditExistingProduct(props: Props) {
                                 value={newInfo}
                                 onChange={e => setNewInfo(e.target.value)}
                                 resize={false}
-                                size='small'
+                                size='xsmall'
+                                fill={true}
+                                style={{height:'10rem'}}   
                             />
                         </FormField>
                     </Form>
