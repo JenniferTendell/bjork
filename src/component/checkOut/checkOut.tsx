@@ -42,10 +42,11 @@ function CheckOut() {
         order.customer.zipcode &&
         order.customer.city &&
         order.deliveryOption &&
-        order.paymentMethod
-        ;
-
-   (null as any)
+        order.paymentMethod && 
+        order.cardDetails?.cardNumber &&
+        order.cardDetails?.cvcCode &&
+        order.cardDetails?.expireDate
+    ;
 
     return (
         <main>
