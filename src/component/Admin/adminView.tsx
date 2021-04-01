@@ -1,14 +1,16 @@
 import { Box, Text, Button } from "grommet"
-import { MouseEvent, useState } from "react"
-import { Product, products } from "../mockedInterfaceProducts"
+import { MouseEvent, useContext, useState } from "react"
+import { Product } from "../mockedInterfaceProducts"
 import EditProduct from "./editProduct"
 import AdminAssortmentProduct from "./AdminAssortmentProduct"
+import { AssortmentContext } from "../../contexts/assortmentContext"
 
 
 function AdminView() {
     const [editProduct, setEditProduct] = useState(false)
     const [showAddNewProduct, setShowAddNewProduct] = useState(false)
     const [chosenProductId, setChosenProductId] = useState('')
+    const { list } = useContext(AssortmentContext)
 
     const handlePageToShow = (e: MouseEvent, product?: Product) => {
         setEditProduct(true)
@@ -47,7 +49,7 @@ function AdminView() {
                 margin='2rem auto'
                 border={{ 'side': 'top' }}
             >
-                {products.map((product, index) =>
+                {list.map((product, index) =>
                     <AdminAssortmentProduct
                         product={product}
                         openEdit={handlePageToShow}
