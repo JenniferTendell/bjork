@@ -1,24 +1,24 @@
-import { Component, CSSProperties } from 'react';
-import { products } from '../mockedInterfaceProducts';
+import { CSSProperties, useContext } from 'react';
 import ProductCard from './productCard';
 import ImageCarousel from './imageCarousel';
+import { AssortmentContext } from '../../contexts/assortmentContext';
 
-class MasterView extends Component {
-    render() {
-        return (
-            <main>
-                <ImageCarousel />
-                <div style={grid}>
-                    {products.map((product, index) =>
-                        <ProductCard
-                            product={product}
-                            key={index}
-                        />
-                    )}
-                </div>
-            </main>
-        );
-    }
+function MasterView() {
+    const { list } = useContext(AssortmentContext)
+
+    return (
+        <main>
+            <ImageCarousel />
+            <div style={grid}>
+                {list.map((product, index) =>
+                    <ProductCard
+                        product={product}
+                        key={index}
+                    />
+                )}
+            </div>
+        </main>
+    );
 }
 
 const grid: CSSProperties = {
@@ -28,6 +28,5 @@ const grid: CSSProperties = {
     width: '80%',
     margin: '0 auto'
 }
-
 
 export default MasterView;
