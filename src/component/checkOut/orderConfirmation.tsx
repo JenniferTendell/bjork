@@ -84,7 +84,6 @@ function OrderConfirmation() {
     )
 }
 
-
 export const logo: CSSProperties = {
     fontWeight: 'lighter',
     fontSize: '4rem',
