@@ -38,19 +38,7 @@ interface OrderContextValue {
     setCardField: (defaultValue: string, field: keyof CardDetails) => void;
 }
 
-export const OrderContext = createContext<OrderContextValue>({
-    order: {
-        cartItems: [],
-        customer: () => {},
-        deliveryOption: () => {},
-        paymentMethod: '',
-        cardDetails: () => {}
-    },
-    setCustomerField: () => {},
-    setDeliveryOptionField: () => {},
-    setPaymentMethodField: () => {},
-    setCardField: () => {}
-} as any);
+export const OrderContext = createContext<OrderContextValue>({} as OrderContextValue);
 
 const OrderProvider: FunctionComponent = ({ children }) => {
     const [customer, setCustomer] = useState<Customer>({

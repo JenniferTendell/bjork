@@ -16,16 +16,7 @@ interface CartContextValue {
     subQuantity: (product: Product) => void;
 }
 
-export const CartContext = createContext<CartContextValue>({
-    cart: [],
-    addToCart: () => {},
-    removeProductFromCart: () => {},
-    emptyCart: () => {},
-    nrOfProducts: 0,
-    totalSum: 0,
-    addQuantity: () => {},
-    subQuantity: () => {}
-});
+export const CartContext = createContext<CartContextValue>({} as CartContextValue);
 
 const CartProvider: FunctionComponent = ({ children }) => {
     const initializeCart = () => {

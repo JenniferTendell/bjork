@@ -11,15 +11,7 @@ interface AssortmentValue {
     editProductImage: (product: Product, image: string) => void;
 }
 
-export const AssortmentContext = createContext<AssortmentValue>({
-    list: [],
-    addNewProduct: () => {},
-    removeProduct: () => {},
-    editProductTitle: () => {},
-    editProductPrice: () => {},
-    editProductInfo: () => {},
-    editProductImage: () => {},
-});
+export const AssortmentContext = createContext<AssortmentValue>({} as AssortmentValue);
 
 const getAssortment = () => {
     const assortmentInLS = localStorage.getItem('assortment');
