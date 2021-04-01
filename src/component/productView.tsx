@@ -2,13 +2,17 @@ import { CSSProperties, useContext } from 'react';
 import { Button, Text } from 'grommet';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
-import { products } from './mockedInterfaceProducts';
 import AmountButton from './amountButton';
+import { AssortmentContext } from '../contexts/assortmentContext';
+
+
 function ProductView() {
-    const { addToCart } = useContext(CartContext);
-    const urlPath = window.location.pathname;
-    const productId = Number(urlPath.split('/')[2]);
-    const product = products[productId]!;
+    const { addToCart } = useContext(CartContext)
+    const { list } = useContext(AssortmentContext)
+    
+    const urlPath = window.location.pathname
+    const productId = Number(urlPath.split('/')[2])
+    const product = list[productId]!
 
     const addProductToCart = () => {
         addToCart(product);
@@ -44,7 +48,7 @@ function ProductView() {
                         <Text
                             color='#37513B'
                         >
-                            {product.price}kr
+                            {product.price} kr
                         </Text>
                     </div>
                     <div>

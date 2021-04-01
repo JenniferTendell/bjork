@@ -1,14 +1,42 @@
-import { Box, Text, Form, FormField, TextInput, TextArea, MaskedInput, Button, Layer } from 'grommet';
-import { Close } from 'grommet-icons';
+import { Box, Text, Form, FormField, TextInput, TextArea, Button, Layer, Image } from "grommet"
+import { Close } from "grommet-icons"
+import { useContext, useEffect, useState } from "react"
+import { AssortmentContext } from "../../contexts/assortmentContext"
+import { Product } from "./../mockedInterfaceProducts";
 
 interface Props {
     closeEdit: () => void;
 }
 
 function AddNewProduct(props: Props) {
+    const { addNewProduct, list } = useContext(AssortmentContext)
 
-    const onSave = () => {
-        
+    const [title, setTitle] = useState('')
+    const [price, setPrice] = useState(0)
+    const [info, setInfo] = useState('')
+    const [image, setImage] = useState('')
+    const [id, setId] = useState('')
+
+    const newProduct: Product = {
+        id: id,
+        title: title,
+        price: price,
+        info: info,
+        image: image
+    }
+
+    useEffect(() => {
+        generateNewId()
+    })
+
+    const generateNewId = () => {
+        const lastProductId = list.length
+        const newId = lastProductId
+        setId(newId.toString())
+    }
+
+    const saveNewProduct = () => {
+        addNewProduct(newProduct)
     }
 
     return (
@@ -34,40 +62,81 @@ function AddNewProduct(props: Props) {
                         textAlign='center'
                     >
                         Skapa produkt
-            </Text>
+                    </Text>
                     <Box
-                        width='100%'
-                        margin={{ 'top': '1rem' }}
+                        wrap
+                        margin={{ 'top': '2rem' }}
+                        direction='row'
+                        justify='center'
+                        align='center'
                     >
-                        <Form>
-                            <FormField>
-                                <TextInput
-                                    name='title'
-                                    placeholder='Titel'
+                        <Box
+                            width='20rem'
+                            align='center'
+                        >
+                            <Box
+                                width={{ 'max': '60%', 'min': '13rem' }}
+                                height={{ 'max': '60%', 'min': '13rem' }}
+                            >
+                                <Image
+                                    src={image}
+                                    fit='cover'
+                                    width='100%'
+                                    height='100%'
                                 />
-                            </FormField>
-
-                            <FormField>
-                                <TextInput
-                                    name='price'
-                                    placeholder='Pris'
-                                    type='number'
-                                />
-                            </FormField>
-
-                            <FormField>
-                                <TextArea
-                                    name='info'
-                                    placeholder='Produktbeskrivning'
-                                />
-                            </FormField>
-
-                            <FormField>
-                                <MaskedInput
-                                    mask={[{ fixed: 'https://' }, { regexp: /^.*$/ }]}
-                                />
-                            </FormField>
-                        </Form>
+                            </Box>
+                        </Box>
+                        <Box
+                            width={{ 'min': '50%' }}
+                        >
+                            <Form
+                                id='newProduct'
+                            >
+                                <FormField
+                                    label='Titel'
+                                >
+                                    <TextInput
+                                        value={title}
+                                        onChange={e => setTitle(e.target.value)}
+                                        size='xsmall'
+                                        required
+                                    />
+                                </FormField>
+                                <FormField
+                                    label='Pris (kr)'
+                                >
+                                    <TextInput
+                                        value={price}
+                                        onChange={e => setPrice(parseInt(e.target.value))}
+                                        size='xsmall'
+                                        required
+                                    />
+                                </FormField>
+                                <FormField
+                                    label='Bild'
+                                >
+                                    <TextInput
+                                        value={image}
+                                        onChange={e => setImage(e.target.value)}
+                                        size='xsmall'
+                                        required
+                                    />
+                                </FormField>
+                                <FormField
+                                    label='Produktbeskrivning'
+                                >
+                                    <TextArea
+                                        value={info}
+                                        onChange={e => setInfo(e.target.value)}
+                                        resize={false}
+                                        size='xsmall'
+                                        fill={true}
+                                        style={{ height: '10rem' }}
+                                        required
+                                    />
+                                </FormField>
+                            </Form>
+                        </Box>
                     </Box>
                 </Box >
                 <Box
@@ -83,10 +152,11 @@ function AddNewProduct(props: Props) {
                         onClick={props.closeEdit}
                     />
                     <Button
+                        form='newProduct'
+                        type='submit'
                         label='Spara'
                         size='small'
-                        onClick={() => { onSave() }}
-                        onChange={onSave}
+                        onClick={() => {saveNewProduct(); props.closeEdit()}}
                     />
                 </Box>
             </Box>
