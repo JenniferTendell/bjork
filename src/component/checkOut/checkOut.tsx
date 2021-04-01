@@ -1,6 +1,5 @@
 import { Accordion, Box, Button, Layer, Text } from 'grommet';
 import { Redirect } from 'react-router-dom';
-import ErrorBoundary from '../errorBoundary';
 import DetailsForm from './detailsForm';
 import CartInCheckout from './cartInCheckout';
 import DeliveryOptions from './deliveryOptions';
@@ -48,9 +47,10 @@ function CheckOut() {
         order.paymentMethod
     ;
 
+   (null as any)
+
     return (
         <main>
-            <ErrorBoundary>
                 <Box>
                     <div className={'checkoutDirectionSmallScreen'} >
                         <Box pad='large' style={{ 'flex': '1' }}>
@@ -115,7 +115,6 @@ function CheckOut() {
                         )}
                     </Box>
                 </Box>
-            </ErrorBoundary>
         </main>
     )
 }
