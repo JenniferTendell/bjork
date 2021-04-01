@@ -4,7 +4,6 @@ import { useContext, useState } from "react"
 import { AssortmentContext } from "../../contexts/assortmentContext"
 import { Product } from '../mockedInterfaceProducts'
 
-
 interface Props {
     chosenProduct: Product
     closeEdit: () => void
@@ -26,7 +25,6 @@ function EditExistingProduct(props: Props) {
     const [newImage, setNewImage] = useState(product.image)
 
     const onSave = () => {
-        console.log(newTitle)
         editProductImage(product, newImage)
         editProductInfo(product, newInfo)
         editProductPrice(product, newPrice)
@@ -163,6 +161,6 @@ function EditExistingProduct(props: Props) {
                 </Box>
             </Box>
         </Layer>
-    )
+    );
 }
 export default EditExistingProduct;

@@ -1,13 +1,11 @@
-import { Box, Text } from "grommet";
+import { Box, Text } from 'grommet';
 import { Facebook, HostMaintenance, Instagram, Pinterest } from 'grommet-icons';
-import { CSSProperties } from "react";
-import { Link } from "react-router-dom";
-
+import { CSSProperties } from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
-
     const scrollToTopOfPage = () => {
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0);
     }
 
     return (
@@ -51,8 +49,8 @@ function Footer() {
                         >
                             Admin
                         </Text>
-                        <Link 
-                            to="/admin"
+                        <Link
+                            to='/admin'
                             style={noTextDecoration}
                         >
                             <Box
@@ -63,14 +61,14 @@ function Footer() {
                                 justify='between'
                                 pad={'.5rem'}
                                 margin={{ 'top': '.5rem' }}
-                                onClick={scrollToTopOfPage}  
+                                onClick={scrollToTopOfPage}
                             >
                                 <HostMaintenance
                                     color='white'
                                 />
                                 <Text
                                     color='white'
-                                    size='small' 
+                                    size='small'
                                 >
                                     Redigera
                                 </Text>
@@ -122,8 +120,10 @@ function Footer() {
                 </div>
             </Box>
         </footer>
-    )
+    );
 }
+
+export default Footer;
 
 const grid: CSSProperties = {
     display: 'grid',
@@ -135,5 +135,3 @@ const grid: CSSProperties = {
 const noTextDecoration: CSSProperties = {
     textDecoration: 'none'
 }
-
-export default Footer

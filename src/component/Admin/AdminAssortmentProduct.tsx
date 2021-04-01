@@ -1,17 +1,17 @@
-import { Box, Image, Text, Button } from "grommet"
+import { Box, Image, Text, Button } from 'grommet';
 import { MouseEvent, useContext } from 'react';
-import { Configure, FormTrash } from "grommet-icons"
-import { Product } from "../mockedInterfaceProducts"
-import { AssortmentContext } from "../../contexts/assortmentContext";
+import { Configure, FormTrash } from 'grommet-icons';
+import { Product } from '../mockedInterfaceProducts';
+import { AssortmentContext } from '../../contexts/assortmentContext';
 
 interface Props {
-    product: Product
-    openEdit: (e: MouseEvent, product: Product) => void
+    product: Product;
+    openEdit: (e: MouseEvent, product: Product) => void;
 }
 
 function AdminAssortmentProduct(props: Props) {
     const { image, title, price } = props.product;
-    const { removeProduct } = useContext(AssortmentContext)
+    const { removeProduct } = useContext(AssortmentContext);
 
     const handleClick = () => {
         removeProduct(props.product);
@@ -60,10 +60,9 @@ function AdminAssortmentProduct(props: Props) {
                 icon={<FormTrash />}
                 onClick={handleClick}
             >
-           
             </Button>
         </Box>
-    )
+    );
 }
 
-export default AdminAssortmentProduct
+export default AdminAssortmentProduct;

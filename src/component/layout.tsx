@@ -1,7 +1,6 @@
-import Footer from "./footer";
-import Header from "./header";
-import Main from "./main";
-
+import Footer from './footer';
+import Header from './header';
+import Main from './main';
 
 function Layout() {
     return (
@@ -10,7 +9,7 @@ function Layout() {
             <Main />
             <Footer />
         </div>
-    )
+    );
 }
 
 export default Layout;

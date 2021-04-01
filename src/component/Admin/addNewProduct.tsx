@@ -5,7 +5,7 @@ import { AssortmentContext } from "../../contexts/assortmentContext"
 import { Product } from "./../mockedInterfaceProducts";
 
 interface Props {
-    closeEdit: () => void
+    closeEdit: () => void;
 }
 
 function AddNewProduct(props: Props) {
@@ -77,7 +77,6 @@ function AddNewProduct(props: Props) {
                             <Box
                                 width={{ 'max': '60%', 'min': '13rem' }}
                                 height={{ 'max': '60%', 'min': '13rem' }}
-
                             >
                                 { image?.length > 10 && ( 
                                     <Image
@@ -175,7 +174,7 @@ function AddNewProduct(props: Props) {
                 </Box>
             </Box>
         </Layer>
-    )
+    );
 }
 
-export default AddNewProduct
+export default AddNewProduct;

@@ -4,7 +4,7 @@ import ImageCarousel from './imageCarousel';
 import { AssortmentContext } from '../../contexts/assortmentContext';
 
 function MasterView() {
-    const { list } = useContext(AssortmentContext)
+    const { list } = useContext(AssortmentContext);
 
     return (
         <main>
@@ -21,6 +21,8 @@ function MasterView() {
     );
 }
 
+export default MasterView;
+
 const grid: CSSProperties = {
     display: 'flex',
     flexWrap: 'wrap',
@@ -28,5 +30,3 @@ const grid: CSSProperties = {
     width: '80%',
     margin: '0 auto'
 }
-
-export default MasterView;

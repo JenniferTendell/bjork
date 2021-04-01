@@ -2,7 +2,7 @@ export interface Product {
     id: string
     title: string,
     price: number,
-    info: string
+    info: string,
     image: string
 }
 
@@ -128,4 +128,4 @@ export const products: Product[] = [
         info: 'Minimalistisk matt grå taklampa av stål. Höjd 30cm. Diameter 42cm',
         image: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
     }
-]
+];

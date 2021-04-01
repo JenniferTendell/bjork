@@ -1,11 +1,10 @@
-import { Box, Text } from "grommet"
-import { useContext } from "react"
+import { Box, Text } from 'grommet';
+import { useContext } from 'react';
 import { CartContext } from '../../contexts/CartContext';
-import ShoppingItem from "../ShoppingCart/shoppingItem";
+import ShoppingItem from '../ShoppingCart/shoppingItem';
 
 function CartInCheckout() {
-
-    const { cart, totalSum } = useContext(CartContext)
+    const { cart, totalSum } = useContext(CartContext);
 
     const ColoredLine = () => (
         <hr
@@ -37,7 +36,7 @@ function CartInCheckout() {
                 <ColoredLine/>
             </Box>
         </Box>
-    )
+    );
 }
 
-export default CartInCheckout
+export default CartInCheckout;

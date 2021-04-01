@@ -1,21 +1,22 @@
 import { Link } from 'react-router-dom';
-import { CSSProperties } from "react";
+import { CSSProperties } from 'react';
 import { Box } from 'grommet';
-import ShoppingCartButton from "./ShoppingCart/shoppingCartButton";
-
+import ShoppingCartButton from './ShoppingCart/shoppingCartButton';
 
 function Header() {
     return (
         <header style={header}>
-            <Link to="/" style={noTextDecoration}>
+            <Link to='/' style={noTextDecoration}>
                 <h1 style={logo}>BJÖRK</h1>
             </Link>
             <Box>
                 <ShoppingCartButton />
             </Box>
         </header>
-    )
+    );
 }
+
+export default Header;
 
 export const noTextDecoration: CSSProperties = {
     textDecoration: 'none'
@@ -41,5 +42,3 @@ export const logo: CSSProperties = {
 }
 
 
-
-export default Header

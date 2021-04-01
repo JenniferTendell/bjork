@@ -21,7 +21,7 @@ function ProductView() {
     return (
         <main style={rootStyle}>
             <div>
-                <Link to="/">
+                <Link to='/'>
                     <Text
                         color='#37513B'
                     >
@@ -65,7 +65,7 @@ function ProductView() {
                             label='Lägg i kundvagn'
                             color='#708C7E'
                             style={{
-                                'fontWeight': 'normal', 
+                                'fontWeight': 'normal',
                                 'background': '#708C7E',
                                 'color': 'white',
                             }}
@@ -77,8 +77,10 @@ function ProductView() {
                 </div>
             </div>
         </main>
-    )
+    );
 }
+
+export default ProductView;
 
 const rootStyle: CSSProperties = {
     padding: '6rem 2rem'
@@ -123,5 +125,3 @@ const buySectionStyle: CSSProperties = {
     flexDirection: 'column',
     marginTop: '20%'
 }
-
-export default ProductView
