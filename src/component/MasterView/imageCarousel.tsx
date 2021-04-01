@@ -2,15 +2,13 @@ import { Box, Carousel } from 'grommet';
 import { Component, CSSProperties } from 'react';
 import { products } from '../mockedInterfaceProducts';
 
-
-
 class ImageCarousel extends Component {
-    static parameters: { chromatic: { disable: boolean; }; };
+    static parameters: { chromatic: { disable: boolean; } };
     render() {
         return (
-            <Box 
-                pad={{'horizontal': 'large', 'vertical': 'medium'}}
-                width={{'max': '70rem'}}
+            <Box
+                pad={{ 'horizontal': 'large', 'vertical': 'medium' }}
+                width={{ 'max': '70rem' }}
                 margin={'0 auto'}
             >
                 <Carousel fill>
@@ -44,10 +42,11 @@ class ImageCarousel extends Component {
                     </Box>
                 </Carousel>
             </Box>
-        )
+        );
     }
 }
 
+export default ImageCarousel;
 
 const rootImagesSize: CSSProperties = {
     width: '80%',
@@ -55,5 +54,3 @@ const rootImagesSize: CSSProperties = {
     objectFit: 'cover',
     margin: '0 auto'
 }
-
-export default ImageCarousel;

@@ -1,9 +1,8 @@
-import { Box, Text, Form, FormField, TextInput, TextArea, MaskedInput, Button, Layer } from "grommet"
-import { Close } from "grommet-icons"
-
+import { Box, Text, Form, FormField, TextInput, TextArea, MaskedInput, Button, Layer } from 'grommet';
+import { Close } from 'grommet-icons';
 
 interface Props {
-    closeEdit: () => void
+    closeEdit: () => void;
 }
 
 function AddNewProduct(props: Props) {
@@ -60,15 +59,12 @@ function AddNewProduct(props: Props) {
                                 <TextArea
                                     name='info'
                                     placeholder='Produktbeskrivning'
-                                // resize={false}
                                 />
                             </FormField>
 
                             <FormField>
                                 <MaskedInput
                                     mask={[{ fixed: 'https://' }, { regexp: /^.*$/ }]}
-                                // value={value}
-                                // onChange={event => setValue(event.target.value)}
                                 />
                             </FormField>
                         </Form>
@@ -95,7 +91,7 @@ function AddNewProduct(props: Props) {
                 </Box>
             </Box>
         </Layer>
-    )
+    );
 }
 
-export default AddNewProduct
+export default AddNewProduct;

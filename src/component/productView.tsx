@@ -2,16 +2,13 @@ import { CSSProperties, useContext } from 'react';
 import { Button, Text } from 'grommet';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
-import {  products } from './mockedInterfaceProducts';
+import { products } from './mockedInterfaceProducts';
 import AmountButton from './amountButton';
-
-
 function ProductView() {
-    const { addToCart } = useContext(CartContext)
-    
-    const urlPath = window.location.pathname
-    const productId = Number(urlPath.split('/')[2])
-    const product = products[productId]!
+    const { addToCart } = useContext(CartContext);
+    const urlPath = window.location.pathname;
+    const productId = Number(urlPath.split('/')[2]);
+    const product = products[productId]!;
 
     const addProductToCart = () => {
         addToCart(product);
@@ -20,7 +17,7 @@ function ProductView() {
     return (
         <main style={rootStyle}>
             <div>
-                <Link to="/">
+                <Link to='/'>
                     <Text
                         color='#37513B'
                     >
@@ -64,7 +61,7 @@ function ProductView() {
                             label='Lägg i kundvagn'
                             color='#708C7E'
                             style={{
-                                'fontWeight': 'normal', 
+                                'fontWeight': 'normal',
                                 'background': '#708C7E',
                                 'color': 'white',
                             }}
@@ -76,8 +73,10 @@ function ProductView() {
                 </div>
             </div>
         </main>
-    )
+    );
 }
+
+export default ProductView;
 
 const rootStyle: CSSProperties = {
     padding: '6rem 2rem'
@@ -122,5 +121,3 @@ const buySectionStyle: CSSProperties = {
     flexDirection: 'column',
     marginTop: '20%'
 }
-
-export default ProductView

@@ -1,22 +1,18 @@
-import { AccordionPanel, Box, MaskedInput, RadioButtonGroup, RadioButton, FormField, Form } from "grommet";
-import { CSSProperties, useContext, useEffect, useState } from "react";
-import { OrderContext } from "../../contexts/orderContext";
-
-// const month: number; new Date(2021, month, 0).getDate(); // hämtar så man får val när man trycker
+import { AccordionPanel, Box, MaskedInput, RadioButtonGroup, RadioButton, FormField, Form } from 'grommet';
+import { CSSProperties, useContext, useEffect, useState } from 'react';
+import { OrderContext } from '../../contexts/orderContext';
 
 function Payment() {
-    
     const { setPaymentMethodField, setCardField, order } = useContext(OrderContext);
-
     const IPv4ElementExp = /^[0-1][0-9][0-9]$|[0-4][0-9]$|[0-5]$|[0-9][0-9]$|^[0-9]$/;
 
     const [autoPhonenumberFromCustomer, setAutoPhonenumberFromCustomer] = useState('');
     useEffect( () => {
-        setAutoPhonenumberFromCustomer(order.customer.phoneNumber)
+        setAutoPhonenumberFromCustomer(order.customer.phoneNumber);
     }, [order.customer.phoneNumber]);
 
     return (
-        <AccordionPanel label="Betalning">
+        <AccordionPanel label='Betalning'>
             <Box background='light-2' >
                 <Box margin='small'>
                     <RadioButton
@@ -31,7 +27,7 @@ function Payment() {
                         <Box style={{ ...payBox }}>
                             <Box pad='small'>
                                 <MaskedInput
-                                    onChange={(event) => setCardField(event.target.value, "cardNumber")}
+                                    onChange={(event) => setCardField(event.target.value, 'cardNumber')}
                                     mask={[
                                         {
                                             length: [1, 4],
@@ -62,7 +58,7 @@ function Payment() {
 
                             <Box pad='small'>
                                 <MaskedInput
-                                    onChange={(event) => setCardField(event.target.value, "expireDate")}
+                                    onChange={(event) => setCardField(event.target.value, 'expireDate')}
                                     mask={[
                                         {
                                             length: 2,
@@ -81,7 +77,7 @@ function Payment() {
 
                             <Box pad='small'>
                                 <MaskedInput
-                                    onChange={(event) => setCardField(event.target.value, "cvcCode")}
+                                    onChange={(event) => setCardField(event.target.value, 'cvcCode')}
                                     mask={[
                                         {
                                             length: 3,
@@ -97,16 +93,16 @@ function Payment() {
 
                 <Box margin='small'>
                     <RadioButton
-                        label="Klarna"
-                        name="Klarna"
-                        value="Klarna"
+                        label='Klarna'
+                        name='Klarna'
+                        value='Klarna'
                         checked={order.paymentMethod === 'Klarna'}
                         onChange={(event) => setPaymentMethodField(event.target.value)}
                     />
-                    {order.paymentMethod === "Klarna" && (
+                    {order.paymentMethod === 'Klarna' && (
                         <Box style={{ ...payBox }}>
                             <RadioButtonGroup
-                                name="radio"
+                                name='radio'
                                 options={[
                                     { label: 'Faktura 14 dagar', value: 'c1' },
                                     { label: 'Betala direkt', value: 'c2' },
@@ -148,7 +144,3 @@ const payBox: CSSProperties = {
     padding: '1rem',
     borderRadius: '1rem',
 }
-
-// kort-nummer https://storybook.grommet.io/?path=/story/input-maskedinput-ipv4-address--i-pv-4-masked-input
-// utgångsdatum https://storybook.grommet.io/?path=/story/input-maskedinput-date--date-masked-input
-// lösenord / CVC https://storybook.grommet.io/?path=/story/input-textinput-password--password

@@ -1,29 +1,27 @@
-import { Box, Form, FormField, Text, TextInput, TextArea, Image, Layer, Button } from "grommet"
-import { Close } from "grommet-icons"
-import { useState } from "react"
-import { products } from '../mockedInterfaceProducts'
-
+import { Box, Form, FormField, Text, TextInput, TextArea, Image, Layer, Button } from 'grommet';
+import { Close } from 'grommet-icons';
+import { useState } from 'react';
+import { products } from '../mockedInterfaceProducts';
 
 interface Props {
-    chosenProductId: string
-    closeEdit: () => void
+    chosenProductId: string;
+    closeEdit: () => void;
 }
 
 function EditExistingProduct(props: Props) {
-    const id = parseInt(props.chosenProductId)
-    const product = products[id]
+    const id = parseInt(props.chosenProductId);
+    const product = products[id];
 
-    const [newTitle, setNewTitle] = useState(product!.title)
-    const [newPrice, setNewPrice] = useState(product!.price)
-    const [newInfo, setNewInfo] = useState(product!.info)
-    const [newImage, setNewImage] = useState(product!.image)
+    const [newTitle, setNewTitle] = useState(product!.title);
+    const [newPrice, setNewPrice] = useState(product!.price);
+    const [newInfo, setNewInfo] = useState(product!.info);
+    const [newImage, setNewImage] = useState(product!.image);
 
     const onSave = () => {
         
     }
 
     return (
-
         <Layer>
             <Box
                 width='large'
@@ -141,7 +139,7 @@ function EditExistingProduct(props: Props) {
                 </Box>
             </Box>
         </Layer>
-    )
+    );
 }
 
-export default EditExistingProduct
+export default EditExistingProduct;

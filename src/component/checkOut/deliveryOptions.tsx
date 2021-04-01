@@ -1,9 +1,8 @@
-import { AccordionPanel, Box, Text, RadioButton } from "grommet";
-import { useContext } from "react";
-import { DeliveryDetails, OrderContext } from "../../contexts/orderContext";
+import { AccordionPanel, Box, Text, RadioButton } from 'grommet';
+import { useContext } from 'react';
+import { DeliveryDetails, OrderContext } from '../../contexts/orderContext';
 
 function DeliveryOptions() {
-    
     const { setDeliveryOptionField, order } = useContext(OrderContext);
 
     const options: DeliveryDetails[] = [
@@ -20,13 +19,12 @@ function DeliveryOptions() {
             price: 49,
             days: '2 arbetsdagar'
         }
-    ]
+    ];
 
     return (
-        <AccordionPanel label="Leverans" color="#85A588">
-            <Box background="light-2" overflow="auto">
+        <AccordionPanel label='Leverans' color='#85A588'>
+            <Box background='light-2' overflow='auto'>
                 <Box flex={false}>
-
                     {options.map((option, index ) => 
                         <Box key={index}
                             background='#B5BCB0'
@@ -44,7 +42,7 @@ function DeliveryOptions() {
                                 <Text>Leverans: {option.days}</Text>
                                 <RadioButton 
                                     required
-                                    name="Delivery"
+                                    name='Delivery'
                                     value={index}
                                     checked={order.deliveryOption?.titel === option.titel}
                                     onChange={() => {setDeliveryOptionField(option) }}
@@ -55,6 +53,6 @@ function DeliveryOptions() {
                 </Box>
             </Box>
         </AccordionPanel>
-    )
+    );
 }
 export default DeliveryOptions;

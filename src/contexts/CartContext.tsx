@@ -1,6 +1,5 @@
-import { createContext, FunctionComponent, useState } from "react";
-import { Product } from "../component/mockedInterfaceProducts";
-
+import { createContext, FunctionComponent, useState } from 'react';
+import { Product } from '../component/mockedInterfaceProducts';
 
 export interface CartItem extends Product {
     quantity: number;
@@ -17,7 +16,16 @@ interface CartContextValue {
     subQuantity: (product: Product) => void;
 }
 
-export const CartContext = createContext<CartContextValue>({} as any)
+export const CartContext = createContext<CartContextValue>({
+    cart: [],
+    addToCart: () => {},
+    removeProductFromCart: () => {},
+    emptyCart: () => {},
+    nrOfProducts: 0,
+    totalSum: 0,
+    addQuantity: () => {},
+    subQuantity: () => {}
+});
 
 const CartProvider: FunctionComponent = ({ children }) => {
     const initializeCart = () => {
@@ -29,23 +37,21 @@ const CartProvider: FunctionComponent = ({ children }) => {
     }
 
     const getCartLength = (cartToCount: CartItem[]) => {
-        let length = 0
-
+        let length = 0;
         cartToCount.forEach((cartItem) => {
             length += cartItem.quantity;
-        })
+        });
         return length;
     }
 
     const addToCart = (product: Product) => {
-
-        let cartToSave = [...cart]
-        const cartItem = cart.find(cartItem => cartItem.id === product.id)
+        let cartToSave = [...cart];
+        const cartItem = cart.find(cartItem => cartItem.id === product.id);
 
         if (cartItem) {
-            cartItem.quantity++
+            cartItem.quantity++;
         } else {
-            cartToSave = [...cartToSave, { ...product, quantity: 1 }]
+            cartToSave = [...cartToSave, { ...product, quantity: 1 }];
         }
 
         setCart(cartToSave);
@@ -62,31 +68,30 @@ const CartProvider: FunctionComponent = ({ children }) => {
                 const sum = item.quantity * item.price;
                 cartPrices.push(sum);
             } else {
-                cartPrices.push(item.price)
+                cartPrices.push(item.price);
             }
         }
 
         for (const price of cartPrices) {
-            totalSum += price
+            totalSum += price;
         }
         return totalSum;
     }
 
     const updateCartInLocalStorage = (cart: CartItem[]) => {
-        localStorage.setItem('cart', JSON.stringify(cart))
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
 
-
     const removeProductFromCart = (product: Product) => {
-        let cartToSave = [...cart]
+        let cartToSave = [...cart];
         const productIdToRemove = product.id;
         const index = cartToSave.map(item => {
-            return item.id
-        }).indexOf(productIdToRemove)
+            return item.id;
+        }).indexOf(productIdToRemove);
 
         cartToSave.splice(index, 1)
 
-        setCart(cartToSave)
+        setCart(cartToSave);
         setTotalSum(getTotalSum(cartToSave));
         setNrOfProducts(getCartLength(cartToSave));
         updateCartInLocalStorage(cartToSave);
@@ -99,8 +104,8 @@ const CartProvider: FunctionComponent = ({ children }) => {
     }
 
     const addQuantity = (product: Product) => {
-        let cartToSave = [...cart]
-        const cartItem = cart.find(cartItem => cartItem.id === product.id)
+        let cartToSave = [...cart];
+        const cartItem = cart.find(cartItem => cartItem.id === product.id);
 
         if (cartItem) {
             cartItem.quantity++;
@@ -113,17 +118,17 @@ const CartProvider: FunctionComponent = ({ children }) => {
     }
 
     const subQuantity = (product: Product) => {
-        let cartToSave = [...cart]
-        const cartItem = cart.find(cartItem => cartItem.id === product.id)
+        let cartToSave = [...cart];
+        const cartItem = cart.find(cartItem => cartItem.id === product.id);
         const productIdToRemove = product.id;
         const index = cartToSave.map(item => {
-            return item.id
-        }).indexOf(productIdToRemove)
+            return item.id;
+        }).indexOf(productIdToRemove);
 
         if (cartItem!.quantity > 1) {
             cartItem!.quantity--;
         } else {
-            cartToSave.splice(index, 1)
+            cartToSave.splice(index, 1);
         }
 
         setCart(cartToSave);
@@ -135,22 +140,24 @@ const CartProvider: FunctionComponent = ({ children }) => {
     /* HOOKS */
     const [cart, setCart] = useState<CartItem[]>(initializeCart());
     const [nrOfProducts, setNrOfProducts] = useState<number>(getCartLength(cart));
-    const [totalSum, setTotalSum] = useState<number>(getTotalSum(cart))
+    const [totalSum, setTotalSum] = useState<number>(getTotalSum(cart));
 
     return (
-        <CartContext.Provider value={{
-            cart,
-            addToCart,
-            removeProductFromCart,
-            emptyCart,
-            nrOfProducts,
-            totalSum,
-            addQuantity,
-            subQuantity
-        }}>
+        <CartContext.Provider value=
+            {{
+                cart,
+                addToCart,
+                removeProductFromCart,
+                emptyCart,
+                nrOfProducts,
+                totalSum,
+                addQuantity,
+                subQuantity
+            }}
+        >
             {children}
         </CartContext.Provider>
-    )
+    );
 }
 
 export default CartProvider;

@@ -13,10 +13,8 @@ import animationData from './assets/loadingCart.json'
 import '../../index.css'
 
 function CheckOut() {
-    
     const { order } = useContext(OrderContext);
     const { emptyCart, totalSum } = useContext(CartContext);
-    
     const [open, setOpen] = useState(false);
     const [isDataLoaded, setIsDataLoaded] = useState(false);
    
@@ -33,9 +31,9 @@ function CheckOut() {
         autoplay: true,
         animationData: animationData,
         rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice"
+            preserveAspectRatio: 'xMidYMid slice'
         }
-    };
+    }
 
     const isFormValid =
         order.customer.fullname &&
@@ -63,7 +61,7 @@ function CheckOut() {
                         <CartInCheckout />
                     </div>
 
-                    <Box direction="column" align='center'>
+                    <Box direction='column' align='center'>
                         <Box width='small+10px' margin='small'>
                             <Box align='center' pad='small'>
                                 {order.deliveryOption?.price === undefined ?
@@ -77,9 +75,9 @@ function CheckOut() {
                                 }
                             </Box>
                             <Button
-                                form="idDetailsForm"
-                                type="submit"
-                                label="Bekräfta köp"
+                                form='idDetailsForm'
+                                type='submit'
+                                label='Bekräfta köp'
                                 disabled={!isFormValid}
                                 color='#708C7E'
                                 style={{
@@ -99,8 +97,8 @@ function CheckOut() {
                             <Layer>
                                 <Box
                                     pad='large'
-                                    align="center"
-                                    justify="center"
+                                    align='center'
+                                    justify='center'
                                 >
                                     <Box direction='column' align='center'>
                                         <Lottie
@@ -117,6 +115,6 @@ function CheckOut() {
                 </Box>
             </ErrorBoundary>
         </main>
-    )
+    );
 }
 export default CheckOut;

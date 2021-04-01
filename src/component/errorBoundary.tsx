@@ -1,14 +1,11 @@
-import { Component, ErrorInfo } from "react";
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import { Component, ErrorInfo } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 interface Props extends RouteComponentProps{}
-
 interface State {
     hasError: boolean; 
 }
-
 class ErrorBoundary extends Component<Props, State> {
-
     state: State = {
         hasError: false,
     };
@@ -28,10 +25,10 @@ class ErrorBoundary extends Component<Props, State> {
     render() {
         if (this.state.hasError) {
             return (
-                <div >
+                <div>
                     <div>
                         <h2>Oops something went wrong</h2>
-                        <button onClick={this.reloadPage}  className="button">
+                        <button onClick={this.reloadPage}  className='button'>
                         Go back
                         </button>
                     </div>

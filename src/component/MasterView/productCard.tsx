@@ -1,9 +1,9 @@
-import { Product } from "../mockedInterfaceProducts";
-import { Box } from "grommet";
-import { Link } from "react-router-dom";
-import { Shop } from "grommet-icons";
-import { CartContext } from "../../contexts/CartContext";
-import { CSSProperties, useContext } from "react";
+import { Product } from '../mockedInterfaceProducts';
+import { Box } from 'grommet';
+import { Link } from 'react-router-dom';
+import { Shop } from 'grommet-icons';
+import { CartContext } from '../../contexts/CartContext';
+import { CSSProperties, useContext } from 'react';
 
 interface Props {
     product: Product
@@ -13,7 +13,6 @@ function ProductItem(props: Props) {
     const { id, title, image, price } = props.product;
     const { addToCart } = useContext(CartContext);
 
-
     const addProductToCart: React.MouseEventHandler<HTMLDivElement> = (event) => {
         event.preventDefault();
         addToCart(props.product);
@@ -22,11 +21,14 @@ function ProductItem(props: Props) {
     return (
 
         <Link
-            to={"/product/" + id}
+            to={'/product/' + id}
             style={noTextDecoration}
         >
             <div style={rootStyle}>
-                <img style={imageStyle} src={image} alt={title} />
+                <img
+                    style={imageStyle}
+                    src={image}
+                    alt={title} />
                 <div style={infoGrid}>
                     <div>
                         <h3 style={textStyle}>{title}</h3>
@@ -40,20 +42,21 @@ function ProductItem(props: Props) {
                         align='center'
                         justify='center'
                         onClick={addProductToCart}
-                        hoverIndicator={{'color': '#37513B'}}
-                        
+                        hoverIndicator={{ 'color': '#37513B' }}
                     >
                         <Shop size='18px' color='white' />
                     </Box>
                 </div>
             </div>
         </Link>
-    )
+    );
 }
 
 const noTextDecoration: CSSProperties = {
     textDecoration: 'none'
 }
+
+export default ProductItem;
 
 const rootStyle: CSSProperties = {
     display: 'grid',
@@ -83,5 +86,3 @@ const textStyle: CSSProperties = {
     fontWeight: 400,
     margin: '0',
 }
-
-export default ProductItem
