@@ -12,7 +12,7 @@ interface AssortmentValue {
     editProductImage: (product: Product, image: string) => void;
 }
 
-export const AssortmentContext = createContext<AssortmentValue>({} as any);
+export const AssortmentContext = createContext<AssortmentValue>({} as AssortmentValue);
 
 const getAssortment = () => {
     const assortmentInLS = localStorage.getItem('assortment')
@@ -26,7 +26,6 @@ const getAssortment = () => {
 
 const AssortmentProvider: FunctionComponent = ({ children }) => {
     const [list, setList] = useState<Product[]>(getAssortment())
-    console.log(list)
 
     useEffect(() => {
         localStorage.setItem('assortment', JSON.stringify(list));
@@ -34,7 +33,6 @@ const AssortmentProvider: FunctionComponent = ({ children }) => {
 
     const removeProduct = (product: Product) => {
         const clonedList = [...list]
-        console.log(clonedList)
         const productIdToRemove = product.id;
         const index = clonedList.map(item => {
             return item.id
@@ -45,45 +43,33 @@ const AssortmentProvider: FunctionComponent = ({ children }) => {
 
     const editProductTitle = (product: Product, title: string) => {
         const clonedList = [...list]
-        const productId = product.id;
-        const index = clonedList.map(item => {
-            return item.title
-        }).indexOf(productId);
+        const productId = parseInt(product.id);
 
-        clonedList[index]!.title = title
+        clonedList[productId]!.title = title
         setList(clonedList); 
     }
 
     const editProductPrice = (product: Product, price: number) => {
         const clonedList = [...list]
-        const productId = product.id;
-        const index = clonedList.map(item => {
-            return item.price.toString()
-        }).indexOf(productId);
+        const productId = parseInt(product.id);
 
-        clonedList[index]!.price = price
+        clonedList[productId]!.price = price
         setList(clonedList); 
     }
 
     const editProductInfo = (product: Product, info: string) => {
         const clonedList = [...list]
-        const productId = product.id;
-        const index = clonedList.map(item => {
-            return item.info
-        }).indexOf(productId);
+        const productId = parseInt(product.id);
 
-        clonedList[index]!.info = info
+        clonedList[productId]!.info = info
         setList(clonedList); 
     }
 
     const editProductImage = (product: Product, image: string) => {
         const clonedList = [...list]
-        const productId = product.id;
-        const index = clonedList.map(item => {
-            return item.image
-        }).indexOf(productId);
+        const productId = parseInt(product.id);
 
-        clonedList[index]!.image = image
+        clonedList[productId]!.image = image
         setList(clonedList); 
     }
 
