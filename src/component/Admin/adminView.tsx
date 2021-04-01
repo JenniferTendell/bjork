@@ -1,24 +1,25 @@
 import { Box, Text, Button } from "grommet"
 import { MouseEvent, useContext, useState } from "react"
 import { Product } from "../mockedInterfaceProducts"
-import EditProduct from "./editProduct"
 import AdminAssortmentProduct from "./AdminAssortmentProduct"
 import { AssortmentContext } from "../../contexts/assortmentContext"
+import AddNewProduct from "./addNewProduct"
+import EditExistingProduct from "./editExistingProduct"
 
 
 function AdminView() {
-    const [editProduct, setEditProduct] = useState(false)
     const [showAddNewProduct, setShowAddNewProduct] = useState(false)
+    const [showEditExistingProduct, setShowEditExistingProduct] = useState(false)
     const [chosenProductId, setChosenProductId] = useState('')
     const { list } = useContext(AssortmentContext)
 
     const handlePageToShow = (e: MouseEvent, product?: Product) => {
-        setEditProduct(true)
-        
         if (e.currentTarget.id === 'addNewProduct') {
             setShowAddNewProduct(true)
+            setShowEditExistingProduct(false)
         } else {
             setShowAddNewProduct(false)
+            setShowEditExistingProduct(true)
             setChosenProductId(product!.id)
         }
     }
@@ -57,12 +58,16 @@ function AdminView() {
                     />
                 )}
             </Box>
-            {editProduct && (
-                <EditProduct
-                    closeEdit={() => setEditProduct(false)}
-                    showAddNewProduct={showAddNewProduct} 
-                    chosenProductId={chosenProductId} 
-                />
+            {showEditExistingProduct && (
+                <EditExistingProduct 
+                    chosenProductId = {chosenProductId}
+                    closeEdit={() => setShowEditExistingProduct(false)}
+                />   
+            )}
+            {showAddNewProduct && (
+                <AddNewProduct 
+                    closeEdit={() => setShowAddNewProduct(false)}
+                />   
             )}
         </main>
     )
