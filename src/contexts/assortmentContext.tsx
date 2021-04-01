@@ -21,10 +21,12 @@ const getAssortment = () => {
     } else {
         return products;
     }
+    
 }
 
 const AssortmentProvider: FunctionComponent = ({ children }) => {
     const [list, setList] = useState<Product[]>(getAssortment())
+    console.log(list)
 
     useEffect(() => {
         localStorage.setItem('assortment', JSON.stringify(list));
