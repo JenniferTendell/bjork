@@ -38,6 +38,12 @@ function AdminView() {
                 margin={{ 'left': '10%' }}
             >
                 <Button
+                    color='#708C7E'
+                    style={{
+                        'fontWeight': 'normal',
+                        'background': '#708C7E',
+                        'color': 'white',
+                    }}
                     id='addNewProduct'
                     size='small'
                     label='Lägg till'
