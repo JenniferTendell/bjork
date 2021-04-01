@@ -10,17 +10,22 @@ interface Customer {
     city: string
 }
 
+export interface DeliveryDetails {
+    titel: string
+    price: number
+    days: string
+}
+
 interface CardDetails {
     cardNumber?: string
     expireDate?: string
     cvcCode?: string
 }
 
-// info that exists in an order
 interface Order {
     cartItems?: CartItem[];
     customer: Customer;
-    deliveryOption?: string;
+    deliveryOption?: DeliveryDetails;
     paymentMethod?: string;
     cardDetails?: CardDetails;
 }
@@ -28,7 +33,7 @@ interface Order {
 interface OrderContextValue {
     order: Order;
     setCustomerField: (defaultValue: string, field: keyof Customer) => void;
-    setDeliveryOptionField: (value: string) => void; 
+    setDeliveryOptionField: (value: DeliveryDetails) => void; 
     setPaymentMethodField: (value: string) => void; 
     setCardField: (defaultValue: string, field: keyof CardDetails) => void;
 }
@@ -44,7 +49,7 @@ const OrderProvider: FunctionComponent = ({ children }) => {
         zipcode: '',
         city: '', 
     });
-    const [deliveryOption, setDeliveryOption] = useState<string>('');
+    const [deliveryOption, setDeliveryOption] = useState<DeliveryDetails>();
     const [paymentMethod, setPaymentMethod] = useState<string>('');
     const [cardDetails, setCardDetails] = useState<CardDetails>({});
     
@@ -55,7 +60,7 @@ const OrderProvider: FunctionComponent = ({ children }) => {
         console.log(clonedCustomer);
     };
 
-    const setDeliveryOptionField = (value: string) => {
+    const setDeliveryOptionField = (value: DeliveryDetails) => {
         const chosenDelivery = value;
         setDeliveryOption(chosenDelivery);
         console.log(chosenDelivery)
@@ -80,7 +85,7 @@ const OrderProvider: FunctionComponent = ({ children }) => {
                 customer,
                 deliveryOption,
                 paymentMethod,
-                cardDetails
+                cardDetails,
             },
             setCustomerField,
             setDeliveryOptionField,

@@ -1,20 +1,23 @@
-import { AccordionPanel, Box, MaskedInput, RadioButtonGroup, RadioButton } from "grommet";
-import { CSSProperties, useContext } from "react";
+import { AccordionPanel, Box, MaskedInput, RadioButtonGroup, RadioButton, FormField, Form } from "grommet";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import { OrderContext } from "../../contexts/orderContext";
 
 // const month: number; new Date(2021, month, 0).getDate(); // hämtar så man får val när man trycker
 
 function Payment() {
-
+    
     const { setPaymentMethodField, setCardField, order } = useContext(OrderContext);
 
-    //för kortnummer 
     const IPv4ElementExp = /^[0-1][0-9][0-9]$|[0-4][0-9]$|[0-5]$|[0-9][0-9]$|^[0-9]$/;
+
+    const [autoPhonenumberFromCustomer, setAutoPhonenumberFromCustomer] = useState('');
+    useEffect( () => {
+        setAutoPhonenumberFromCustomer(order.customer.phoneNumber)
+    }, [order.customer.phoneNumber]);
 
     return (
         <AccordionPanel label="Betalning">
-
-            <Box background='light-2' style={{ height: 'large' }}>
+            <Box background='light-2' >
                 <Box margin='small'>
                     <RadioButton
                         label='Kort'
@@ -62,16 +65,14 @@ function Payment() {
                                     onChange={(event) => setCardField(event.target.value, "expireDate")}
                                     mask={[
                                         {
-                                            length: [1, 2],
-                                            // options: Array.from({ length: 12 }, (v, k) => k + 1),
-                                            regexp: /^1[0,1-2]$|^0?[1-9]$|^0$/,
+                                            length: 2,
+                                            regexp: /^1[0-2]$|^0?[1-9]$|^0$/,
                                             placeholder: 'mm',
                                         },
                                         { fixed: '-' },
                                         {
                                             length: 2,
-                                            // options: Array.from({ length: 100 }, (v, k) => 2019 - k),
-                                            regexp: /^2[1-9]$|^[0-9]$/,
+                                            regexp: /^2[1-9]$|^[2-9]$|^3[0-9]$|^4[0-9]$|^5[0-9]$|^6[0-9]$|^7[0-9]$|^8[0-9]$|^9[0-9]$/,
                                             placeholder: 'yy',
                                         },
                                     ]}
@@ -97,7 +98,7 @@ function Payment() {
                 <Box margin='small'>
                     <RadioButton
                         label="Klarna"
-                        name="name"
+                        name="Klarna"
                         value="Klarna"
                         checked={order.paymentMethod === 'Klarna'}
                         onChange={(event) => setPaymentMethodField(event.target.value)}
@@ -117,23 +118,22 @@ function Payment() {
 
                 <Box margin='small'>
                     <RadioButton
-                        label="Swish"
-                        name="name"
-                        value="Swish"
+                        label='Swish'
+                        name='autoPhonenumberFromCustomer'
+                        value='Swish'
                         checked={order.paymentMethod === 'Swish'}
                         onChange={(event: any) => setPaymentMethodField(event.target.value)}
                     />
-                    {order.paymentMethod === "Swish" && (
+                    {order.paymentMethod === 'Swish' && (
                         <Box style={{ ...payBox }}>
-                            <MaskedInput
-                                mask={[
-                                    {
-                                        length: 10,
-                                        regexp: /[0-9]$/,
-                                        placeholder: 'Telefonnummer',
-                                    }
-                                ]}
-                            />
+                           <Form>
+                                <FormField 
+                                    placeholder='Telefonnummer'
+                                    value={autoPhonenumberFromCustomer}
+                                    onChange={event => setAutoPhonenumberFromCustomer(event.target.value)}
+                                    type='number'
+                                />
+                           </Form>
                         </Box>
                     )}
                 </Box>
@@ -148,12 +148,6 @@ const payBox: CSSProperties = {
     padding: '1rem',
     borderRadius: '1rem',
 }
-
-// IPv4MaskedInput.storyName = 'IPv4 address';
-
-// IPv4MaskedInput.parameters = {
-//   chromatic: { disable: true },
-// };
 
 // kort-nummer https://storybook.grommet.io/?path=/story/input-maskedinput-ipv4-address--i-pv-4-masked-input
 // utgångsdatum https://storybook.grommet.io/?path=/story/input-maskedinput-date--date-masked-input

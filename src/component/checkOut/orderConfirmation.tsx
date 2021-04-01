@@ -50,7 +50,7 @@ function OrderConfirmation() {
                             margin={{'top': '0rem', 'bottom': '0rem'}}
                             style={{'fontWeight': 'lighter'}}    
                         >
-                            Din beställning leveras med {order.deliveryOption}.
+                            Din beställning leveras med {order.deliveryOption?.titel}.
                             Ordernummer: {printOrderNumber(1000, 9999)}.
                         </Heading>
                         <Heading

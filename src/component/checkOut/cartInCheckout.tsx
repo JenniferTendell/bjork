@@ -7,8 +7,19 @@ function CartInCheckout() {
 
     const { cart, totalSum } = useContext(CartContext)
 
+    const ColoredLine = () => (
+        <hr
+            style={{
+                backgroundColor: '#B5BCB0',
+                height: 3,
+                width: '100%',
+                border: 'none',
+            }}
+        />
+    );
+
     return (
-        <Box pad='large'>
+        <Box pad='large' style={{ 'flex':'1' }}>
             <Box>
                 {cart.map((cartItem, index) =>
                     <ShoppingItem
@@ -18,12 +29,14 @@ function CartInCheckout() {
                 )}
             </Box>
             <Box>
-                <Text size='small'>Varav moms {totalSum * 0.25 }</Text>
-                <Text weight='bold'>Totalbelopp: {totalSum}</Text>
-                
+                <ColoredLine/>
+                <Box margin='0 1rem'>
+                    <Text size='small'>Varav moms {totalSum * 0.25} kr</Text>
+                    <Text weight='bold'>Din varukorg: {totalSum} kr</Text>  
+                </Box>
+                <ColoredLine/>
             </Box>
         </Box>
-
     )
 }
 
