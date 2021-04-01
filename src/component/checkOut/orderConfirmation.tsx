@@ -1,12 +1,12 @@
-import { Box, Button, Heading } from "grommet"
-import { CSSProperties } from "react";
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Box, Button, Heading } from 'grommet'
+import { CSSProperties } from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { OrderContext } from '../../contexts/orderContext';
 import '../../index.css';
 
 function OrderConfirmation() {
-    const { order } = useContext(OrderContext)
+    const { order } = useContext(OrderContext);
 
     const printOrderNumber = (min: number, max: number) => {
         min = Math.ceil(min);
@@ -16,72 +16,71 @@ function OrderConfirmation() {
 
     return (
         <main>
+            <Box
+                justify='center'
+                align='center'
+                direction='row'
+                pad={{ 'top': '3rem' }}
+                wrap
+            >
                 <Box
-                    justify='center'
+                    background='#B5BCB0'
+                    pad='xlarge'
+                    round='small'
                     align='center'
-                    direction='row'
-                    pad={{'top': '3rem'}}
+                >
+                    <h1 style={logo}>BJÖRK</h1>
+                </Box>
+                <Box
+                    alignSelf='center'
+                    style={{ width: '25rem' }}
+                    margin={{ 'left': '1rem' }}
                     wrap
                 >
-                    <Box
-                        background='#B5BCB0'
-                        pad='xlarge'
-                        round='small'
-                        align="center"
+                    <Heading
+                        level='4'
+                        textAlign='center'
+                        style={{ 'fontWeight': 'normal' }}
                     >
-                        <h1 style={logo}>BJÖRK</h1>
-                    </Box>
-                    <Box
-                        alignSelf='center'
-                        style={{ width: '25rem' }}
-                        margin={{ 'left': '1rem' }}
-                        wrap
+                        Tack {order.customer.fullname} för din beställning!
+                    </Heading>
+                    <Heading
+                        level='5'
+                        textAlign='center'
+                        margin={{ 'top': '0rem', 'bottom': '0rem' }}
+                        style={{ 'fontWeight': 'lighter' }}
                     >
-                        <Heading 
-                            level='4'
-                            textAlign='center'
-                            style={{'fontWeight': 'normal'}}
-                        >
-                            Tack {order.customer.fullname} för din beställning!
-                        </Heading>
-                        <Heading 
-                            level='5'
-                            textAlign='center'
-                            margin={{'top': '0rem', 'bottom': '0rem'}}
-                            style={{'fontWeight': 'lighter'}}    
-                        >
-                            Din beställning leveras med {order.deliveryOption?.titel}.
-                            Ordernummer: {printOrderNumber(1000, 9999)}.
-                        </Heading>
-                        <Heading
-                            level='5'
-                            textAlign='center'
-                            margin={{'vertical': '0rem'}}
-                            style={{'fontWeight': 'lighter'}}
-                        >
-                            Orderbekräftelse har skickats till {order.customer.email}
-                        </Heading>
-                    </Box>
+                        Din beställning leveras med {order.deliveryOption?.titel}.
+                        Ordernummer: {printOrderNumber(1000, 9999)}.
+                    </Heading>
+                    <Heading
+                        level='5'
+                        textAlign='center'
+                        margin={{ 'vertical': '0rem' }}
+                        style={{ 'fontWeight': 'lighter' }}
+                    >
+                        Orderbekräftelse har skickats till {order.customer.email}
+                    </Heading>
                 </Box>
-                <Box
-                    align='center'
-                    margin={{'vertical': '4rem'}}
-                >
-                    <Link to='/'>
-                        <Button 
-                            label='Fortsätt handla'
-                            color='#708C7E'
-                            style={{
-                                'fontWeight': 'normal', 
-                                'background': '#708C7E',
-                                'color': 'white',
-                            }}
-                        />
-                    </Link>
-                </Box>
-          
+            </Box>
+            <Box
+                align='center'
+                margin={{ 'vertical': '4rem' }}
+            >
+                <Link to='/'>
+                    <Button
+                        label='Fortsätt handla'
+                        color='#708C7E'
+                        style={{
+                            'fontWeight': 'normal',
+                            'background': '#708C7E',
+                            'color': 'white',
+                        }}
+                    />
+                </Link>
+            </Box>
         </main>
-    )
+    );
 }
 
 

@@ -4,9 +4,8 @@ import { MouseEvent, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../contexts/CartContext';
 import ShoppingItem from './shoppingItem';
-
 interface Props {
-    closeCart: (e: MouseEvent) => void
+    closeCart: (e: MouseEvent) => void;
 }
 
 function ShoppingCart(props: Props) {
@@ -99,7 +98,7 @@ function ShoppingCart(props: Props) {
                 </Box>
             </Box>
         </Box>
-    )
+    );
 }
 
 export default ShoppingCart;

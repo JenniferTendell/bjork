@@ -5,7 +5,6 @@ import animationData from './assets/errorCat.json'
 import {  RouteComponentProps, withRouter } from "react-router-dom";
 
 interface Props extends RouteComponentProps{}
-
 interface State {
     hasError: boolean; 
 }
@@ -36,7 +35,6 @@ class ErrorBoundary extends Component<Props, State> {
     render() {
         if (this.state.hasError) {
             return (
-                <div>
                    <Box
                         justify='center'
                         align='center'

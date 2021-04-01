@@ -1,58 +1,60 @@
-import { Text, Button } from "grommet"
-import { FormTrash } from "grommet-icons"
-import { CSSProperties, useContext } from "react";
-import { CartContext, CartItem } from "../../contexts/CartContext";
-import AmountButton from "../amountButton";
+import { Text, Button } from 'grommet';
+import { FormTrash } from 'grommet-icons';
+import { CSSProperties, useContext } from 'react';
+import { CartContext, CartItem } from '../../contexts/CartContext';
+import AmountButton from '../amountButton';
 
 interface Props {
-    cartItem: CartItem
+    cartItem: CartItem;
 }
 
 function ShoppingItem(props: Props) {
     const { image, price, title } = props.cartItem;
-    const { removeProductFromCart } = useContext(CartContext)
+    const { removeProductFromCart } = useContext(CartContext);
 
     const removeCartProduct = () => {
         removeProductFromCart(props.cartItem);
     }
 
     return (
-            <div style={rootStyle}>
-                <div style={flexContainer}>
-                    <div style={imageContainer}>
-                        <img
-                            style={imageStyle}
-                            src={image}
-                            alt={title}
-                        />
-                    </div>
-                    <div style={productText}>
-                        <Text size='small'>
-                            {title}
-                        </Text>
-                        <Text size='small'>
-                            {price} kr
-                        </Text>
-                    </div>
+        <div style={rootStyle}>
+            <div style={flexContainer}>
+                <div style={imageContainer}>
+                    <img
+                        style={imageStyle}
+                        src={image}
+                        alt={title}
+                    />
                 </div>
-                <div style={flexContainer}>
-                    <div style={{...productButton, ...flexStart}}>
-                        <AmountButton product={props.cartItem} />
-                    </div>
-                    <div style={{...productButton, ...flexEnd}}>
-                        <Button
-                            size='small'
-                            color='grey'
-                            focusIndicator={false}
-                            onClick={removeCartProduct}
-                        >
-                            <FormTrash />
-                        </Button>
-                    </div>
+                <div style={productText}>
+                    <Text size='small'>
+                        {title}
+                    </Text>
+                    <Text size='small'>
+                        {price} kr
+                    </Text>
                 </div>
             </div>
-    )
+            <div style={flexContainer}>
+                <div style={{ ...productButton, ...flexStart }}>
+                    <AmountButton product={props.cartItem} />
+                </div>
+                <div style={{ ...productButton, ...flexEnd }}>
+                    <Button
+                        size='small'
+                        color='grey'
+                        focusIndicator={false}
+                        onClick={removeCartProduct}
+                    >
+                        <FormTrash />
+                    </Button>
+                </div>
+            </div>
+        </div>
+    );
 }
+
+export default ShoppingItem;
 
 const rootStyle: CSSProperties = {
     display: 'flex',
@@ -103,5 +105,3 @@ const flexEnd: CSSProperties = {
 const flexStart: CSSProperties = {
     justifyContent: 'flex-start',
 }
-
-export default ShoppingItem

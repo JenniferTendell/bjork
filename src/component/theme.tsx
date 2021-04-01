@@ -1,11 +1,10 @@
-import { grommet } from "grommet"
-import { deepMerge } from "grommet/utils";
-
+import { grommet } from 'grommet';
+import { deepMerge } from 'grommet/utils';
 
   export const theme = deepMerge(grommet, {
     global: {
         colors: {
-          focus: "none"
+          focus: 'none'
         }
       },
     radioButton: {
