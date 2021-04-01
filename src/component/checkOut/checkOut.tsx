@@ -45,6 +45,8 @@ function CheckOut() {
         order.paymentMethod
         ;
 
+   (null as any)
+
     return (
         <main>
             <Box>
