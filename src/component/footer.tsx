@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 
 
 function Footer() {
+
+    const scrollToTopOfPage = () => {
+        window.scrollTo(0,0)
+    }
+
     return (
         <footer>
             <Box
@@ -57,7 +62,8 @@ function Footer() {
                                 width='8rem'
                                 justify='between'
                                 pad={'.5rem'}
-                                margin={{ 'top': '.5rem' }}  
+                                margin={{ 'top': '.5rem' }}
+                                onClick={scrollToTopOfPage}  
                             >
                                 <HostMaintenance
                                     color='white'
