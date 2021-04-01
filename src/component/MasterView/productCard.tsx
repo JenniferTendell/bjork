@@ -13,7 +13,6 @@ function ProductItem(props: Props) {
     const { id, title, image, price } = props.product;
     const { addToCart } = useContext(CartContext);
 
-
     const addProductToCart: React.MouseEventHandler<HTMLDivElement> = (event) => {
         event.preventDefault();
         addToCart(props.product);

@@ -1,29 +1,39 @@
 import { Box, Form, FormField, Text, TextInput, TextArea, Image, Layer, Button } from "grommet"
 import { Close } from "grommet-icons"
-import { useState } from "react"
-import { products } from '../mockedInterfaceProducts'
+import { useContext, useState } from "react"
+import { AssortmentContext } from "../../contexts/assortmentContext"
+import { Product } from '../mockedInterfaceProducts'
 
 
 interface Props {
-    chosenProductId: string
+    chosenProduct: Product
     closeEdit: () => void
 }
 
 function EditExistingProduct(props: Props) {
-    const id = parseInt(props.chosenProductId)
-    const product = products[id]
+    const product = props.chosenProduct
 
-    const [newTitle, setNewTitle] = useState(product!.title)
-    const [newPrice, setNewPrice] = useState(product!.price)
-    const [newInfo, setNewInfo] = useState(product!.info)
-    const [newImage, setNewImage] = useState(product!.image)
+    const {
+        editProductImage, 
+        editProductInfo, 
+        editProductPrice, 
+        editProductTitle
+    } = useContext(AssortmentContext)
+
+    const [newTitle, setNewTitle] = useState(product.title)
+    const [newPrice, setNewPrice] = useState(product.price)
+    const [newInfo, setNewInfo] = useState(product.info)
+    const [newImage, setNewImage] = useState(product.image)
 
     const onSave = () => {
-        
+        console.log(newTitle)
+        editProductImage(product, newImage)
+        editProductInfo(product, newInfo)
+        editProductPrice(product, newPrice)
+        editProductTitle(product, newTitle)
     }
 
     return (
-
         <Layer>
             <Box
                 width='large'
@@ -48,7 +58,7 @@ function EditExistingProduct(props: Props) {
                         textAlign='center'
                     >
                         Redigera produkt
-            </Text>
+                    </Text>
                     <Box
                         wrap
                         margin={{ 'top': '2rem' }}
@@ -135,8 +145,7 @@ function EditExistingProduct(props: Props) {
                     <Button
                         label='Spara'
                         size='small'
-                        onClick={() => { onSave() }}
-                        onChange={onSave}
+                        onClick={() => {onSave(); props.closeEdit()}}
                     />
                 </Box>
             </Box>

@@ -10,7 +10,7 @@ import EditExistingProduct from "./editExistingProduct"
 function AdminView() {
     const [showAddNewProduct, setShowAddNewProduct] = useState(false)
     const [showEditExistingProduct, setShowEditExistingProduct] = useState(false)
-    const [chosenProductId, setChosenProductId] = useState('')
+    const [chosenProduct, setChosenProduct]= useState<Product>()
     const { list } = useContext(AssortmentContext)
 
     const handlePageToShow = (e: MouseEvent, product?: Product) => {
@@ -20,7 +20,7 @@ function AdminView() {
         } else {
             setShowAddNewProduct(false)
             setShowEditExistingProduct(true)
-            setChosenProductId(product!.id)
+            setChosenProduct(product!)
         }
     }
     
@@ -60,7 +60,7 @@ function AdminView() {
             </Box>
             {showEditExistingProduct && (
                 <EditExistingProduct 
-                    chosenProductId = {chosenProductId}
+                    chosenProduct = {chosenProduct!}
                     closeEdit={() => setShowEditExistingProduct(false)}
                 />   
             )}
