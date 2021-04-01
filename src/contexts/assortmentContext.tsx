@@ -32,14 +32,13 @@ const AssortmentProvider: FunctionComponent = ({ children }) => {
 
     const removeProduct = (product: Product) => {
         const clonedList = [...list]
+        console.log(clonedList)
         const productIdToRemove = product.id;
         const index = clonedList.map(item => {
             return item.id
-        }).indexOf(productIdToRemove)
-
+        }).indexOf(productIdToRemove)        
         clonedList.splice(index, 1);
         setList(clonedList);
-
     }    
 
     const editProductTitle = (product: Product, title: string) => {
