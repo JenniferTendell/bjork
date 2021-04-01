@@ -1,5 +1,8 @@
 import { Box, Button, Layer } from "grommet"
 import { Close } from "grommet-icons"
+import { useContext } from "react"
+import { AssortmentContext } from "../../contexts/assortmentContext"
+import {  Product, products } from "../mockedInterfaceProducts"
 import AddNewProduct from "./addNewProduct"
 import EditExistingProduct from "./editExistingProduct"
 
@@ -10,10 +13,16 @@ interface Props {
 }
 
 function EditProduct(props: Props) {
-
+    const { addNewProduct } = useContext(AssortmentContext);
+    const id = parseInt(props.chosenProductId)
 
     const onSave = () => {
+        if (props.showAddNewProduct) {
+            const product: Product = products[id]!
+            addNewProduct(product);
 
+        } else {}
+    console.log('katt')
     }
 
     return (
@@ -33,7 +42,7 @@ function EditProduct(props: Props) {
                 {props.showAddNewProduct  
                     ?   <AddNewProduct />
                     :   <EditExistingProduct 
-                            chosenProductId={props.chosenProductId}
+                            id={id}
                         />
                 }
                 <Box
@@ -51,7 +60,8 @@ function EditProduct(props: Props) {
                     <Button
                         label='Spara'
                         size='small'
-                        onClick={() => { onSave() }}
+                        onClick={() => {onSave()}} 
+                        onChange={onSave}
                     />
                 </Box>
             </Box>

@@ -1,14 +1,14 @@
 import { Box, Form, FormField, Text, TextInput, TextArea, Image } from "grommet"
-import { useEffect, useState } from "react"
+import {  useEffect, useState } from "react"
 import { products } from '../mockedInterfaceProducts'
 
+
 interface Props {
-    chosenProductId: string
+    id: number
 }
 
 function EditExistingProduct(props: Props) {
-    const id = parseInt(props.chosenProductId)
-    const product = products[id]
+    const product = products[props.id]
 
     const [newTitle, setNewTitle] = useState('')
     const [newPrice, setNewPrice] = useState(0)
