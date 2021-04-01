@@ -6,7 +6,6 @@ import { AssortmentContext } from "../../contexts/assortmentContext"
 import AddNewProduct from "./addNewProduct"
 import EditExistingProduct from "./editExistingProduct"
 
-
 function AdminView() {
     const [showAddNewProduct, setShowAddNewProduct] = useState(false)
     const [showEditExistingProduct, setShowEditExistingProduct] = useState(false)
@@ -39,6 +38,12 @@ function AdminView() {
                 margin={{ 'left': '10%' }}
             >
                 <Button
+                    color='#708C7E'
+                    style={{
+                        'fontWeight': 'normal',
+                        'background': '#708C7E',
+                        'color': 'white',
+                    }}
                     id='addNewProduct'
                     size='small'
                     label='Lägg till'

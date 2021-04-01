@@ -79,12 +79,14 @@ function AddNewProduct(props: Props) {
                                 height={{ 'max': '60%', 'min': '13rem' }}
 
                             >
-                                <Image
-                                    src={image}
-                                    fit='cover'
-                                    width='100%'
-                                    height='100%'
-                                />
+                                { image?.length > 10 && ( 
+                                    <Image
+                                        src={image}
+                                        fit='cover'
+                                        width='100%'
+                                        height='100%'
+                                    />
+                                )}
                             </Box>
                         </Box>
                         <Box
@@ -148,16 +150,27 @@ function AddNewProduct(props: Props) {
                     align='center'
                 >
                     <Button
+                        color='#708C7E'
+                        style={{
+                            'fontWeight': 'normal',
+                            'color': 'black',
+                        }}
                         label='Avbryt'
                         size='small'
                         onClick={props.closeEdit}
                     />
                     <Button
+                        color='#708C7E'
+                        style={{
+                            'fontWeight': 'normal',
+                            'background': '#708C7E',
+                            'color': 'white',
+                        }}
                         form='newProduct'
                         type='submit'
                         label='Spara'
                         size='small'
-                        onClick={() => {saveNewProduct(); props.closeEdit()}}
+                        onClick={() => { saveNewProduct(); props.closeEdit() }}
                     />
                 </Box>
             </Box>
