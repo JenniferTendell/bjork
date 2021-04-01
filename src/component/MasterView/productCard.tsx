@@ -15,7 +15,6 @@ function ProductItem(props: Props) {
 
 
     const addProductToCart: React.MouseEventHandler<HTMLDivElement> = (event) => {
-        // event.stopPropagation();
         event.preventDefault();
         addToCart(props.product);
     }
