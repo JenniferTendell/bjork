@@ -1,7 +1,7 @@
 import { Box, Image, Text, Button } from 'grommet';
 import { MouseEvent, useContext } from 'react';
 import { Configure, FormTrash } from 'grommet-icons';
-import { Product } from '../mockedInterfaceProducts';
+import { Product } from '../../mockedInterfaceProducts';
 import { AssortmentContext } from '../../contexts/assortmentContext';
 
 interface Props {

@@ -2,7 +2,7 @@ import { Box, Text, Form, FormField, TextInput, TextArea, Button, Layer, Image }
 import { Close } from "grommet-icons"
 import { useContext, useEffect, useState } from "react"
 import { AssortmentContext } from "../../contexts/assortmentContext"
-import { Product } from "./../mockedInterfaceProducts";
+import { Product } from "../../mockedInterfaceProducts";
 
 interface Props {
     closeEdit: () => void;

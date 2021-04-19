@@ -1,7 +1,7 @@
 import { Box, Text } from 'grommet';
 import { CSSProperties, useContext } from 'react';
 import {CartContext } from '../contexts/CartContext';
-import { Product } from './mockedInterfaceProducts';
+import { Product } from '../mockedInterfaceProducts';
 interface Props {
     product: Product;
 }

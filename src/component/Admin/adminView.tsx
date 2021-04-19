@@ -1,6 +1,6 @@
 import { Box, Text, Button } from 'grommet';
 import { MouseEvent, useContext, useState } from 'react';
-import { Product } from '../mockedInterfaceProducts';
+import { Product } from '../../mockedInterfaceProducts';
 import AdminAssortmentProduct from './AdminAssortmentProduct';
 import { AssortmentContext } from '../../contexts/assortmentContext';
 import AddNewProduct from './addNewProduct';

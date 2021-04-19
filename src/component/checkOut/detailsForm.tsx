@@ -48,7 +48,7 @@ function DetailsForm() {
                 </FormField>
 
                 <FormField name='zipcode' htmlFor='zipcode' label='Postnummer'>
-                    <TextInput type='number' id='zipcode' name='zipcode'
+                    <TextInput type='number' id='zipcode' name='zipcode' maxLength={5}
                         value={order.customer.zipcode}
                         onChange={(event) => setCustomerField(event.target.value, 'zipcode')}
                     />

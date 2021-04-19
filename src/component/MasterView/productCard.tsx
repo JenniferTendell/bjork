@@ -1,4 +1,4 @@
-import { Product } from '../mockedInterfaceProducts';
+import { Product } from '../../mockedInterfaceProducts';
 import { Box } from 'grommet';
 import { Link } from 'react-router-dom';
 import { Shop } from 'grommet-icons';
