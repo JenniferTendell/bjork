@@ -1,5 +1,5 @@
 import { createContext, FunctionComponent, useEffect, useState } from 'react';
-import { Product, products } from '../component/mockedInterfaceProducts';
+import { Product, products } from '../mockedInterfaceProducts';
 
 interface AssortmentValue {
     list: Product[];

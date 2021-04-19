@@ -2,7 +2,7 @@ import { Box, Form, FormField, Text, TextInput, TextArea, Image, Layer, Button }
 import { Close } from "grommet-icons"
 import { useContext, useState } from "react"
 import { AssortmentContext } from "../../contexts/assortmentContext"
-import { Product } from '../mockedInterfaceProducts'
+import { Product } from '../../mockedInterfaceProducts'
 
 interface Props {
     chosenProduct: Product
